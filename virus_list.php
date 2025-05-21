@@ -22,7 +22,6 @@
         <ul>
             <li><a href="/zips/I_LOVE_YOU.zip">ILOVEYOU</a></li>
             <li><a href="/zips/MyDoom-master.zip">MyDoom</a></li>
-            <li><a href="/zips/conficker.zip">Conficker</a></li>
             <li><a href="/zips/virus-blaster-main.zip">Blaster</a></li>
             <li><a href="/zips/Sasser-master.zip">Sasser</a></li>
             <li><a href="/zips/stuxnet-main.zip">Stuxnet</a></li>
