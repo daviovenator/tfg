@@ -15,8 +15,7 @@
 
     <!-- Contenedor de botones arriba a la izquierda -->
     <div class="botones-superiores">
-        <a href="hackeo.php" class="inicio-btn">Inicio</a>
-        <a href="index.php" class="salir-btn">Salir</a>
+        <a href="index.php" class="inicio-btn">Inicio</a>
     </div>
 
     	<!-- Menú desplegable -->

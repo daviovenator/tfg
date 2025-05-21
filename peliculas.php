@@ -14,7 +14,7 @@
       if (document.referrer && document.referrer !== window.location.href) {
         history.back();
       } else {
-        window.location.href = "hackeo.php";
+        window.location.href = "index.php";
       }
     }
   </script>

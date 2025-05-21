@@ -13,7 +13,7 @@
     <div id="matrix"></div> <!-- Fondo animado -->
 
     <!-- Botón Inicio -->
-    <button class="inicio-btn"><a href="hackeo.php">Volver</a></button>
+    <button class="inicio-btn"><a href="index.php">Volver</a></button>
 
     <h1>Aprende ASIR</h1>
 

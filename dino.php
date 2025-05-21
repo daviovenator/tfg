@@ -19,7 +19,7 @@
             <li><a href="dinosaurios/hervivoros/hervivoros.php">Hervívoros</a></li>
             <li><a href="dinosaurios/flora/flora.php">Flora</a></li>
             <li><a href="wiki_espace.php">Wikispace</a></li>
-            <li><a href="hackeo.php">Salir</a></li>
+            <li><a href="index.php">Salir</a></li>
         </ul>
     </nav>
 

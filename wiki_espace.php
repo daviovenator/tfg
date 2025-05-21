@@ -160,7 +160,7 @@
             <li><a href="estrellas.php">Estrellas</a></li>
             <li><a href="galaxias.php">Galaxias</a></li>
             <li><a href="dino.php">Wikisaurio</a></li>
-            <li><a href="hackeo.php">Salir</a></li>
+            <li><a href="index.php">Salir</a></li>
         </ul>
     </nav>
 <div class="mensaje-interes">
