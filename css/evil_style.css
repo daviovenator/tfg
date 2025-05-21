@@ -1,0 +1,206 @@
+/* Estilo general para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ocupa toda la pantalla */
+    display: flex;
+    flex-direction: column; /* Coloca los elementos de arriba hacia abajo */
+    justify-content: center; /* Centrado vertical */
+    align-items: flex-start; /* Alinea a la izquierda */
+    padding-left: 20px; /* Agrega espacio en el lado izquierdo */
+    text-align: left;
+}
+
+/* Estilo para el contenedor del título */
+.title-container {
+    margin-bottom: 40px; /* Espacio entre el título y la barra de búsqueda */
+}
+
+/* Estilo para el título */
+h1 {
+    color: #00ff00; /* Verde brillante */
+    font-size: 40px;
+    text-shadow: 2px 2px 5px #000; /* Sombra de texto para resaltar */
+    margin: 0; /* Elimina márgenes innecesarios */
+}
+
+/* Contenedor para el formulario */
+.title-form-container {
+    width: 100%;
+    max-width: 500px; /* Máximo ancho para el formulario */
+}
+
+/* Contenedor de la barra de búsqueda */
+.url-input-container {
+    display: flex;
+    justify-content: flex-start; /* Alinea el contenido a la izquierda */
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Estilo para el input donde se ingresa la IP */
+.url-input {
+    width: 80%; /* Ocupa el 80% del contenedor */
+    padding: 12px;
+    font-size: 18px;
+    border: 2px solid #00ff00; /* Borde verde */
+    background-color: #333; /* Fondo oscuro */
+    color: #00ff00; /* Texto verde */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Sombra verde */
+    margin-right: 10px;
+    outline: none;
+}
+
+/* Efecto al pasar el mouse sobre el input */
+.url-input:focus {
+    border-color: #009900; /* Cambio de borde cuando está en foco */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 1); /* Aumento de sombra al hacer foco */
+}
+
+/* Estilo para el botón de escanear */
+.attack-button {
+    padding: 12px 25px;
+    background-color: #00ff00; /* Botón verde */
+    color: #000;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Sombra verde */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.attack-button:hover {
+    background-color: #009900; /* Cambio a verde más oscuro */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 1); /* Sombra verde más brillante */
+}
+
+/* Estilo para los resultados de la IP */
+.details {
+    margin-top: 30px;
+    text-align: left;
+    font-size: 16px;
+    color: #00ff00; /* Verde para los detalles */
+}
+
+/* Estilo para la lista de IPs */
+.ip-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.ip-list li {
+    font-size: 18px;
+    background-color: #333; /* Fondo oscuro */
+    color: #00ff00; /* Texto verde */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.5); /* Sombra verde */
+    transition: all 0.3s ease; /* Efecto de transición */
+}
+
+.ip-list li:hover {
+    background-color: #009900; /* Fondo verde más oscuro al pasar el ratón */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.9); /* Sombra más brillante */
+}
+
+/* Estilo para el fondo del efecto "Matrix" */
+#matrix {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('matrix-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+/* Estilo para el botón "Inicio" en la esquina superior izquierda */
+.inicio-btn {
+    background-color: #1a8c1a;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.inicio-btn a {
+    color: black;
+    text-decoration: none;
+}
+
+.inicio-btn:hover {
+    background-color: #006400; /* Verde más oscuro */
+}
+
+/* Estilo para el menú desplegable */
+.dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+    z-index: 10;
+}
+
+.dropbtn {
+    background-color: #1a8c1a;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    text-align: center;
+    width: 180px;
+    box-sizing: border-box;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333; /* Fondo oscuro */
+    min-width: 180px;
+    z-index: 1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    max-height: 300px;
+    overflow-y: auto;
+    right: 0;
+    top: 100%;
+    transform: translateX(-5px);
+    padding-top: 5px;
+}
+
+.dropdown-content a {
+    color: #00ff00; /* Texto verde */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #006400; /* Fondo verde más oscuro */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #006400; /* Fondo verde más oscuro */
+}

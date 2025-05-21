@@ -1,0 +1,249 @@
+/* Estilo general */
+body {
+	background-image: url('../img/hackeo.gif');  /* Ruta al GIF */
+	background-size: cover;  /* Para cubrir toda la página */
+	background-position: center center;  /* Centra el GIF en la página */
+	background-attachment: fixed;  /* Fija el fondo para que no se mueva al hacer scroll */
+	background-repeat: no-repeat;  /* Evita que el fondo se repita */
+	background-color: black;
+	color: #e5e5e5;
+	font-family: "Courier New", Courier, monospace;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Estilo para el título */
+h1 {
+	font-size: 50px;
+	color: #0066cc; 
+	margin-bottom: 20px;
+}
+
+/* Estilo para la barra de URL */
+.url-input-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.url-input {
+	padding: 10px;
+	font-size: 16px;
+	width: 300px;
+	margin-right: 10px;
+	border: 2px solid #a0c4ff; /* Azul para el borde */
+	background-color: black;
+	color: #a0c4ff; /* Azul para el texto */
+	border-radius: 5px;
+}
+
+.attack-button {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #a0c4ff; /* Azul pastel */
+	color: black;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+.attack-button:hover {
+	background-color: #8ab9f1; /* Azul pastel más oscuro para el hover */
+}
+
+/* Estilo para el menú desplegable */
+.dropdown {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: inline-block;
+	z-index: 10; /* Asegura que el menú esté por encima de otros elementos */
+}
+
+.dropbtn {
+	background-color: #00bfff;
+	color: black;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	text-align: center;
+	width: 180px; /* Hace que el botón sea del mismo ancho que el menú */
+	box-sizing: border-box; /* Asegura que el ancho incluya padding y border */
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: black;
+	min-width: 180px; /* Igual al ancho del botón */
+	z-index: 1;
+	border-radius: 5px;
+	box-sizing: border-box; /* Asegura que el tamaño incluya padding y border */
+	max-height: 300px; /* Limita la altura máxima */
+	overflow-y: auto; /* Permite desplazarse si el contenido es demasiado largo */
+	right: 0; /* Asegura que el menú esté alineado a la derecha del botón */
+	top: 100%; /* El menú está justo debajo del botón, sin espacio */
+	transform: translateX(-5px); /* Mueve el menú ligeramente a la izquierda para mayor alineación */
+	padding-top: 5px; /* Separación entre el borde y los items */
+}
+
+.dropdown-content a {
+	color: #0066cc;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	font-size: 16px;
+	box-sizing: border-box; /* Asegura que los elementos no se desborden */
+}
+
+.dropdown-content a:hover {
+	background-color: #8ab9f1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #1e90ff;
+}
+
+
+/* Sección de links Google */
+.google-links {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	background: rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	border: 2px solid #a0c4ff; /* Azul para el borde */
+	border-radius: 10px;
+	max-width: 300px;
+	text-align: left;
+}
+
+.google-links h2 {
+	font-size: 24px;
+	color: #a0c4ff; /* Azul para el título */
+	margin-bottom: 10px;
+}
+
+.google-links ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.google-links li {
+	margin: 10px 0;
+}
+
+.google-links a {
+	color: #a0c4ff; /* Azul para los links */
+	text-decoration: none;
+	font-size: 16px;
+	transition: color 0.3s, text-shadow 0.3s;
+}
+
+.google-links a:hover {
+	color: #8ab9f1; /* Azul pastel más oscuro */
+}
+
+/* Cuadro con bordes luminosos alrededor del h1 y p (se ha quitado la iluminación) */
+.text-box {
+	background-color: rgba(0, 0, 0, 0.7);  /* Fondo oscuro semi-transparente */
+	padding: 15px 25px;  /* Espaciado interno */
+	border-radius: 15px;  /* Bordes redondeados */
+	margin-top: 30px;
+	text-align: center;
+	width: 600px;  /* Ancho aumentado */
+	height: 300px; /* Alto aumentado */
+	overflow-y: auto; /* Permite desplazamiento normal */
+	overflow-x: hidden;
+	box-sizing: border-box;
+}
+
+/* Título principal con el efecto de disipación */
+h1 {
+	font-size: 36px;
+	margin-top: 20px;
+	color: #a0c4ff; /* Azul para el título */
+	animation: fadeInOut 4s ease-in-out infinite; /* Disipación lenta */
+	text-shadow: 0 0 10px #a0c4ff, 0 0 20px #a0c4ff, 0 0 30px #a0c4ff, 0 0 40px #a0c4ff, 0 0 50px #a0c4ff; /* Sombra luminosa al texto */
+}
+
+/* Estilo para párrafos */
+p {
+	font-size: 18px;
+	line-height: 1.6;
+	color: #a0c4ff; /* Azul para el texto */
+	margin-top: 20px;
+	text-align: center;
+	word-wrap: break-word; /* Ajuste de texto */
+	margin-bottom: 0; /* Evita el espacio extra en la parte inferior */
+}
+
+/* Animación de disipación para el texto del h1 */
+@keyframes fadeInOut {
+	0% {
+    	opacity: 1;
+	}
+	50% {
+    	opacity: 0.6;  /* El texto se disipa, pero no desaparece */
+	}
+	100% {
+    	opacity: 1;
+	}
+}
+
+.botones-superiores {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	display: flex;
+	gap: 5px;
+}
+
+.inicio-btn {
+	background-color: #00bfff;
+	color: black;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	text-decoration: none;
+	display: inline-block;
+	transition: background-color 0.3s;
+}
+
+.inicio-btn:hover {
+	background-color: #005bb5;
+}
+
+.salir-btn {
+	background-color: #ff4d4d;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	text-decoration: none;
+	display: inline-block;
+	transition: background-color 0.3s;
+}
+
+.salir-btn:hover {
+	background-color: #cc0000;
+}

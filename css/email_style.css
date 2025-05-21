@@ -1,0 +1,195 @@
+/* Estilos generales */
+body {
+	background-image: url('../img/mail.gif'); /* Ruta al GIF */
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-color: black;
+	color: #e5e5e5;
+	font-family: "Arial", sans-serif; /* Cambio de fuente a algo más moderno */
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Estilo del contenedor principal del formulario */
+.email-form-container {
+	background-color: rgba(0, 0, 0, 0.8);  /* Fondo oscuro semi-transparente */
+	padding: 30px 50px;
+	border-radius: 15px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);  /* Sombra suave */
+	width: 500px;  /* Ancho del contenedor */
+	max-width: 100%;
+	text-align: center;
+	margin-top: 50px;
+}
+
+/* Estilo para el título */
+.email-form-container h2 {
+	font-size: 28px;
+	color: #a0c4ff; /* Azul profesional */
+	margin-bottom: 20px;
+}
+
+/* Estilo del formulario */
+.email-form-container form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;  /* Espacio entre los campos del formulario */
+}
+
+/* Estilo de las etiquetas del formulario */
+.email-form-container label {
+	font-size: 16px;
+	color: #a0c4ff;
+	text-align: left;
+}
+
+/* Estilo para los campos de entrada */
+.email-form-container input,
+.email-form-container textarea {
+	padding: 12px;
+	font-size: 16px;
+	border: 2px solid #a0c4ff;  /* Borde azul */
+	border-radius: 5px;
+	background-color: #333; /* Fondo oscuro en los campos */
+	color: #fff;
+	width: 100%;  /* Asegura que los campos llenen el contenedor */
+	box-sizing: border-box;  /* Para que el padding no afecte el tamaño total */
+}
+
+/* Estilo para el botón de enviar */
+.email-form-container button {
+	padding: 15px 30px;
+	font-size: 18px;
+	background-color: #a0c4ff;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.email-form-container button:hover {
+	background-color: #8ab9f1;
+}
+
+/* Contenedor para alinear los botones juntos */
+.botones-superiores {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        gap: 5px; /* Espacio pequeño entre botones */
+}
+
+/* Estilo para el botón "Salir" */
+.salir-btn {
+        background-color: #ff4d4d;
+        color: black;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        text-decoration: none; /* <- Esta línea evita el subrayado */
+}
+
+/* Estilo para el botón "Inicio" */
+.inicio-btn {
+        background-color: #00bfff;
+        color: black;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+}
+
+.inicio-btn:hover {
+        background-color: #005bb5;
+}
+
+/* Estilo para el botón "Salir" */
+.salir-btn {
+        background-color: #ff4d4d;
+        color: black;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+}
+
+.salir-btn:hover {
+        background-color: #cc0000;
+}
+
+/* Menú desplegable */
+.dropdown {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: inline-block;
+	z-index: 10;
+}
+
+.dropbtn {
+	background-color: #00bfff;
+	color: black;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	text-align: center;
+	width: 180px;
+	box-sizing: border-box;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: black;
+	min-width: 180px;
+	z-index: 1;
+	border-radius: 5px;
+	max-height: 300px;
+	overflow-y: auto;
+	right: 0;
+	top: 100%;
+	transform: translateX(-5px);
+	padding-top: 5px;
+}
+
+.dropdown-content a {
+	color: #0066cc;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	font-size: 16px;
+}
+
+.dropdown-content a:hover {
+	background-color: #8ab9f1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #1e90ff;
+}
+

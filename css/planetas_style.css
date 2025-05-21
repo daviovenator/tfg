@@ -1,0 +1,233 @@
+/* Reset de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo básico de la página */
+body {
+    font-family: Arial, sans-serif;
+    background: url('../img/stars.jpg') no-repeat center center fixed; /* Imagen de fondo */
+    background-size: cover; /* Asegura que cubra todo el fondo */
+    color: #333;
+    line-height: 1.6;
+    padding-top: 0;  /* Elimina el padding superior del body */
+    margin: 0;  /* Elimina el margen por defecto en la página */
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background: transparent; /* Totalmente transparente */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin: 0;  /* Elimina cualquier margen */
+    border-radius: 0;  /* Asegura que no haya bordes redondeados */
+    position: relative;
+    width: 100%;  /* Asegura que cubra todo el ancho de la pantalla */
+    top: 0;  /* Lo posiciona en la parte superior de la página */
+    z-index: 1;  /* Se asegura de que el header esté encima de otros elementos */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para visibilidad del texto */
+}
+
+/* Botón de volver a la enciclopedia */
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    background-color: rgba(0, 188, 212, 0.8); /* Azul celeste semitransparente */
+    padding: 12px 30px;  /* Mayor tamaño de padding */
+    border-radius: 30px;  /* Bordes redondeados */
+    transition: background-color 0.3s, transform 0.3s;  /* Animación suave */
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+header a:hover {
+    background-color: rgba(0, 151, 167, 0.8); /* Cambio de color cuando pasa el mouse */
+    transform: scale(1.05);  /* Efecto de agrandar un poco el botón */
+}
+
+header a:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.7);  /* Añadimos un contorno atractivo al botón */
+}
+
+/* Contenido de la página de exoplanetas */
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con 80% de transparencia */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+/* Títulos */
+h2 {
+    font-size: 2rem;
+    color: #2e3b4e;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Información general */
+p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+ul {
+    list-style-type: none;
+    margin: 20px 0;
+}
+
+ul li {
+    font-size: 1.1rem;
+    color: #333;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+/* Estilos de las listas */
+ul li {
+    font-weight: bold;
+}
+
+/* Bloques destacados */
+.block {
+    background-color: rgba(230, 241, 247, 0.8); /* Fondo azul claro con 80% de transparencia */
+    border-left: 5px solid #4bacc6;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-style: italic;
+}
+
+.block p {
+    margin-bottom: 10px;
+}
+
+/* Estilo de enlaces */
+a {
+    color: #1e88e5;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #1565c0;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1rem;
+    color: #777;
+    padding: 20px;
+}
+
+footer p {
+    margin-top: 20px;
+    color: #333; /* Hacemos que el texto se vea más visible */
+}
+
+/* Estilos del contenedor de la información */
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.info-container .info-box {
+    width: 48%;
+    background-color: rgba(249, 249, 249, 0.8); /* Fondo gris claro con 80% de transparencia */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-container .info-box h3 {
+    font-size: 1.5rem;
+    color: #2e3b4e;
+}
+
+.info-container .info-box p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Estilos para imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: block;
+}
+
+/* Botones de navegación (Anterior y Siguiente) */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.nav-buttons a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #00bcd4;  /* Azul celeste */
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 0 15px;
+}
+
+.nav-buttons a:hover {
+    background-color: #0097a7;
+    transform: scale(1.05);
+}
+
+/* Botón "Siguiente" */
+.nav-buttons a.next {
+    background-color: #4CAF50;  /* Color verde para siguiente */
+}
+
+.nav-buttons a.next:hover {
+    background-color: #45a049;  /* Verde más oscuro al pasar el ratón */
+}
+
+/* Botón "Anterior" */
+.nav-buttons a.prev {
+    background-color: #dc3545;  /* Color rojo para anterior */
+}
+
+.nav-buttons a.prev:hover {
+    background-color: #c82333;  /* Rojo más oscuro al pasar el ratón */
+}

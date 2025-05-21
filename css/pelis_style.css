@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  background: radial-gradient(ellipse at top, #0b0f1a 0%, #0a0a0a 100%);
+  color: #e0f7ff;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.salir-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: linear-gradient(135deg, #004466, #002233);
+  color: #e0f7ff;
+  border: none;
+  padding: 0.65rem 1.2rem;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 0 12px rgba(0, 204, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.salir-btn:hover {
+  background: linear-gradient(135deg, #006699, #003344);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+/* Encabezado */
+header {
+  padding: 2rem 0;
+  background: linear-gradient(90deg, #001a33, #003366, #001a33);
+  color: #ffffff;
+  box-shadow: 0 0 25px #00bfff;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 6px #000;
+}
+
+/* Contenedor con tarjetas */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  padding: 1rem;
+  justify-items: center;
+}
+
+/* Tarjetas visualmente más ricas */
+.movie-card {
+  background-color: #111c2f;
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(0, 191, 255, 0.3);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 96%;
+  max-width: 700px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.movie-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.7);
+}
+
+.movie-card a {
+  display: block;
+  width: 100%;
+  height: 440px;
+  background-color: black;
+  overflow: hidden;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.movie-card img:hover {
+  opacity: 0.85;
+}
+
+.movie-card h2 {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin: 0;
+  background-color: #0d1b2a;
+  border-top: 2px solid #00ccff;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive: tablets */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: móviles */
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .movie-card {
+    width: 90%;
+    height: auto;
+  }
+
+  .movie-card a {
+    height: auto;
+  }
+
+  .movie-card img {
+    height: auto;
+    max-height: 500px;
+  }
+}
+

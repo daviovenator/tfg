@@ -1,0 +1,144 @@
+/* Reset de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo general de la página */
+body {
+    font-family: Arial, sans-serif;
+    background: url('../img/stars.jpg') no-repeat center center fixed;
+    background-size: cover; /* Asegura que el fondo cubra toda la pantalla */
+    color: white;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Estilo del header */
+header {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para contraste */
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para destacar el texto */
+    margin-bottom: 10px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco translúcido */
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+header a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+/* Sección principal */
+section {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Título de la sección */
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Lista de estrellas */
+ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Tarjetas más grandes y más juntas */
+    gap: 10px; /* Juntar más las tarjetas (espacio más pequeño entre ellas) */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo de las tarjetas de estrellas */
+ul li {
+    background: transparent; /* Eliminar fondo gris */
+    color: white;
+    border-radius: 12px; /* Bordes más redondeados */
+    padding: 25px; /* Aumentar el tamaño de las tarjetas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Aumentar la sombra para un efecto más visible */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos dentro de la tarjeta */
+}
+
+/* Estilo de los nombres de las estrellas */
+ul li strong {
+    font-size: 1.4rem; /* Tamaño de texto más grande */
+    color: #ffcc00; /* Amarillo brillante para destacar los nombres */
+    margin-bottom: 15px;
+}
+
+/* Estilo para los enlaces dentro de las tarjetas */
+ul li a {
+    text-decoration: none; /* Quita el subrayado del enlace */
+    color: inherit; /* Mantener el color del texto de la estrella */
+    font-size: 1.2rem; /* Aumentar el tamaño del enlace */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo translúcido para el enlace */
+    padding: 12px 24px; /* Aumentar el tamaño del botón */
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto cuando pasas el mouse sobre el enlace */
+ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+/* Estilo de las imágenes dentro de las tarjetas */
+ul li img {
+    width: 100%; /* Asegura que la imagen ocupe el 100% del ancho de la tarjeta */
+    height: 250px; /* Aumentar la altura de las imágenes */
+    object-fit: cover; /* Recorta la imagen para ajustarse al tamaño de la tarjeta */
+    border-radius: 8px; /* Bordes redondeados en la imagen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra sutil en la imagen */
+    margin-top: 20px;
+}
+
+/* Efecto al pasar el mouse sobre las tarjetas */
+ul li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Aumentar la sombra al pasar el ratón */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: white;
+    font-size: 0.9rem;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+}

@@ -1,0 +1,58 @@
+/* phone_style.css */
+
+body {
+    background-color: black;
+    color: limegreen;
+    font-family: "Courier New", Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+h1 {
+    color: limegreen;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    text-align: center;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    margin-right: 10px;
+    border: 2px solid limegreen;
+    background-color: black;
+    color: limegreen;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: limegreen;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
+
+#error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+#phone-info {
+    color: limegreen;
+    margin-top: 20px;
+}

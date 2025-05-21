@@ -1,0 +1,101 @@
+/* Fondo con un estilo limpio */
+body {
+    background-image: url('https://t3.ftcdn.net/jpg/03/55/60/70/360_F_355607062_zYMS8jaz4SfoykpWz5oViRVKL32IabTP.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: black;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Ajuste de encabezados */
+h1 {
+    color: black; /* Título en color negro */
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+form {
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    text-align: center;
+    width: 100%;
+    max-width: 350px; /* Máximo ancho para el formulario */
+    margin-top: 20px;
+}
+
+/* Etiquetas del formulario */
+.input-label {
+    font-size: 18px;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+    color: #333;
+}
+
+/* Estilo del campo de entrada */
+.input-field {
+    font-size: 16px;
+    padding: 12px;
+    border: 2px solid #ccc;
+    background: white;
+    color: black;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    width: 100%;
+    margin-bottom: 20px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
+/* Estilo del botón */
+.submit-button {
+    display: inline-block;
+    background-color: black; /* Botón negro */
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #333; /* Botón negro más oscuro al pasar el ratón */
+}
+
+.submit-button:active {
+    background-color: #222; /* Botón negro aún más oscuro al hacer clic */
+}
+
+/* Estilo para el mensaje de error */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Estilo para la información adicional o mensaje de estado */
+.status {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+}

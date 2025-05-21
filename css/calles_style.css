@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#container {
+    max-width: 500px;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #ccc;
+    background-color: #222;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#address {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0;
+    background-color: #333;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+}
+
+#coordinates {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #00ff00; /* Color verde para las coordenadas */
+}
+
+.button-container {
+    text-align: center;
+}
+
+.generate-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.generate-btn:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para el botón "Inicio" en la esquina superior izquierda */
+.inicio-btn {
+    background-color: limegreen;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Mueve el botón a la esquina superior izquierda */
+}
+
+.inicio-btn a {
+    color: black;
+    text-decoration: none;
+}
+
+.inicio-btn:hover {
+    background-color: darkgreen;
+}
+
+/* Estilo para el menú desplegable */
+.dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+    z-index: 10; /* Asegura que el menú esté por encima de otros elementos */
+}
+
+.dropbtn {
+    background-color: limegreen;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 180px; /* Hace que el botón sea del mismo ancho que el menú */
+    box-sizing: border-box; /* Asegura que el ancho incluya padding y border */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 180px; /* Igual al ancho del botón */
+    z-index: 1;
+    border-radius: 5px;
+    box-sizing: border-box; /* Asegura que el tamaño incluya padding y border */
+    max-height: 300px; /* Limita la altura máxima */
+    overflow-y: auto; /* Permite desplazarse si el contenido es demasiado largo */
+    right: 0; /* Asegura que el menú esté alineado a la derecha del botón */
+    top: 100%; /* El menú está justo debajo del botón, sin espacio */
+    transform: translateX(-5px); /* Mueve el menú ligeramente a la izquierda para mayor alineación */
+    padding-top: 5px; /* Separación entre el borde y los items */
+}
+
+.dropdown-content a {
+    color: limegreen;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    box-sizing: border-box; /* Asegura que los elementos no se desborden */
+}
+
+.dropdown-content a:hover {
+    background-color: darkgreen;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: darkgreen;
+}

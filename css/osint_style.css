@@ -1,0 +1,278 @@
+/* Estilo general */
+body {
+	background-color: black;
+	color: #e5e5e5;
+	font-family: "Courier New", Courier, monospace;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-image: url('../img/osint.gif');
+	background-size: cover; /* Esto asegura que el fondo cubra toda la pantalla */
+	background-position: center; /* Centra el fondo */
+}
+
+/* Estilo para el título */
+h1 {
+	font-size: 50px;
+	color: #0066cc;
+	margin-bottom: 20px;
+}
+
+/* Estilo para la barra de URL */
+.url-input-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.url-input {
+	padding: 10px;
+	font-size: 16px;
+	width: 300px;
+	margin-right: 10px;
+	border: 2px solid #a0c4ff;
+	background-color: black;
+	color: #a0c4ff;
+	border-radius: 5px;
+}
+
+.attack-button {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #a0c4ff;
+	color: black;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+.attack-button:hover {
+	background-color: #005bb5;
+}
+
+/* Estilo para el menú desplegable */
+.dropdown {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: inline-block;
+	z-index: 10; /* Asegura que el menú esté por encima de otros elementos */
+}
+
+.dropbtn {
+	background-color: #00bfff;
+	color: black;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	text-align: center;
+	width: 180px; /* Hace que el botón sea del mismo ancho que el menú */
+	box-sizing: border-box; /* Asegura que el ancho incluya padding y border */
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: black;
+	min-width: 180px; /* Igual al ancho del botón */
+	z-index: 1;
+	border-radius: 5px;
+	box-sizing: border-box; /* Asegura que el tamaño incluya padding y border */
+	max-height: 300px; /* Limita la altura máxima */
+	overflow-y: auto; /* Permite desplazarse si el contenido es demasiado largo */
+	right: 0; /* Asegura que el menú esté alineado a la derecha del botón */
+	top: 100%; /* El menú está justo debajo del botón, sin espacio */
+	transform: translateX(-5px); /* Mueve el menú ligeramente a la izquierda para mayor alineación */
+	padding-top: 5px; /* Separación entre el borde y los items */
+}
+
+.dropdown-content a {
+	color: #00bfff;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	font-size: 16px;
+	box-sizing: border-box; /* Asegura que los elementos no se desborden */
+}
+
+.dropdown-content a:hover {
+	background-color: #005bb5;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #005bb5;
+}
+
+/* Contenedor para alinear los botones juntos */
+.botones-superiores {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        gap: 5px; /* Espacio pequeño entre botones */
+}
+
+/* Estilo para el botón "Salir" */
+.salir-btn {
+        background-color: #ff4d4d;
+        color: black;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        text-decoration: none; /* <- Esta línea evita el subrayado */
+}
+
+/* Estilo para el botón "Inicio" */
+.inicio-btn {
+        background-color: #00bfff;
+        color: black;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s;
+}
+
+.inicio-btn:hover {
+        background-color: #005bb5;
+}
+
+/* Estilo para el botón "Salir" */
+.salir-btn {
+        background-color: #ff4d4d;
+        color: black;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+}
+
+.salir-btn:hover {
+        background-color: #cc0000;
+}
+
+/* Sección de la IA Paco */
+.ia-box {
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	padding: 20px;
+	border-radius: 10px;
+	border: 2px solid #00bfff;
+	max-width: 500px;
+	margin: 20px auto;
+	text-align: center;
+	box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+}
+
+/* Contenedor flotante del mapa */
+.map-container {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	width: 300px;
+	height: 250px;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	border: 2px solid #4CAF50;
+	transition: all 0.3s ease-in-out; /* Transición suave */
+}
+
+/* Efecto de hover para expandirse hacia arriba y la derecha */
+.map-container:hover {
+	width: 450px; /* Se expande 50px a la derecha */
+	height: 400px; /* Se expande 50px hacia arriba */
+	box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.7); /* Efecto de brillo */
+}
+
+iframe {
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+/* Chatbot (derecha) */
+#chatbot {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	width: 300px;
+	height: 400px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+	display: flex;
+	flex-direction: column;
+}
+
+/* Sección de links Google */
+.google-links {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	background: rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	border: 2px solid limegreen;
+	border-radius: 10px;
+	box-shadow: 0 0 20px limegreen;
+	max-width: 300px;
+	text-align: left;
+}
+
+.google-links h2 {
+	font-size: 24px;
+	color: limegreen;
+	text-shadow: 0 0 5px limegreen;
+	margin-bottom: 10px;
+}
+
+.google-links ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.google-links li {
+	margin: 10px 0;
+}
+
+.google-links a {
+	color: limegreen;
+	text-decoration: none;
+	font-size: 16px;
+	transition: color 0.3s, text-shadow 0.3s;
+}
+
+.google-links a:hover {
+	color: darkgreen;
+	text-shadow: 0 0 10px limegreen, 0 0 20px darkgreen;
+}
+
+/* Permitir que el contenido se desplace con el scroll */
+.content-wrapper {
+	max-height: 100vh;
+	overflow-y: auto;
+	padding-right: 20px; /* Dejar espacio para la barra de desplazamiento */
+}

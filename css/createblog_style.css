@@ -1,0 +1,116 @@
+/* CSS global para mejorar el aspecto general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f0f4f8; /* Fondo más suave y moderno */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave para un efecto más elegante */
+    border-radius: 12px;
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Animación al pasar el mouse */
+}
+
+.container:hover {
+    transform: translateY(-5px); /* Efecto sutil al pasar el mouse */
+}
+
+h1 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Espaciado sutil entre letras */
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #555;
+    display: block;
+    text-align: left;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9; /* Fondo suave en los campos */
+    transition: border 0.3s ease-in-out; /* Transición suave en el borde */
+}
+
+input:focus, textarea:focus {
+    border-color: #6c8ae3;
+    outline: none;
+    box-shadow: 0 0 10px rgba(108, 138, 227, 0.5); /* Sombra de enfoque más sutil */
+}
+
+textarea {
+    resize: vertical;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+button, .btn-salir {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    width: 48%; /* Para que los botones ocupen el mismo espacio */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button {
+    background-color: #6c8ae3; /* Azul brillante */
+}
+
+.btn-salir {
+    background-color: #ff6b6b; /* Rojo suave */
+}
+
+button:hover, .btn-salir:hover {
+    background-color: #5a79c3; /* Azul más oscuro en hover */
+    transform: translateY(-2px); /* Efecto de elevación al hacer hover */
+}
+
+.btn-salir:hover {
+    background-color: #ff4757; /* Rojo más fuerte en hover */
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        max-width: 90%; /* Ocupa el 90% del ancho en pantallas pequeñas */
+    }
+
+    button, .btn-salir {
+        padding: 12px 20px; /* Botones más pequeños en pantallas pequeñas */
+    }
+}

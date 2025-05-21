@@ -1,0 +1,309 @@
+/* Estilos generales para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;  /* Color de fondo claro */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #343a40;  /* Fondo oscuro */
+    color: white;
+    padding: 24px;
+    text-align: center;
+}
+
+/* Estilos para el título de la página */
+header h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+/* Estilos para el botón de regresar */
+.back-button {
+    font-size: 20px;
+    color: #2980b9;  /* Color azul */
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: yellow;  /* Fondo claro */
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.back-button:hover {
+    background-color: #ffd700;
+    transform: scale(1.05);
+}
+
+.back-button:active {
+    background-color: golden;
+    transform: scale(1);
+}
+
+/* Estilos para los artículos de los blogs */
+article {
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+article h2 {
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+article p {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-top: 10px;
+}
+
+/* Estilos para el texto cuando no hay blogs */
+.no-blogs {
+    text-align: center;
+    font-size: 18px;
+    color: #e74c3c;
+    margin-top: 20px;
+}
+
+/* Estilos para el botón de eliminar */
+.delete-btn {
+    background-color: #e74c3c;  /* Color de fondo rojo */
+    color: white;               /* Texto blanco */
+    border: none;               /* Sin bordes */
+    padding: 10px 20px;         /* Espaciado interno */
+    font-size: 16px;            /* Tamaño de la fuente */
+    cursor: pointer;           /* Cambiar el cursor al pasar sobre el botón */
+    border-radius: 5px;         /* Bordes redondeados */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+    margin-top: 10px;
+}
+
+/* Efecto al pasar el ratón por encima */
+.delete-btn:hover {
+    background-color: #c0392b;  /* Rojo más oscuro */
+    transform: scale(1.05);      /* Hacer un pequeño zoom */
+}
+
+/* Efecto al presionar el botón */
+.delete-btn:active {
+    background-color: #b03a2e;  /* Rojo aún más oscuro */
+    transform: scale(1);         /* Restablecer el zoom */
+}
+
+/* Estilos para el botón de eliminar si está deshabilitado */
+.delete-btn:disabled {
+    background-color: #dcdcdc;   /* Color gris */
+    color: #7f8c8d;              /* Texto gris */
+    cursor: not-allowed;         /* Cursor deshabilitado */
+}
+
+/* Estilos para el contenedor de resultados de búsqueda */
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    width: auto;
+}
+
+/* Campo de búsqueda */
+.search-container input[type="text"] {
+    padding: 8px;
+    border: 1px solid #fff;
+    border-radius: 25px;
+    font-size: 14px;
+    width: 250px; /* Ajustar el tamaño */
+}
+
+/* Resultados de búsqueda */
+.search-results {
+    position: absolute;
+    background-color: white;
+    width: 270px;
+    max-height: 250px;
+    overflow-y: auto;
+    border-radius: 10px;
+    display: none;
+    z-index: 10;
+    top: 40px; /* Asegúrate de que esté debajo del campo de búsqueda */
+    left: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.search-results ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-results li {
+    padding: 12px;
+    cursor: pointer;
+    color: #333;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-results li:hover {
+    background-color: #f0f0f0;
+}
+
+.search-results li:active {
+    background-color: #e9ecef;
+}
+
+/* Mensaje de sugerencia si no hay resultados */
+.search-results .suggestion {
+    font-size: 12px;
+    color: #f39c12;
+    margin: 10px;
+}
+
+/* Animación del campo de búsqueda */
+.search-container input[type="text"]:focus + .search-results {
+    display: block;
+}
+
+/* Barra de navegación */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 19px;
+    margin-top: 20px;
+    background-color: #343a40; /* Color de fondo oscuro como en index_style.css */
+}
+
+/* Estilo para los botones de navegación */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    padding: 10px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+/* Hacer los botones principales más grandes y sin fondo */
+nav a[href="index.php"],
+nav a[href="create_blog.php"],
+nav a[href="cyber-crime.php"],
+nav a[href="logout.php"] {
+    font-size: 18px;
+    padding: 12px 18px;
+    background: transparent;
+    border: none;
+}
+
+/* Efecto hover en los botones de navegación */
+nav a:hover {
+    background-color: #495057;
+    border-radius: 5px;
+}
+
+/* Estilo para los artículos */
+main {
+    padding: 20px;
+}
+
+h1, h2 {
+    font-size: 24px;
+    color: grey;
+}
+
+article {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+article h2 a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+article h2 a:hover {
+    text-decoration: underline;
+}
+
+article p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Botones de eliminar y restaurar */
+.restore-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.restore-btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.restore-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+.restore-btn:active {
+    background-color: #1e7e34;
+    transform: translateY(2px);
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.delete-btn:focus {
+    outline: none;
+}
+
+/* Estilo para cuando no hay blogs */
+.no-blogs {
+    font-size: 20px;
+    color: #f39c12;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Añadir espaciado en la parte superior de la sección de Blogs Recientes */
+h2 {
+    margin-top: 50px;
+}

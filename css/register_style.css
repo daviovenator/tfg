@@ -1,0 +1,117 @@
+/* register_style.css */
+
+/* Estilos globales para el body */
+body {
+    background-image: url('deer-grazing-in-an-enchanted-forest-wbxmukyhp5tbe8n6.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Arial', sans-serif;  /* Fuente moderna */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para la tarjeta donde se encuentra el formulario */
+.card {
+    border-radius: 10px;  /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);  /* Sombra más marcada para dar profundidad */
+    background-color: rgba(0, 0, 0, 0.5);  /* Fondo más transparente */
+    color: #98FB98;  /* Color de texto verde claro */
+    margin: 20px auto;
+    max-width: 500px; /* Limitar el ancho de la tarjeta */
+}
+
+/* Estilos para el contenido dentro de la tarjeta */
+.card-body {
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.4);  /* Fondo más oscuro y translúcido */
+    border-radius: 10px;
+}
+
+/* Estilo para los títulos */
+h2 {
+    font-size: 2rem;
+    color: #98FB98;  /* Título verde claro */
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilo para los campos de entrada */
+input.form-control {
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    padding: 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo translúcido claro */
+    color: #98FB98;  /* Texto verde claro */
+}
+
+/* Efecto de enfoque en los campos de entrada */
+input.form-control:focus {
+    border-color: #98FB98;  /* Cambio de borde a verde claro al hacer foco */
+    outline: none;
+}
+
+/* Estilo para el botón */
+button.btn-primary {
+    background-color: #007BFF;  /* Color de fondo azul */
+    border-color: #007BFF;
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Cambio de color del botón al pasar el ratón */
+button.btn-primary:hover {
+    background-color: #0056b3;  /* Azul más oscuro al pasar el cursor */
+}
+
+/* Estilo para el mensaje de error */
+.alert-danger {
+    background-color: #f8d7da;  /* Color de fondo suave para el mensaje de error */
+    border-color: #f5c6cb;  /* Color del borde */
+    color: #721c24;  /* Color del texto */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el enlace de "Iniciar sesión" */
+a {
+    color: #98FB98;  /* Enlace en verde claro */
+    text-decoration: none;
+}
+
+/* Efecto hover para el enlace */
+a:hover {
+    text-decoration: underline;  /* Subrayado al pasar el cursor */
+}
+
+/* Estilos para el contenedor del formulario */
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centrar la tarjeta en la pantalla */
+}
+
+/* Estilo para los márgenes del formulario */
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+/* Ajuste de texto para los enlaces y párrafos */
+.mt-3 {
+    margin-top: 1.5rem;
+}
+
+.text-center {
+    text-align: center;
+}

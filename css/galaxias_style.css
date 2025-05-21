@@ -1,0 +1,139 @@
+/* Fondo general */
+body {
+    font-family: Arial, sans-serif;
+    background: url('../img/stars.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    margin: 0;
+    overflow: auto; /* Permite hacer scroll */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);  /* Fondo semitransparente */
+    padding: 20px;
+    color: white;
+    z-index: 1000;  /* Para asegurarse de que esté encima de otros elementos */
+    transition: transform 0.3s ease;  /* Para suavizar el deslizamiento */
+    width: 100%;  /* Aseguramos que ocupe todo el ancho */
+    text-align: center;
+}
+
+header.hidden {
+    transform: translateY(-100%);  /* Desplaza el header fuera de la pantalla */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header .back-button {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+header .back-button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+#milky-way {
+    display: flex;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente */
+    height: 100vh;            /* Asegura que ocupe toda la altura de la ventana */
+    width: 100%;              /* Asegura que ocupe todo el ancho de la ventana */
+}
+
+#milky-way img {
+    max-width: 100%;  /* Hace que la imagen no se desborde */
+    max-height: 100%; /* Hace que la imagen no se desborde */
+    object-fit: cover; /* Recorta la imagen si es necesario para ajustarse al área */
+    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+}
+
+/* Contenedor de las tarjetas (centrado con separación de los bordes) */
+.galaxy-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); /* Tamaño mínimo ajustado */
+    gap: 0px; /* Espaciado entre tarjetas */
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto; /* Centra las tarjetas horizontalmente */
+    max-width: 90%; /* Limita el ancho total del contenedor para que no se extienda de borde a borde */
+}
+
+/* Estilo de cada tarjeta */
+.card {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffcc00;
+}
+
+.card img {
+    width: 100%; /* Mantiene las imágenes del mismo ancho que las tarjetas */
+    height: 500px; /* Altura fija */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+/* Quitar subrayado de los enlaces dentro de las tarjetas */
+.card a {
+    text-decoration: none; /* Quita el subrayado de todos los enlaces */
+    color: inherit; /* Hereda el color del texto de la tarjeta */
+}
+
+.card a h3 {
+    text-decoration: none; /* Asegura que el texto del título no esté subrayado */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Asteroides y cometas */
+.astro {
+    position: absolute;
+    border-radius: 50%;
+    animation: moveAstro 2s linear infinite;
+    z-index: 2; /* Los astros estarán sobre la Vía Láctea */
+}
+
+@keyframes moveAstro {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(100vw, 100vh);
+    }
+}
