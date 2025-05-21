@@ -1,0 +1,127 @@
+<?php
+session_start();
+
+// 🚨 Bloqueo de agentes vacíos o sospechosos
+$user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+if (empty($user_agent) || preg_match('/(curl|wget|bot|spider|crawler|httpclient|python|java|libwww)/i', $user_agent)) {
+    http_response_code(403);
+    exit('Acceso no permitido');
+}
+
+// 🧠 Validación básica de IP
+$ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+if (!filter_var($ip, FILTER_VALIDATE_IP)) {
+    http_response_code(400);
+    exit('IP inválida');
+}
+
+// 🚫 Filtrado de headers con patrones peligrosos
+foreach (getallheaders() as $key => $value) {
+    if (preg_match('/(base64|<script|data:|javascript:)/i', $value)) {
+        http_response_code(403);
+        exit('Header sospechoso');
+    }
+}
+
+// 🧼 Rate limit por sesión
+$now = time();
+if (!isset($_SESSION['rate_limit'])) {
+    $_SESSION['rate_limit'] = ['last' => $now, 'count' => 1];
+} else {
+    if ($now - $_SESSION['rate_limit']['last'] < 5) {
+        $_SESSION['rate_limit']['count']++;
+        if ($_SESSION['rate_limit']['count'] > 10) {
+            http_response_code(429); // Too Many Requests
+            exit('Demasiadas solicitudes. Intenta más tarde.');
+        }
+    } else {
+        $_SESSION['rate_limit'] = ['last' => $now, 'count' => 1];
+    }
+}
+
+// 👮 Verificación de acceso
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: login.php');
+    exit();
+}
+
+// 🔐 Encabezados de protección
+header('X-Frame-Options: DENY');
+header('X-Content-Type-Options: nosniff');
+header('X-XSS-Protection: 1; mode=block');
+header("Referrer-Policy: no-referrer");
+header("Permissions-Policy: geolocation=(), microphone=(), camera=()");
+header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"); // Solo si usas HTTPS
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrella Sadr - El Corazón del Cisne</title>
+    <link rel="stylesheet" href="../css/estrellasinfo_style.css">
+</head>
+<body>
+    <header>
+        <h1>Sadr: El Corazón del Cisne</h1>
+        <a href="../estrellas.php">🔙 Volver</a>
+    </header>
+
+    <section>
+        <h2>Información General de Sadr</h2>
+        <p>
+            Sadr es una estrella luminosa ubicada en la constelación de Cygni, conocida como "el corazón del Cisne". Es una supergigante amarilla, lo que significa que es mucho más grande y luminosa que nuestro Sol. Se encuentra en una fase avanzada de su evolución estelar, lo que la convierte en un objeto de gran interés para los astrónomos. Sadr forma parte de la figura del "Cisne" en el cielo y se encuentra cerca de la región de la Vía Láctea rica en nebulosas y estrellas.
+        </p>
+        <!-- Imagen de Sadr añadida justo debajo de la descripción -->
+        <img src="data:image/jpeg;base64,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" alt="Estrella Sadr" style="width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); margin-top: 20px;">
+    </section>
+
+    <section>
+        <h2>Características Astronómicas</h2>
+        <ul>
+            <li><strong>Nombre científico:</strong> Gamma Cygni</li>
+            <li><strong>Tipo espectral:</strong> F8 Ia (Supergigante Amarilla)</li>
+            <li><strong>Distancia desde la Tierra:</strong> Aproximadamente 1,800 años luz (550 pársecs)</li>
+            <li><strong>Magnitud aparente:</strong> 2.23</li>
+            <li><strong>Luminosidad:</strong> Aproximadamente 12,000 veces la del Sol</li>
+            <li><strong>Temperatura superficial:</strong> 6,000 K</li>
+            <li><strong>Radio:</strong> 60 veces el del Sol</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>La Naturaleza de Sadr</h2>
+        <p>
+            Sadr es una supergigante amarilla que se encuentra en una etapa avanzada de su vida. Al ser una estrella mucho más grande que el Sol, su evolución es rápida y dramática. Sadr es notablemente más fría que las estrellas azules y, a pesar de ser una estrella bastante luminosa, su color es amarillo debido a su temperatura superficial moderadamente baja en comparación con las supergigantes más calientes. Esta estrella se encuentra en una fase posterior de la secuencia principal y está destinada a convertirse eventualmente en una supernova.
+        </p>
+    </section>
+
+    <section>
+        <h2>Historia y Cultura</h2>
+        <p>
+            Sadr ha tenido un papel importante en la astronomía debido a su ubicación prominente en el cielo. La constelación de Cygni, de la que forma parte, es conocida desde la antigüedad y ha sido observada por varias culturas:
+        </p>
+        <ul>
+            <li>
+                <strong>Grecia:</strong> En la mitología griega, la constelación del Cisne está asociada con el dios Zeus, quien se transformó en un cisne. Sadr marca el "corazón" de esta figura.
+            </li>
+            <li>
+                <strong>Cultura árabe:</strong> Los árabes han sido observadores expertos del cielo y conocían a Sadr como parte de la figura del Cisne, aunque no tiene un nombre individual específico en su tradición.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Curiosidades Fascinantes</h2>
+        <ul>
+            <li>Sadr es una de las estrellas más brillantes de la constelación de Cygni, formando parte del famoso "Cruce del Cisne" que forma un asterismo notable en el cielo.</li>
+            <li>La estrella se encuentra cerca de la nebulosa de la región del "Corazón del Cisne", una de las áreas más ricas en gas y polvo de la Vía Láctea.</li>
+            <li>Gracias a su ubicación, Sadr es una excelente estrella para estudiar la evolución de las supergigantes amarillas y su comportamiento antes de convertirse en una supernova.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Enciclopedia del Espacio - © 2025</p>
+    </footer>
+</body>
+</html>
