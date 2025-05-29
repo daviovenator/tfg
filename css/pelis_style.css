@@ -1,138 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
 body {
   margin: 0;
-  font-family: 'Bebas Neue', sans-serif;
-  background: radial-gradient(ellipse at top, #0b0f1a 0%, #0a0a0a 100%);
-  color: #e0f7ff;
-  text-align: center;
-  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f0f0f;
+  color: white;
 }
 
-.salir-btn {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: linear-gradient(135deg, #004466, #002233);
-  color: #e0f7ff;
-  border: none;
-  padding: 0.65rem 1.2rem;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  cursor: pointer;
+/* Top Bar (ahora incluye botón, título y búsqueda) */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #111;
+  position: sticky;
+  top: 0;
   z-index: 1000;
-  box-shadow: 0 0 12px rgba(0, 204, 255, 0.5);
-  transition: all 0.3s ease;
+  gap: 20px;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: 2rem;
+  flex-grow: 1;
+  text-align: center;
+  color: #00bfff;
+}
+
+/* Botón Salir */
+.salir-btn {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .salir-btn:hover {
-  background: linear-gradient(135deg, #006699, #003344);
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  background-color: #e63636;
 }
 
-/* Encabezado */
-header {
-  padding: 2rem 0;
-  background: linear-gradient(90deg, #001a33, #003366, #001a33);
-  color: #ffffff;
-  box-shadow: 0 0 25px #00bfff;
+/* Barra de búsqueda */
+#search-input {
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  width: 260px;
+  background-color: #1f1f1f;
+  color: white;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+  transition: box-shadow 0.3s ease;
 }
 
-header h1 {
-  font-size: 3rem;
-  margin: 0;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 6px #000;
+#search-input:focus {
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
 }
 
-/* Contenedor con tarjetas */
+/* Contenedor principal */
 .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.4rem;
-  padding: 1rem;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
 }
 
-/* Tarjetas visualmente más ricas */
+/* Tarjetas de películas */
 .movie-card {
-  background-color: #111c2f;
-  border-radius: 14px;
-  box-shadow: 0 0 18px rgba(0, 191, 255, 0.3);
+  background-color: #1a1a1a;
+  border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 96%;
-  max-width: 700px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .movie-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.7);
-}
-
-.movie-card a {
-  display: block;
-  width: 100%;
-  height: 440px;
-  background-color: black;
-  overflow: hidden;
+  transform: scale(1.05);
 }
 
 .movie-card img {
   width: 100%;
-  height: 100%;
+  height: 300px;
   object-fit: cover;
-  display: block;
-  transition: opacity 0.3s ease;
-  cursor: pointer;
-}
-
-.movie-card img:hover {
-  opacity: 0.85;
 }
 
 .movie-card h2 {
-  font-size: 1.5rem;
-  padding: 0.5rem;
-  margin: 0;
-  background-color: #0d1b2a;
-  border-top: 2px solid #00ccff;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Responsive: tablets */
-@media (max-width: 1024px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Responsive: móviles */
-@media (max-width: 600px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-
-  .movie-card {
-    width: 90%;
-    height: auto;
-  }
-
-  .movie-card a {
-    height: auto;
-  }
-
-  .movie-card img {
-    height: auto;
-    max-height: 500px;
-  }
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #fff;
 }
 
