@@ -145,121 +145,145 @@
   <a href="https://drive.google.com/file/d/1xba3t-mZyE8iaxJAstb-_H8TbR9rOosq/view?usp=sharing" target="_blank">
     <img src="img/valiente.webp" alt="Valiente">
   </a>
+      <h2>Valiente</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1tXdCzXubt1VtKjhZX0GcdhNKVjM12e7C/view?usp=sharing" target="_blank">
     <img src="img/cruella.jpg" alt="Cruella">
   </a>
+      <h2>Cruella</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1a17va8ZBbRgbH2tnjostzrcDPgCafXvd/view?usp=sharing" target="_blank">
     <img src="img/doraemon.jpg" alt="Doraemon">
   </a>
+      <h2>Doraemon y la Revolución de los Robots</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1xP6aRd20FwBYY9MMFUqFxCqiSVKUD5Ze/view?usp=sharing" target="_blank">
     <img src="img/dumbo.jpg" alt="Dumbo">
   </a>
+      <h2>Dumbo</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/189SXYLi9Vrw5uQ-QavNiM11UTay1b5Mq/view?usp=sharing" target="_blank">
     <img src="img/gatoconbotas.jpg" alt="El gato con botas">
   </a>
+      <h2>El gato con botas y el último deseo</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1pQ6y9sB9kma2j7WBt4OcnoJAzaOPga53/view?usp=sharing" target="_blank">
     <img src="img/encantada.webp" alt="Encantada">
   </a>
+      <h2>Encantada</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1IuhsqdMTDoYWYD68dWS3cD5nkMyhLkhj/view?usp=sharing" target="_blank">
     <img src="img/enredados.jpg" alt="Enredados">
   </a>
+      <h2>Enredados</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1ICMVl4-Cejyj46uqdmwZJXK_yTZhomrc/view?usp=sharing" target="_blank">
     <img src="img/frozen.webp" alt="Frozen">
   </a>
+      <h2>Frozen</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1JfwYwPxk4HKYb-9n_M1Wl6cDxbw-x4YV/view?usp=sharing" target="_blank">
     <img src="img/monsterhouse.jpg" alt="Monster House">
   </a>
+      <h2>Monster House</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1sB08xpCHX64fTW328b0-lkI2kFN3Dobv/view?usp=sharing" target="_blank">
     <img src="img/tarzan.webp" alt="Tarzán">
   </a>
+      <h2>Tarzán</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/12H8W5XaQWTAd5N5ysypwGmEWwA0FmQel/view?usp=sharing" target="_blank">
     <img src="img/unmonstruovieneaverme.jpg" alt="Un monstruo viene a verme">
   </a>
+      <h2>Un Monstruo Viene a Verme</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1pv9rgJJpBEfMHA7ySP4uZnprnQrTxkml/view?usp=sharing" target="_blank">
     <img src="img/princesayelsapo.jpeg" alt="La princesa y el sapo">
   </a>
+      <h2>La Princesa y El Sapo</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/11U5JL30Yo59LWD_mtei93B6tDVsyZg5h/view?usp=sharing" target="_blank">
     <img src="img/lasirenita.avif" alt="La Sirenita">
   </a>
+      <h2>La Sirenita</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1G4JMjOq6VFBi8_AAJ1yMEbkcBbSEDf4K/view?usp=sharing" target="_blank">
     <img src="img/losaristogatos.jpg" alt="Los Aristogatos">
   </a>
+      <h2>Los Aristogatos</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1NZdlgxm7ChhUT1vtxtu2VveZXjua0t6t/view?usp=sharing" target="_blank">
     <img src="img/malefica.webp" alt="Maléfica">
   </a>
+      <h2>Maléfica</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1CQYgPijtZ2_LFwiqbfaxBH3tFN3Si7l5/view?usp=sharing" target="_blank">
     <img src="img/losincreibles.webp" alt="Los Increíbles">
   </a>
+      <h2>Los Increíbles</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1F-g_14-s4jzmxHrL53pYf85XQ1gIJDSj/view?usp=sharing" target="_blank">
     <img src="img/monstersuniversity.jpg" alt="Monsters University">
   </a>
+      <h2>Monsters University</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1WNTRDTOrhOuYGCDtaQ8j5LFuEWeEDppF/view?usp=sharing" target="_blank">
     <img src="img/mulan.jpg" alt="Mulán">
   </a>
+      <h2>Mulán</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1tRUQYXM0lkT0TPlIIBh-HPCQUl56f-Hl/view?usp=sharing" target="_blank">
     <img src="img/pocahontas.jpg" alt="Pocahontas">
   </a>
+      <h2>Pocahontas</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1E03MpAsyQyCspJhKrnpWCSncAl5MUz0B/view?usp=sharing" target="_blank">
     <img src="img/ralpheldemoledor.jpg" alt="Ralph el demoledor">
   </a>
+      <h2>Ralph El Demoledor</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1AOtD-3oZmJwtqzDTXfhcaWp7UpOLdqZV/view?usp=sharing" target="_blank">
     <img src="img/ratatouille.webp" alt="Ratatouille">
   </a>
+      <h2>Ratatouille</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1OguAhmjNjp8WEZ4G0vRq8lWWkG_eARdw/view?usp=sharing" target="_blank">
     <img src="img/spirit.jpg" alt="Spirit">
   </a>
+      <h2>Spirit</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1JdO6ApKhoW9vVC2tznRC9luX6CzLGe7Z/view?usp=sharing" target="_blank">
     <img src="img/toystory.jpg" alt="Toy Story">
   </a>
+      <h2>Toy Story</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1PMhoCndfl-nbhiA9rNpCa9brEJidU_qS/view?usp=sharing" target="_blank">
     <img src="img/up.jpg" alt="Up">
   </a>
+      <h2>Up</h2>
 </div>
   </main>
 
