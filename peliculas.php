@@ -2,122 +2,162 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Deus Films</title>
   <link rel="stylesheet" href="css/pelis_style.css" />
+  <style>
+    .ascua {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: black;
+      border-radius: 50%;
+      opacity: 0.7;
+      pointer-events: none;
+      animation: volar 4s linear infinite;
+      z-index: 9999;
+    }
+
+    @keyframes volar {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(var(--dx), var(--dy));
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="top-bar">
-    <button class="salir-btn" onclick="salir()">Salir</button>
-    <h1>🎬Deus Films😛</h1>
-    <input type="text" id="search-input" placeholder="Buscar película..." oninput="buscarPeliculas()" />
+  <header class="header">
+    <div class="header-content">
+      <h1 class="logo">🎬Deus Films😛</h1>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Buscar película..."
+        oninput="buscarPeliculas()"
+        aria-label="Buscar película"
+      />
+      <button class="salir-btn" onclick="salir()">Salir</button>
+    </div>
   </header>
 
-  <main class="container">
-    <!-- Películas -->
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1QKqPAil-pu7NExli9BtCfgWZGvwTvs8C/view?usp=drivesdk" target="_blank">
-        <img src="img/Alien.jpg" alt="Alien">
-      </a>
-      <h2>Alien: Romulus (2024)</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1aqpfl9hIJ8l6Jnro9MJXWdfCeoSpdZjp/view?usp=sharing" target="_blank">
-        <img src="img/coraline.jpg" alt="Coraline">
-      </a>
-      <h2>Coraline y la puerta secreta (2009)</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/13wM-gigBe7sbaFlNX43VQSrhIVUf5oHb/view?usp=sharing" target="_blank">
-        <img src="img/Deadpool.webp" alt="Deadpool">
-      </a>
-      <h2>Deadpool & Wolverine (2024)</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1oTs0ynXUZcsQvpW9YUb0-Cd7F0lUZJAm/view?usp=sharing" target="_blank">
-        <img src="img/Novocaine.jpg" alt="Novocaine">
-      </a>
-      <h2>Novocaine sin dolor (2025)</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1n9evY2mFigyCwSi6BzTw3q9FlOC460fM/view?usp=sharing" target="_blank">
-        <img src="img/Lanoviacadaver.webp" alt="La Novia Cadáver">
-      </a>
-      <h2>La Novia Cadáver</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1sllfy8QCXYMzUFCgHqKk5_qxET5C3z8K/view?usp=sharing" target="_blank">
-        <img src="img/isladinosaurios.jpg" alt="Isla de Dinosaurios">
-      </a>
-      <h2>La Isla de los Dinosaurios (Español)</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1mjtnhPNl0HrC_ntFvwhMV64gyq7AXzfU/view?usp=sharing" target="_blank">
-        <img src="img/sonic3.jpg" alt="Sonic 3">
-      </a>
-      <h2>Sonic 3: La película (2024)</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1eGlGvNDtJvexVxd-VLNeqwhoDW5eKIpY/view?usp=sharing" target="_blank">
-        <img src="img/terrifier3.jpeg" alt="Terrifier 3">
-      </a>
-      <h2>Terrifier 3: Payaso Siniestro (2024)</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/13E3fnEZBC0ChEPKtdGGcTTWQ3Fpn9Zoo/view?usp=sharing" target="_blank">
-        <img src="img/venom.webp" alt="Venom">
-      </a>
-      <h2>Venom: El último baile (2024)</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1Y85nv5rinpc_vazY_nJZrWADP7yIp9cF/view?usp=sharing" target="_blank">
-        <img src="img/Minecraft.jpg" alt="Minecraft">
-      </a>
-      <h2>Minecraft</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1SWnI_meA75qAIGxaZ6VgGgXoMadkBPnF/view?usp=sharing" target="_blank">
-        <img src="img/Aladdin.jpg" alt="Aladdin">
-      </a>
-      <h2>Aladdin</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1SjLVwCK7vK66Is0h7-alTuAWB1D3JeeH/view?usp=sharing" target="_blank">
-        <img src="img/Angrybirds.webp" alt="Angry Birds">
-      </a>
-      <h2>Angry Birds</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1kFYkrgAU9wdVS2Mh4f5cBdGEoibozp-V/view?usp=sharing" target="_blank">
-        <img src="img/Bambi.jpg" alt="Bambi">
-      </a>
-      <h2>Bambi</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/12Ju4rQOgXVLR4LIt5RyB4I15azlbP9X9/view?usp=sharing" target="_blank">
-        <img src="img/Barbie12princesas.jpg" alt="Barbie y las 12 Princesas">
-      </a>
-      <h2>Barbie y las 12 Princesas</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1dT9-t9Mdxj5o-4ordSBgF7XX8wqdoI9t/view?usp=sharing" target="_blank">
-        <img src="img/Blancanieves.jpeg" alt="Blancanieves">
-      </a>
-      <h2>Blancanieves</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/1aWBitkCtJCO78_I6zZPI2OKlsU_jgnvH/view?usp=sharing" target="_blank">
-        <img src="img/Cenicienta.jpg" alt="Cenicienta">
-      </a>
-      <h2>Cenicienta</h2>
-    </div>
-    <div class="movie-card">
-      <a href="https://drive.google.com/file/d/11OP5nhl7aoAOl1m7RSn3EijZU1kPWzmD/view?usp=sharing" target="_blank">
-        <img src="img/El_principito.jpg" alt="El Principito">
-      </a>
-      <h2>El Principito</h2>
-    </div>
-    <div class="movie-card">
+  <main>
+    <section class="slider-section" id="slider-section">
+      <h2 class="section-title">Películas de la semana</h2>
+      <div class="slider" id="peliculas-semana"></div>
+    </section>
+
+    <section class="movies-section">
+      <h2 class="section-title">Todas las películas</h2>
+      <div class="movies-grid" id="all-movies">
+        <!-- Aquí van las películas -->
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1QKqPAil-pu7NExli9BtCfgWZGvwTvs8C/view?usp=drivesdk" target="_blank" rel="noopener">
+            <img src="img/Alien.jpg" alt="Alien" />
+          </a>
+          <h2>Alien: Romulus (2024)</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1aqpfl9hIJ8l6Jnro9MJXWdfCeoSpdZjp/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/coraline.jpg" alt="Coraline" />
+          </a>
+          <h2>Coraline y la puerta secreta (2009)</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/13wM-gigBe7sbaFlNX43VQSrhIVUf5oHb/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/Deadpool.webp" alt="Deadpool" />
+          </a>
+          <h2>Deadpool & Wolverine (2024)</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1oTs0ynXUZcsQvpW9YUb0-Cd7F0lUZJAm/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/Novocaine.jpg" alt="Novocaine" />
+          </a>
+          <h2>Novocaine sin dolor (2025)</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1n9evY2mFigyCwSi6BzTw3q9FlOC460fM/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/Lanoviacadaver.webp" alt="La Novia Cadáver" />
+          </a>
+          <h2>La Novia Cadáver</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1sllfy8QCXYMzUFCgHqKk5_qxET5C3z8K/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/isladinosaurios.jpg" alt="Isla de Dinosaurios" />
+          </a>
+          <h2>La Isla de los Dinosaurios (Español)</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1mjtnhPNl0HrC_ntFvwhMV64gyq7AXzfU/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/sonic3.jpg" alt="Sonic 3" />
+          </a>
+          <h2>Sonic 3: La película (2024)</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1eGlGvNDtJvexVxd-VLNeqwhoDW5eKIpY/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/terrifier3.jpeg" alt="Terrifier 3" />
+          </a>
+          <h2>Terrifier 3: Payaso Siniestro (2024)</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/13E3fnEZBC0ChEPKtdGGcTTWQ3Fpn9Zoo/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/venom.webp" alt="Venom" />
+          </a>
+          <h2>Venom: El último baile (2024)</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1Y85nv5rinpc_vazY_nJZrWADP7yIp9cF/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/Minecraft.jpg" alt="Minecraft" />
+          </a>
+          <h2>Minecraft</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1SWnI_meA75qAIGxaZ6VgGgXoMadkBPnF/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/Aladdin.jpg" alt="Aladdin" />
+          </a>
+          <h2>Aladdin</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1SjLVwCK7vK66Is0h7-alTuAWB1D3JeeH/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/Angrybirds.webp" alt="Angry Birds" />
+          </a>
+          <h2>Angry Birds</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1kFYkrgAU9wdVS2Mh4f5cBdGEoibozp-V/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/Bambi.jpg" alt="Bambi" />
+          </a>
+          <h2>Bambi</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/12Ju4rQOgXVLR4LIt5RyB4I15azlbP9X9/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/Barbie12princesas.jpg" alt="Barbie y las 12 Princesas" />
+          </a>
+          <h2>Barbie y las 12 Princesas</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1dT9-t9Mdxj5o-4ordSBgF7XX8wqdoI9t/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/Blancanieves.jpeg" alt="Blancanieves" />
+          </a>
+          <h2>Blancanieves</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/1aWBitkCtJCO78_I6zZPI2OKlsU_jgnvH/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/Cenicienta.jpg" alt="Cenicienta" />
+          </a>
+          <h2>Cenicienta</h2>
+        </div>
+        <div class="movie-card">
+          <a href="https://drive.google.com/file/d/11OP5nhl7aoAOl1m7RSn3EijZU1kPWzmD/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="img/El_principito.jpg" alt="El Principito" />
+          </a>
+          <h2>El Principito</h2>
+        </div>
+<div class="movie-card">
       <a href="https://drive.google.com/file/d/1yuCNyy3qgECw7ZFz8Al_gzFIim4gKaLE/view?usp=sharing" target="_blank">
         <img src="img/reyleon.jpg" alt="El Rey León">
       </a>
@@ -125,7 +165,7 @@
     </div>
     <div class="movie-card">
       <a href="https://drive.google.com/file/d/1Z-tjtjfZhxPcJPkU3f9PQ37jW0pOTph0/view?usp=sharing" target="_blank">
-        <img src="img/viajedechihiro.jpg" alt="El Viaje de Chihiro">
+        <img src="img/chihiro.jpg" alt="El Viaje de Chihiro">
       </a>
       <h2>El Viaje de Chihiro</h2>
     </div>
@@ -149,7 +189,7 @@
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1tXdCzXubt1VtKjhZX0GcdhNKVjM12e7C/view?usp=sharing" target="_blank">
-    <img src="img/cruella.jpg" alt="Cruella">
+    <img src="img/Cruella.jpg" alt="Cruella">
   </a>
       <h2>Cruella</h2>
 </div>
@@ -161,13 +201,13 @@
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1xP6aRd20FwBYY9MMFUqFxCqiSVKUD5Ze/view?usp=sharing" target="_blank">
-    <img src="img/dumbo.jpg" alt="Dumbo">
+    <img src="img/Dumbo.webp" alt="Dumbo">
   </a>
       <h2>Dumbo</h2>
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/189SXYLi9Vrw5uQ-QavNiM11UTay1b5Mq/view?usp=sharing" target="_blank">
-    <img src="img/gatoconbotas.jpg" alt="El gato con botas">
+    <img src="img/gato.jpg" alt="El gato con botas">
   </a>
       <h2>El gato con botas y el último deseo</h2>
 </div>
@@ -251,7 +291,7 @@
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1tRUQYXM0lkT0TPlIIBh-HPCQUl56f-Hl/view?usp=sharing" target="_blank">
-    <img src="img/pocahontas.jpg" alt="Pocahontas">
+    <img src="img/peliculas/pocahontas.jpg" alt="Pocahontas">
   </a>
       <h2>Pocahontas</h2>
 </div>
@@ -285,26 +325,119 @@
   </a>
       <h2>Up</h2>
 </div>
+
+        <!-- ... más películas ... -->
+      </div>
+      <div class="pagination">
+        <button id="prevBtn" onclick="cambiarPagina(-1)">Anterior</button>
+        <span id="pageIndicator"></span>
+        <button id="nextBtn" onclick="cambiarPagina(1)">Siguiente</button>
+      </div>
+    </section>
   </main>
 
   <script>
-    function salir() {
-      if (document.referrer && document.referrer !== window.location.href) {
-        history.back();
-      } else {
-        window.location.href = "index.php";
+    const peliculas = Array.from(document.querySelectorAll('#all-movies .movie-card'));
+    const sliderSection = document.getElementById('slider-section');
+    const sliderContainer = document.getElementById('peliculas-semana');
+    const pageIndicator = document.getElementById('pageIndicator');
+    const paginationControls = document.querySelector('.pagination');
+
+    let paginaActual = 1;
+    const peliculasPorPagina = 30;
+
+    function mostrarPeliculasSemana() {
+      sliderContainer.innerHTML = '';
+      let copiasPeliculas = peliculas.slice();
+      for (let i = 0; i < 7 && copiasPeliculas.length > 0; i++) {
+        const idx = Math.floor(Math.random() * copiasPeliculas.length);
+        const pelicula = copiasPeliculas.splice(idx, 1)[0];
+        const clon = pelicula.cloneNode(true);
+        sliderContainer.appendChild(clon);
       }
     }
 
     function buscarPeliculas() {
-      const input = document.getElementById("search-input").value.toLowerCase();
-      const cards = document.querySelectorAll(".movie-card");
+      const texto = document.getElementById('search-input').value.toLowerCase();
+      let hayResultados = false;
 
-      cards.forEach(card => {
-        const title = card.querySelector("h2").textContent.toLowerCase();
-        card.style.display = title.includes(input) ? "block" : "none";
+      peliculas.forEach(pelicula => {
+        const titulo = pelicula.querySelector('h2').textContent.toLowerCase();
+        if (titulo.includes(texto)) {
+          pelicula.style.display = 'block';
+          hayResultados = true;
+        } else {
+          pelicula.style.display = 'none';
+        }
       });
+
+      if (texto.length > 0) {
+        sliderSection.style.display = 'none';
+        paginationControls.style.display = 'none';
+      } else {
+        sliderSection.style.display = 'block';
+        paginationControls.style.display = 'flex';
+        mostrarPeliculasSemana();
+        const paginaGuardada = parseInt(localStorage.getItem('paginaActual')) || 1;
+        mostrarPagina(paginaGuardada);
+      }
     }
+
+    function mostrarPagina(pagina) {
+      const totalPaginas = Math.ceil(peliculas.length / peliculasPorPagina);
+      paginaActual = Math.max(1, Math.min(pagina, totalPaginas));
+      localStorage.setItem('paginaActual', paginaActual);
+
+      const inicio = (paginaActual - 1) * peliculasPorPagina;
+      const fin = inicio + peliculasPorPagina;
+
+      peliculas.forEach((pelicula, index) => {
+        pelicula.style.display = (index >= inicio && index < fin) ? 'block' : 'none';
+      });
+
+      pageIndicator.textContent = `Página ${paginaActual} de ${totalPaginas}`;
+      document.getElementById('prevBtn').style.display = (paginaActual > 1) ? 'inline-block' : 'none';
+      document.getElementById('nextBtn').style.display = (paginaActual < totalPaginas) ? 'inline-block' : 'none';
+    }
+
+    function cambiarPagina(direccion) {
+      mostrarPagina(paginaActual + direccion);
+    }
+
+    function salir() {
+      alert('Función salir ejecutada. Aquí puedes implementar la lógica para salir.');
+    }
+
+    // Ascuas aleatorias
+    function crearAscua() {
+      const ascua = document.createElement('div');
+      ascua.classList.add('ascua');
+
+      const startX = Math.random() * window.innerWidth;
+      const startY = Math.random() * window.innerHeight;
+      const dx = (Math.random() - 0.5) * 400 + 'px';
+      const dy = (Math.random() - 0.5) * 400 + 'px';
+
+      ascua.style.left = startX + 'px';
+      ascua.style.top = startY + 'px';
+      ascua.style.setProperty('--dx', dx);
+      ascua.style.setProperty('--dy', dy);
+
+      document.body.appendChild(ascua);
+
+      setTimeout(() => ascua.remove(), 4000);
+    }
+
+    setInterval(() => {
+      for (let i = 0; i < 5; i++) crearAscua();
+    }, 300);
+
+    // Inicializar
+    window.addEventListener('DOMContentLoaded', () => {
+      mostrarPeliculasSemana();
+      const paginaGuardada = parseInt(localStorage.getItem('paginaActual')) || 1;
+      mostrarPagina(paginaGuardada);
+    });
   </script>
 </body>
 </html>
