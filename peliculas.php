@@ -291,7 +291,7 @@
 </div>
 <div class="movie-card">
   <a href="https://drive.google.com/file/d/1tRUQYXM0lkT0TPlIIBh-HPCQUl56f-Hl/view?usp=sharing" target="_blank">
-    <img src="img/peliculas/pocahontas.jpg" alt="Pocahontas">
+    <img src="img/pocahontas.jpg" alt="Pocahontas">
   </a>
       <h2>Pocahontas</h2>
 </div>
