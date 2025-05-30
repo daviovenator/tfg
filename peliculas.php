@@ -404,10 +404,9 @@
       mostrarPagina(paginaActual + direccion);
     }
 
-    function salir() {
-      alert('Función salir ejecutada. Aquí puedes implementar la lógica para salir.');
-    }
-
+  function salir() {
+    window.location.href = 'index.php';
+  }
     // Ascuas aleatorias
     function crearAscua() {
       const ascua = document.createElement('div');
