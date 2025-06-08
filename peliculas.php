@@ -325,6 +325,19 @@
   </a>
       <h2>Up</h2>
 </div>
+<div class="movie-card">
+  <a href="https://drive.google.com/file/d/1oodst30QuLdpmfSyfR0FWNk2_HbiSr-J/view?usp=sharing" target="_blank">
+    <img src="img/hercules.jpg" alt="hercules">
+  </a>
+      <h2>Hércules</h2>
+</div>
+<div class="movie-card">
+  <a href="https://drive.google.com/file/d/17PeaVNIyev9Jk-7SkL6FSuITFzPo7e2R/view?usp=sharing" target="_blank">
+    <img src="img/zootopia.jpg" alt="zootopia">
+  </a>
+      <h2>Zootopía</h2>
+</div>
+
 
         <!-- ... más películas ... -->
       </div>
