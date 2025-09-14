@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎬 Taquilla de Cine - Estilo HBO</title>
+  <link rel="stylesheet" href="css/peliculas_style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="hbo-header">
+    <div class="logo"><h1>El pero y la pera🍐</h1></div>
+    <nav class="hbo-nav">
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="https://tfg-x9ow.onrender.com/peliculas.php" target="_blank">TFG</a></li>
+        <li><a href="#peliculas-del-momento">Novedades</a></li>
+      </ul>
+    </nav>
+    <div class="search">
+      <input type="text" placeholder="Buscar...">
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div id="main-content">
+    <!-- HERO / SLIDER -->
+    <section class="hbo-slider">
+      <div class="slide active">
+        <img src="img/Alien.jpg" alt="Alien">
+        <div class="slide-info"><div class="slide-info-bg"></div></div>
+      </div>
+      <div class="slide">
+        <img src="img/coraline.jpg" alt="Coraline">
+        <div class="slide-info"><div class="slide-info-bg"></div></div>      
+      </div>
+      <div class="slide">
+        <img src="img/Deadpool.webp" alt="Deadpool">
+        <div class="slide-info"><div class="slide-info-bg"></div></div>
+      </div>
+      <div class="slider-controls">
+        <span class="prev">&#10094;</span>
+        <span class="next">&#10095;</span>
+      </div>
+    </section>
+
+    <!-- CATEGORÍAS -->
+    <main class="hbo-container">
+
+      <section class="hbo-category">
+        <h2>Favoritas de Abril</h2>
+        <div class="hbo-grid">
+          <div class="movie-card" data-bg="img/Alien.jpg">
+            <img src="img/Alien.jpg" alt="Alien">
+            <h3>Alien: Romulus (2024)</h3>
+          </div>
+          <div class="movie-card" data-bg="img/coraline.jpg">
+            <img src="img/coraline.jpg" alt="Coraline">
+            <h3>Coraline y la puerta secreta (2009)</h3>
+          </div>
+          <div class="movie-card" data-bg="img/Deadpool.webp">
+            <img src="img/Deadpool.webp" alt="Deadpool">
+            <h3>Deadpool & Wolverine (2024)</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="hbo-category">
+        <h2>Abril aún no las vió</h2>
+        <div class="hbo-grid">
+          <div class="movie-card" data-bg="img/Doraemon.jpg">
+            <img src="img/Doraemon.jpg" alt="Doraemon">
+            <h3>Doraemon y la revolución de los robots</h3>
+          </div>
+          <div class="movie-card" data-bg="img/Lanoviacadaver.webp">
+            <img src="img/Lanoviacadaver.webp" alt="La Novia Cadáver">
+            <h3>La Novia Cadáver</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="hbo-category">
+        <h2>Nominadas Emmy del año</h2>
+        <div class="hbo-grid">
+          <div class="movie-card" data-bg="img/isladinosaurios.jpg">
+            <img src="img/isladinosaurios.jpg" alt="Isla de Dinosaurios">
+            <h3>La Isla de los Dinosaurios (Español)</h3>
+          </div>
+          <div class="movie-card" data-bg="img/sonic3.jpg">
+            <img src="img/sonic3.jpg" alt="Sonic 3">
+            <h3>Sonic 3: La película (2024)</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="hbo-category">
+        <h2>Hits que nunca fallan</h2>
+        <div class="hbo-grid">
+          <div class="movie-card" data-bg="img/coraline.jpg">
+            <img src="img/coraline.jpg" alt="Coraline">
+            <h3>Coraline y la puerta secreta</h3>
+          </div>
+          <div class="movie-card" data-bg="img/Lanoviacadaver.webp">
+            <img src="img/Lanoviacadaver.webp" alt="La Novia Cadáver">
+            <h3>La Novia Cadáver</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="hbo-category" id="peliculas-del-momento">
+        <h2>Películas del momento</h2>
+        <div class="hbo-grid">
+          <div class="movie-card" data-bg="img/terrifier3.jpeg">
+            <img src="img/terrifier3.jpeg" alt="Terrifier 3">
+            <h3>Terrifier 3: Payaso Siniestro (2024)</h3>
+          </div>
+          <div class="movie-card" data-bg="img/venom.webp">
+            <img src="img/venom.webp" alt="Venom">
+            <h3>Venom: El último baile (2024)</h3>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="hbo-footer">
+    <p>© Helado amarillo😮‍💨</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+// === Slider ===
+// === Slider ===
+const slides = document.querySelectorAll(".slide");
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+let index = 0;
+
+function showSlide(i) {
+  slides.forEach((slide, idx) => {
+    slide.classList.remove("active");
+    if (idx === i) slide.classList.add("active");
+  });
+}
+
+prev.addEventListener("click", () => {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+});
+
+next.addEventListener("click", () => {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+});
+
+setInterval(() => {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}, 5000);
+
+// === Fondo dinámico al pasar por películas ===
+const movieCards = document.querySelectorAll(".movie-card");
+movieCards.forEach(card => {
+  card.addEventListener("mouseenter", () => {
+    const bg = card.getAttribute("data-bg");
+    document.body.style.backgroundImage = `url('${bg}')`;
+  });
+  card.addEventListener("mouseleave", () => {
+    document.body.style.backgroundImage = "";
+  });
+});
+
+// === Buscador de películas ===
+const searchInput = document.querySelector(".search input");
+const allMovieCards = document.querySelectorAll(".movie-card");
+const mainContent = document.querySelector("main.hbo-container");
+const footer = document.querySelector(".hbo-footer");
+const slider = document.querySelector(".hbo-slider");
+
+// Contenedor para resultados
+let searchResults = document.createElement("div");
+searchResults.id = "search-results";
+searchResults.style.display = "none";
+searchResults.style.justifyContent = "center";
+searchResults.style.alignItems = "center";
+searchResults.style.height = "80vh";
+document.body.appendChild(searchResults);
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase().trim();
+
+  if (query === "") {
+    mainContent.style.display = "block";
+    footer.style.display = "block";
+    slider.style.display = "block";
+    searchResults.style.display = "none";
+    document.body.style.backgroundImage = "";
+    return;
+  }
+
+  mainContent.style.display = "none";
+  footer.style.display = "none";
+  slider.style.display = "none";
+  searchResults.style.display = "flex";
+  searchResults.innerHTML = "";
+
+  const titlesShown = new Set(); // Para evitar duplicados
+  let found = false;
+
+  for (let card of allMovieCards) {
+    const title = card.querySelector("h3").textContent.toLowerCase();
+    if (title.includes(query) && !titlesShown.has(title)) {
+      found = true;
+      titlesShown.add(title);
+
+      const clone = card.cloneNode(true);
+      clone.style.width = "600px";   // DOBLE ancho
+      clone.style.height = "900px";  // DOBLE alto
+      clone.querySelector("img").style.height = "90%"; // foto ocupa casi todo
+      searchResults.appendChild(clone);
+
+      const bg = clone.getAttribute("data-bg");
+      document.body.style.backgroundImage = `url('${bg}')`;
+
+      break; // mostramos solo **1** coincidencia
+    }
+  }
+
+  if (!found) {
+    searchResults.innerHTML = "<p style='color:white; font-size:20px;'>No se encontró ninguna película.</p>";
+    document.body.style.backgroundImage = "";
+  }
+});
+  </script>
+</body>
+</html>
