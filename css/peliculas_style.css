@@ -1,0 +1,264 @@
+/* ===========================
+   Estilo HBO para Películas
+   Archivo: peliculas_style.css
+   =========================== */
+
+/* General */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #000;
+  color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out;
+  position: relative;
+  z-index: 0;
+}
+
+/* Degradado oscuro abajo */
+body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 25%,
+    rgba(0, 0, 0, 0.3) 75%,
+    rgba(0, 0, 0, 0)
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Encabezado estilo HBO */
+.hbo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #141414;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.hbo-header .logo h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.hbo-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 25px;
+}
+
+.hbo-nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.hbo-nav ul li a:hover {
+  color: #a855f7;
+}
+
+.search input {
+  background-color: #1f1f1f;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  color: #ffffff;
+  outline: none;
+}
+
+/* Hero Section */
+.hbo-hero {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hbo-hero h2 {
+  font-size: 32px;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* ===========================
+   Slider tipo HBO
+   =========================== */
+.hbo-slider {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.hbo-slider .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hbo-slider .slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hbo-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.slide-info {
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+  color: #fff;
+  max-width: 500px;
+}
+
+.slide-info h2 {
+  font-size: 36px;
+  margin: 0 0 10px;
+}
+
+.slide-info p {
+  font-size: 18px;
+  color: #ddd;
+}
+
+/* Controles del slider */
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  transform: translateY(-50%);
+}
+
+.slider-controls span {
+  cursor: pointer;
+  font-size: 40px;
+  color: #fff;
+  transition: color 0.3s;
+  user-select: none;
+}
+
+.slider-controls span:hover {
+  color: #a855f7;
+}
+
+/* ===========================
+   Categorías y Grid
+   =========================== */
+.hbo-container {
+  padding: 20px 40px;
+}
+
+.hbo-category {
+  margin-bottom: 50px;
+}
+
+.hbo-category h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  border-left: 5px solid #a855f7;
+  padding-left: 10px;
+}
+
+.hbo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+.movie-card {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-card h3 {
+  font-size: 15px;
+  padding: 12px;
+  margin: 0;
+  text-align: center;
+  color: #e5e5e5;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 5px 20px rgba(168, 85, 247, 0.5);
+}
+
+/* ===========================
+   Footer
+   =========================== */
+.hbo-footer {
+  text-align: center;
+  padding: 25px;
+  background-color: #141414;
+  font-size: 14px;
+  color: #888;
+}
+
+/* Tarjetas más grandes y anchas para "Hits que nunca fallan" */
+.hbo-category:nth-of-type(4) .hbo-grid {
+  display: flex;             /* Cambiamos grid a flex para controlar mejor el ancho */
+  gap: 30px;                 /* Espacio entre tarjetas */
+  flex-wrap: wrap;
+}
+
+.hbo-category:nth-of-type(4) .movie-card {
+  flex: 0 0 360px;           /* El doble de ancho aproximado */
+  height: 520px;             /* Doble de la altura normal */
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hbo-category:nth-of-type(4) .movie-card img {
+  width: 100%;
+  height: calc(100% - 40px); /* Deja espacio abajo para el nombre */
+  object-fit: cover;         /* Ocupa todo el contenedor de la imagen */
+  display: block;
+}
+
+.hbo-category:nth-of-type(4) .movie-card h3 {
+  font-size: 18px;
+  padding: 8px 10px;
+  margin: 0;
+  text-align: center;
+  color: #e5e5e5;
+  flex-shrink: 0;            /* Evita que se comprima */
+}
