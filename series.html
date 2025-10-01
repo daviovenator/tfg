@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📺 Taquilla de Series - Estilo HBO</title>
+  <link rel="stylesheet" href="css/peliculas_style.css">
+  <style>
+    /* ===== Slider Styles ===== */
+    .slider-container {
+      position: relative;
+      margin: 20px 0;
+    }
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+    .slider::-webkit-scrollbar {
+      display: none;
+    }
+    .movie-card { flex: 0 0 auto; width: 180px; }
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      border: none;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 10;
+      width: 50px;
+      height: 80%;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .slider-container:hover .slide-btn { opacity: 0.7; }
+    .left-btn { left: 0; }
+    .right-btn { right: 0; }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="hbo-header">
+    <div class="logo"><h1>El pero y la pera🍐</h1></div>
+    <nav class="hbo-nav">
+      <ul>
+        <li><a href="https://tfg-x9ow.onrender.com/peliss.html">Inicio</a></li>
+        <li><a href="https://tfg-x9ow.onrender.com/">TFG</a></li>
+        <li><a href="https://tfg-x9ow.onrender.com/pelis.html">Películas</a></li>
+        <li><a href="https://tfg-x9ow.onrender.com/series.html">Series</a></li>
+      </ul>
+    </nav>
+    <div class="search">
+      <input type="text" placeholder="Buscar...">
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="hbo-container">
+    <!-- CATEGORÍA: Inazuma Eleven -->
+    <h2 class="category-title">Inazuma Eleven</h2>
+    <div class="slider-container">
+      <button class="slide-btn left-btn">&#10094;</button>
+      <div class="slider">
+        <!-- 14 tarjetas Inazuma Eleven -->
+        <div class="movie-card" data-bg="images/inazuma1_bg.jpg"><img src="images/inazuma1.jpg" alt="Inazuma 1"><h3>Inazuma Eleven 1</h3></div>
+        <div class="movie-card" data-bg="images/inazuma2_bg.jpg"><img src="images/inazuma2.jpg" alt="Inazuma 2"><h3>Inazuma Eleven 2</h3></div>
+        <div class="movie-card" data-bg="images/inazuma3_bg.jpg"><img src="images/inazuma3.jpg" alt="Inazuma 3"><h3>Inazuma Eleven 3</h3></div>
+        <div class="movie-card" data-bg="images/inazuma4_bg.jpg"><img src="images/inazuma4.jpg" alt="Inazuma 4"><h3>Inazuma Eleven 4</h3></div>
+        <div class="movie-card" data-bg="images/inazuma5_bg.jpg"><img src="images/inazuma5.jpg" alt="Inazuma 5"><h3>Inazuma Eleven 5</h3></div>
+        <div class="movie-card" data-bg="images/inazuma6_bg.jpg"><img src="images/inazuma6.jpg" alt="Inazuma 6"><h3>Inazuma Eleven 6</h3></div>
+        <div class="movie-card" data-bg="images/inazuma7_bg.jpg"><img src="images/inazuma7.jpg" alt="Inazuma 7"><h3>Inazuma Eleven 7</h3></div>
+        <div class="movie-card" data-bg="images/inazuma8_bg.jpg"><img src="images/inazuma8.jpg" alt="Inazuma 8"><h3>Inazuma Eleven 8</h3></div>
+        <div class="movie-card" data-bg="images/inazuma9_bg.jpg"><img src="images/inazuma9.jpg" alt="Inazuma 9"><h3>Inazuma Eleven 9</h3></div>
+        <div class="movie-card" data-bg="images/inazuma10_bg.jpg"><img src="images/inazuma10.jpg" alt="Inazuma 10"><h3>Inazuma Eleven 10</h3></div>
+        <div class="movie-card" data-bg="images/inazuma11_bg.jpg"><img src="images/inazuma11.jpg" alt="Inazuma 11"><h3>Inazuma Eleven 11</h3></div>
+        <div class="movie-card" data-bg="images/inazuma12_bg.jpg"><img src="images/inazuma12.jpg" alt="Inazuma 12"><h3>Inazuma Eleven 12</h3></div>
+        <div class="movie-card" data-bg="images/inazuma13_bg.jpg"><img src="images/inazuma13.jpg" alt="Inazuma 13"><h3>Inazuma Eleven 13</h3></div>
+        <div class="movie-card" data-bg="images/inazuma14_bg.jpg"><img src="images/inazuma14.jpg" alt="Inazuma 14"><h3>Inazuma Eleven 14</h3></div>
+      </div>
+      <button class="slide-btn right-btn">&#10095;</button>
+    </div>
+
+    <!-- CATEGORÍA: Mimimi -->
+    <h2 class="category-title">Mimimi</h2>
+    <div class="slider-container">
+      <button class="slide-btn left-btn">&#10094;</button>
+      <div class="slider">
+        <div class="movie-card" data-bg="images/mimimi1_bg.jpg"><img src="images/mimimi1.jpg" alt="Mimimi 1"><h3>Mimimi 1</h3></div>
+        <div class="movie-card" data-bg="images/mimimi2_bg.jpg"><img src="images/mimimi2.jpg" alt="Mimimi 2"><h3>Mimimi 2</h3></div>
+        <div class="movie-card" data-bg="images/mimimi3_bg.jpg"><img src="images/mimimi3.jpg" alt="Mimimi 3"><h3>Mimimi 3</h3></div>
+        <div class="movie-card" data-bg="images/mimimi4_bg.jpg"><img src="images/mimimi4.jpg" alt="Mimimi 4"><h3>Mimimi 4</h3></div>
+        <div class="movie-card" data-bg="images/mimimi5_bg.jpg"><img src="images/mimimi5.jpg" alt="Mimimi 5"><h3>Mimimi 5</h3></div>
+        <div class="movie-card" data-bg="images/mimimi6_bg.jpg"><img src="images/mimimi6.jpg" alt="Mimimi 6"><h3>Mimimi 6</h3></div>
+        <div class="movie-card" data-bg="images/mimimi7_bg.jpg"><img src="images/mimimi7.jpg" alt="Mimimi 7"><h3>Mimimi 7</h3></div>
+        <div class="movie-card" data-bg="images/mimimi8_bg.jpg"><img src="images/mimimi8.jpg" alt="Mimimi 8"><h3>Mimimi 8</h3></div>
+        <div class="movie-card" data-bg="images/mimimi9_bg.jpg"><img src="images/mimimi9.jpg" alt="Mimimi 9"><h3>Mimimi 9</h3></div>
+        <div class="movie-card" data-bg="images/mimimi10_bg.jpg"><img src="images/mimimi10.jpg" alt="Mimimi 10"><h3>Mimimi 10</h3></div>
+      </div>
+      <button class="slide-btn right-btn">&#10095;</button>
+    </div>
+
+    <!-- CATEGORÍA: Ninini -->
+    <h2 class="category-title">Ninini</h2>
+    <div class="slider-container">
+      <button class="slide-btn left-btn">&#10094;</button>
+      <div class="slider">
+        <div class="movie-card" data-bg="images/ninini1_bg.jpg"><img src="images/ninini1.jpg" alt="Ninini 1"><h3>Ninini 1</h3></div>
+        <div class="movie-card" data-bg="images/ninini2_bg.jpg"><img src="images/ninini2.jpg" alt="Ninini 2"><h3>Ninini 2</h3></div>
+        <div class="movie-card" data-bg="images/ninini3_bg.jpg"><img src="images/ninini3.jpg" alt="Ninini 3"><h3>Ninini 3</h3></div>
+        <div class="movie-card" data-bg="images/ninini4_bg.jpg"><img src="images/ninini4.jpg" alt="Ninini 4"><h3>Ninini 4</h3></div>
+        <div class="movie-card" data-bg="images/ninini5_bg.jpg"><img src="images/ninini5.jpg" alt="Ninini 5"><h3>Ninini 5</h3></div>
+        <div class="movie-card" data-bg="images/ninini6_bg.jpg"><img src="images/ninini6.jpg" alt="Ninini 6"><h3>Ninini 6</h3></div>
+        <div class="movie-card" data-bg="images/ninini7_bg.jpg"><img src="images/ninini7.jpg" alt="Ninini 7"><h3>Ninini 7</h3></div>
+        <div class="movie-card" data-bg="images/ninini8_bg.jpg"><img src="images/ninini8.jpg" alt="Ninini 8"><h3>Ninini 8</h3></div>
+        <div class="movie-card" data-bg="images/ninini9_bg.jpg"><img src="images/ninini9.jpg" alt="Ninini 9"><h3>Ninini 9</h3></div>
+        <div class="movie-card" data-bg="images/ninini10_bg.jpg"><img src="images/ninini10.jpg" alt="Ninini 10"><h3>Ninini 10</h3></div>
+      </div>
+      <button class="slide-btn right-btn">&#10095;</button>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="hbo-footer">
+    <p>© 2025 El pero y la pera 🍐 - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Fondo dinámico al pasar por series
+    const movieCards = document.querySelectorAll(".movie-card");
+    movieCards.forEach(card => {
+      card.addEventListener("mouseenter", () => {
+        const bg = card.getAttribute("data-bg");
+        document.body.style.backgroundImage = `url('${bg}')`;
+      });
+      card.addEventListener("mouseleave", () => {
+        document.body.style.backgroundImage = "";
+      });
+    });
+
+    // Buscador de series
+    const searchInput = document.querySelector(".search input");
+    const allMovieCards = document.querySelectorAll(".movie-card");
+    const mainContent = document.querySelector("main.hbo-container");
+    const footer = document.querySelector(".hbo-footer");
+
+    let searchResults = document.createElement("div");
+    searchResults.id = "search-results";
+    searchResults.style.display = "none";
+    searchResults.style.justifyContent = "center";
+    searchResults.style.alignItems = "center";
+    searchResults.style.height = "80vh";
+    document.body.appendChild(searchResults);
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase().trim();
+      if (query === "") {
+        mainContent.style.display = "block";
+        footer.style.display = "block";
+        searchResults.style.display = "none";
+        document.body.style.backgroundImage = "";
+        return;
+      }
+      mainContent.style.display = "none";
+      footer.style.display = "none";
+      searchResults.style.display = "flex";
+      searchResults.innerHTML = "";
+      const titlesShown = new Set();
+      let found = false;
+      for (let card of allMovieCards) {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        if (title.includes(query) && !titlesShown.has(title)) {
+          found = true;
+          titlesShown.add(title);
+          const clone = card.cloneNode(true);
+          clone.style.width = "600px";
+          clone.style.height = "900px";
+          clone.querySelector("img").style.height = "90%";
+          searchResults.appendChild(clone);
+          const bg = clone.getAttribute("data-bg");
+          document.body.style.backgroundImage = `url('${bg}')`;
+          break;
+        }
+      }
+      if (!found) {
+        searchResults.innerHTML = "<p style='color:white; font-size:20px;'>No se encontró ninguna serie.</p>";
+        document.body.style.backgroundImage = "";
+      }
+    });
+
+    // Slider buttons
+    document.querySelectorAll('.slider-container').forEach(container => {
+      const slider = container.querySelector('.slider');
+      const leftBtn = container.querySelector('.left-btn');
+      const rightBtn = container.querySelector('.right-btn');
+
+      leftBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: -400, behavior: 'smooth' });
+      });
+      rightBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: 400, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
