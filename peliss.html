@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🎬 Taquilla de Cine - Estilo HBO</title>
-  <link rel="stylesheet" href="css/peliculas_style.css">
+  <link rel="stylesheet" href="css/peliculas1_style.css">
 </head>
 <body>
   <!-- HEADER -->
   <header class="hbo-header">
     <div class="logo"><h1>El pero y la pera🍐</h1></div>
-<nav class="hbo-nav">
-  <ul>
-    <li><a href="#">Inicio</a></li>
-    <li><a href="https://tfg-x9ow.onrender.com/peliculas.php" target="_blank">TFG</a></li>
-    <li><a href="#peliculas-del-momento">Novedades</a></li>
-    <li><a href="pelis.html">Películas</a></li>
-    <li><a href="series.html">Series</a></li>
-  </ul>
-</nav>
+    <nav class="hbo-nav">
+      <ul>
+        <li><a href="https://tfg-x9ow.onrender.com/peliss.html">Inicio</a></li>
+        <li><a href="https://tfg-x9ow.onrender.com/peliculas.php">TFG</a></li>
+        <li><a href="#peliculas-del-momento">Novedades</a></li>
+        <li><a href="pelis.html">Películas</a></li>
+        <li><a href="series.html">Series</a></li>
+      </ul>
+    </nav>
     <div class="search">
       <input type="text" placeholder="Buscar...">
     </div>
@@ -26,38 +26,30 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <div id="main-content">
-    <!-- HERO / SLIDER -->
-    <section class="hbo-slider">
-      <div class="slide active">
-        <img src="img/Alien.jpg" alt="Alien">
-        <div class="slide-info"><div class="slide-info-bg"></div></div>
-      </div>
-      <div class="slide">
-        <img src="img/coraline.jpg" alt="Coraline">
-        <div class="slide-info"><div class="slide-info-bg"></div></div>      
-      </div>
-      <div class="slide">
-        <img src="img/Deadpool.webp" alt="Deadpool">
-        <div class="slide-info"><div class="slide-info-bg"></div></div>
-      </div>
-      <div class="slider-controls">
-        <span class="prev">&#10094;</span>
-        <span class="next">&#10095;</span>
-      </div>
-    </section>
-
-    <!-- CATEGORÍAS -->
     <main class="hbo-container">
 
+      <!-- NUEVAS TARJETAS GRANDES -->
+      <section class="hbo-featured">
+        <div class="featured-card">
+          <a id="lilo-link" href="https://drive.google.com/file/d/1jSrsEGxJH0OHz0kN0PP3OKEP81IzPq4l/view?usp=sharing">
+            <img id="lilo-card" src="img/stitch-pelicula-2025-live-action-13205.jpg" alt="Lilo y Stitch">
+          </a>
+        </div>
+        <div class="featured-card" data-bg="img/proximamente.jpg">
+          <img src="img/dispo.png" alt="Próximamente">
+        </div>
+      </section>
+
+      <!-- SECCIONES DE PELÍCULAS -->
       <section class="hbo-category">
         <h2>Favoritas de Abril</h2>
         <div class="hbo-grid">
           <div class="movie-card" data-bg="img/Alien.jpg">
-            <img src="img/Alien.jpg" alt="Alien">
+            <img src="img/alien1-scaled-e1724314513670.jpg"" alt="Alien">
             <h3>Alien: Romulus (2024)</h3>
           </div>
           <div class="movie-card" data-bg="img/coraline.jpg">
-            <img src="img/coraline.jpg" alt="Coraline">
+            <img src="img/Coraline-Wallpaper.jpg" alt="Coraline">
             <h3>Coraline y la puerta secreta (2009)</h3>
           </div>
           <div class="movie-card" data-bg="img/Deadpool.webp">
@@ -71,7 +63,7 @@
         <h2>Abril aún no las vió</h2>
         <div class="hbo-grid">
           <div class="movie-card" data-bg="img/Doraemon.jpg">
-            <img src="img/Doraemon.jpg" alt="Doraemon">
+            <img src="img/doraemon.jpg" alt="Doraemon">
             <h3>Doraemon y la revolución de los robots</h3>
           </div>
           <div class="movie-card" data-bg="img/Lanoviacadaver.webp">
@@ -99,7 +91,7 @@
         <h2>Hits que nunca fallan</h2>
         <div class="hbo-grid">
           <div class="movie-card" data-bg="img/coraline.jpg">
-            <img src="img/coraline.jpg" alt="Coraline">
+            <img src="img/Coraline-Wallpaper.jpg" alt="Coraline">
             <h3>Coraline y la puerta secreta</h3>
           </div>
           <div class="movie-card" data-bg="img/Lanoviacadaver.webp">
@@ -133,108 +125,38 @@
 
   <!-- SCRIPT -->
   <script>
-// === Slider ===
-// === Slider ===
-const slides = document.querySelectorAll(".slide");
-const prev = document.querySelector(".prev");
-const next = document.querySelector(".next");
-let index = 0;
+  // === Cambio automático Lilo & Stitch con enlace y fondo ===
+  const liloCard = document.getElementById('lilo-card');
+  const liloLink = document.getElementById('lilo-link');
 
-function showSlide(i) {
-  slides.forEach((slide, idx) => {
-    slide.classList.remove("active");
-    if (idx === i) slide.classList.add("active");
+  const liloImages = [
+    {src: 'img/stitch-pelicula-2025-live-action-13205.jpg', link: 'https://drive.google.com/file/d/1jSrsEGxJH0OHz0kN0PP3OKEP81IzPq4l/view?usp=sharing', bg: 'img/lilo1.jpg'},
+    {src: 'img/cUIqZd6jJCbO94Txt1CkTs7MSeP.webp', link: 'https://drive.google.com/file/d/1OXR3smHxiVX09dv-pZ3flmp6bemwysac/view', bg: 'img/lilo1.jpg'},
+    {src: 'img/El-gato-con-botas-El-ultimo-deseo-800x445.jpeg', link: 'https://drive.google.com/file/d/189SXYLi9Vrw5uQ-QavNiM11UTay1b5Mq/view', bg: 'img/lilo1.jpg'},
+    {src: 'img/eb618040fd6eb9b32be958b09c61f5d7.jpg', link: 'https://drive.google.com/file/d/1Um-42oi9sRx5gSWLlQLQ_NERz4O-OzT_/view?usp=sharing', bg: 'img/lilo1.jpg'},
+    {src: 'img/22283.jpg', link: 'https://drive.google.com/file/d/1ZAnFij05NQ6t21pXGnOwXBcSBHiv6jTN/view', bg: 'img/lilo1.jpg'}
+  ];
+
+  let liloIndex = 0;
+  setInterval(() => {
+    liloIndex = (liloIndex + 1) % liloImages.length;
+    liloCard.src = liloImages[liloIndex].src;
+    liloLink.href = liloImages[liloIndex].link;
+    document.body.style.backgroundImage = `url('${liloImages[liloIndex].bg}')`;
+  }, 6000);
+
+  // === Fondo tipo HBO al pasar por cualquier tarjeta ===
+  const cards = document.querySelectorAll(".movie-card, .featured-card");
+  cards.forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      const bg = card.getAttribute("data-bg");
+      if (bg) document.body.style.backgroundImage = `url('${bg}')`;
+    });
+    card.addEventListener("mouseleave", () => {
+      // Vuelve al fondo actual de Lilo
+      document.body.style.backgroundImage = `url('${liloImages[liloIndex].bg}')`;
+    });
   });
-}
-
-prev.addEventListener("click", () => {
-  index = (index - 1 + slides.length) % slides.length;
-  showSlide(index);
-});
-
-next.addEventListener("click", () => {
-  index = (index + 1) % slides.length;
-  showSlide(index);
-});
-
-setInterval(() => {
-  index = (index + 1) % slides.length;
-  showSlide(index);
-}, 5000);
-
-// === Fondo dinámico al pasar por películas ===
-const movieCards = document.querySelectorAll(".movie-card");
-movieCards.forEach(card => {
-  card.addEventListener("mouseenter", () => {
-    const bg = card.getAttribute("data-bg");
-    document.body.style.backgroundImage = `url('${bg}')`;
-  });
-  card.addEventListener("mouseleave", () => {
-    document.body.style.backgroundImage = "";
-  });
-});
-
-// === Buscador de películas ===
-const searchInput = document.querySelector(".search input");
-const allMovieCards = document.querySelectorAll(".movie-card");
-const mainContent = document.querySelector("main.hbo-container");
-const footer = document.querySelector(".hbo-footer");
-const slider = document.querySelector(".hbo-slider");
-
-// Contenedor para resultados
-let searchResults = document.createElement("div");
-searchResults.id = "search-results";
-searchResults.style.display = "none";
-searchResults.style.justifyContent = "center";
-searchResults.style.alignItems = "center";
-searchResults.style.height = "80vh";
-document.body.appendChild(searchResults);
-
-searchInput.addEventListener("input", () => {
-  const query = searchInput.value.toLowerCase().trim();
-
-  if (query === "") {
-    mainContent.style.display = "block";
-    footer.style.display = "block";
-    slider.style.display = "block";
-    searchResults.style.display = "none";
-    document.body.style.backgroundImage = "";
-    return;
-  }
-
-  mainContent.style.display = "none";
-  footer.style.display = "none";
-  slider.style.display = "none";
-  searchResults.style.display = "flex";
-  searchResults.innerHTML = "";
-
-  const titlesShown = new Set(); // Para evitar duplicados
-  let found = false;
-
-  for (let card of allMovieCards) {
-    const title = card.querySelector("h3").textContent.toLowerCase();
-    if (title.includes(query) && !titlesShown.has(title)) {
-      found = true;
-      titlesShown.add(title);
-
-      const clone = card.cloneNode(true);
-      clone.style.width = "600px";   // DOBLE ancho
-      clone.style.height = "900px";  // DOBLE alto
-      clone.querySelector("img").style.height = "90%"; // foto ocupa casi todo
-      searchResults.appendChild(clone);
-
-      const bg = clone.getAttribute("data-bg");
-      document.body.style.backgroundImage = `url('${bg}')`;
-
-      break; // mostramos solo **1** coincidencia
-    }
-  }
-
-  if (!found) {
-    searchResults.innerHTML = "<p style='color:white; font-size:20px;'>No se encontró ninguna película.</p>";
-    document.body.style.backgroundImage = "";
-  }
-});
   </script>
 </body>
 </html>
