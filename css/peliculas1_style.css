@@ -32,13 +32,23 @@ body::after {
 /* Header */
 .hbo-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centra el menú */
   align-items: center;
   background-color: #141414;
   padding: 15px 40px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  position: relative; /* Necesario para logo absoluto */
+  gap: 50px;
+}
+
+/* Logo a la izquierda */
+.hbo-header .logo {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .hbo-header .logo h1 {
@@ -49,12 +59,14 @@ body::after {
   letter-spacing: 2px;
 }
 
+/* Menú centrado */
 .hbo-nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   gap: 25px;
+  justify-content: center; /* Centra los items */
 }
 
 .hbo-nav ul li a {
@@ -66,15 +78,6 @@ body::after {
 
 .hbo-nav ul li a:hover {
   color: #a855f7;
-}
-
-.search input {
-  background-color: #1f1f1f;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 20px;
-  color: #fff;
-  outline: none;
 }
 
 /* Contenido */
@@ -235,4 +238,9 @@ body::after {
   .hbo-grid { grid-template-columns: 1fr; } 
   .featured-card img { height: 250px; }
   .featured-card h3 { font-size: 20px; }
+}
+
+/* Ocultar buscador */
+.search {
+  display: none !important;
 }
