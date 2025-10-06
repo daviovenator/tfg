@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #000;
+  background: linear-gradient(135deg, #0c0c0c 0%, #000000 50%, #16213e 100%);
   color: #fff;
   background-size: cover;
   background-position: center;
@@ -77,7 +77,7 @@ body::after {
 }
 
 .hbo-nav ul li a:hover {
-  color: #a855f7;
+  color: #e50914;
 }
 
 /* Contenido */

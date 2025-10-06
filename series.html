@@ -4,43 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>📺 Taquilla de Series - Estilo HBO</title>
-  <link rel="stylesheet" href="css/peliculas_style.css">
-  <style>
-    /* ===== Slider Styles ===== */
-    .slider-container {
-      position: relative;
-      margin: 20px 0;
-    }
-    .slider {
-      display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      gap: 10px;
-      padding-bottom: 10px;
-    }
-    .slider::-webkit-scrollbar {
-      display: none;
-    }
-    .movie-card { flex: 0 0 auto; width: 180px; }
-    .slide-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0,0,0,0.5);
-      border: none;
-      color: white;
-      font-size: 30px;
-      cursor: pointer;
-      z-index: 10;
-      width: 50px;
-      height: 80%;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .slider-container:hover .slide-btn { opacity: 0.7; }
-    .left-btn { left: 0; }
-    .right-btn { right: 0; }
-  </style>
+  <link rel="stylesheet" href="css/series_style.css">
 </head>
 <body>
   <!-- HEADER -->
@@ -48,165 +12,269 @@
     <div class="logo"><h1>El pero y la pera🍐</h1></div>
     <nav class="hbo-nav">
       <ul>
-<li><a href="https://tfg-x9ow.onrender.com/peliss.html">Inicio</a></li>
-<li><a href="https://tfg-x9ow.onrender.com/peliculas.php">TFG</a></li>
-<li><a href="https://tfg-x9ow.onrender.com/peliss.html#abril-no-las-vio">Pendientes</a></li>
-<li><a href="pelis.html">Películas</a></li>
-<li><a href="series.html">Series</a></li>
+        <li><a href="https://tfg-x9ow.onrender.com/peliss.html">Inicio</a></li>
+        <li><a href="https://tfg-x9ow.onrender.com/peliculas.php">TFG</a></li>
+        <li><a href="#abril-no-las-vio">Pendientes</a></li>
+        <li><a href="pelis.html">Películas</a></li>
+        <li><a href="series.html">Series</a></li>
       </ul>
     </nav>
-    <div class="search">
-      <input type="text" placeholder="Buscar...">
-    </div>
   </header>
 
   <!-- MAIN CONTENT -->
   <main class="hbo-container">
-    <!-- CATEGORÍA: Inazuma Eleven -->
-    <h2 class="category-title">Inazuma Eleven</h2>
+
+    <!-- CATEGORÍA: Devilman -->
+    <h2 class="category-title">Devilman</h2>
     <div class="slider-container">
       <button class="slide-btn left-btn">&#10094;</button>
       <div class="slider">
-        <!-- 14 tarjetas Inazuma Eleven -->
-        <div class="movie-card" data-bg="images/inazuma1_bg.jpg"><img src="images/inazuma1.jpg" alt="Inazuma 1"><h3>Inazuma Eleven 1</h3></div>
-        <div class="movie-card" data-bg="images/inazuma2_bg.jpg"><img src="images/inazuma2.jpg" alt="Inazuma 2"><h3>Inazuma Eleven 2</h3></div>
-        <div class="movie-card" data-bg="images/inazuma3_bg.jpg"><img src="images/inazuma3.jpg" alt="Inazuma 3"><h3>Inazuma Eleven 3</h3></div>
-        <div class="movie-card" data-bg="images/inazuma4_bg.jpg"><img src="images/inazuma4.jpg" alt="Inazuma 4"><h3>Inazuma Eleven 4</h3></div>
-        <div class="movie-card" data-bg="images/inazuma5_bg.jpg"><img src="images/inazuma5.jpg" alt="Inazuma 5"><h3>Inazuma Eleven 5</h3></div>
-        <div class="movie-card" data-bg="images/inazuma6_bg.jpg"><img src="images/inazuma6.jpg" alt="Inazuma 6"><h3>Inazuma Eleven 6</h3></div>
-        <div class="movie-card" data-bg="images/inazuma7_bg.jpg"><img src="images/inazuma7.jpg" alt="Inazuma 7"><h3>Inazuma Eleven 7</h3></div>
-        <div class="movie-card" data-bg="images/inazuma8_bg.jpg"><img src="images/inazuma8.jpg" alt="Inazuma 8"><h3>Inazuma Eleven 8</h3></div>
-        <div class="movie-card" data-bg="images/inazuma9_bg.jpg"><img src="images/inazuma9.jpg" alt="Inazuma 9"><h3>Inazuma Eleven 9</h3></div>
-        <div class="movie-card" data-bg="images/inazuma10_bg.jpg"><img src="images/inazuma10.jpg" alt="Inazuma 10"><h3>Inazuma Eleven 10</h3></div>
-        <div class="movie-card" data-bg="images/inazuma11_bg.jpg"><img src="images/inazuma11.jpg" alt="Inazuma 11"><h3>Inazuma Eleven 11</h3></div>
-        <div class="movie-card" data-bg="images/inazuma12_bg.jpg"><img src="images/inazuma12.jpg" alt="Inazuma 12"><h3>Inazuma Eleven 12</h3></div>
-        <div class="movie-card" data-bg="images/inazuma13_bg.jpg"><img src="images/inazuma13.jpg" alt="Inazuma 13"><h3>Inazuma Eleven 13</h3></div>
-        <div class="movie-card" data-bg="images/inazuma14_bg.jpg"><img src="images/inazuma14.jpg" alt="Inazuma 14"><h3>Inazuma Eleven 14</h3></div>
+        <div class="movie-card" 
+             data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="img/JV-7Uk-KHeeQ.jpg" alt="Devilman 1">
+          <h3>Capítulo 1</h3>
+        </div>
+        <div class="movie-card" 
+             data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="img/Devilman-Crybaby-02-11.jpg" alt="Devilman 2">
+          <h3>Capítulo 2</h3>
+        </div>
+        <div class="movie-card" 
+             data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="img/1_sN7qRbX4wYIbq1ztiiWhyA.jpg" alt="Devilman 3">
+          <h3>Capítulo 3</h3>
+        </div>
+        <div class="movie-card" 
+             data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="img/q7zsi0TYPLomrsUbnzdOOBaXW4R.webp" alt="Devilman 4">
+          <h3>Capítulo 4</h3>
+        </div>
+        <div class="movie-card"
+             data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="img/1200x675.jpg" alt="Devilman 5">
+          <h3>Capítulo 5</h3>
+        </div>
+        <div class="movie-card"
+             data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="img/2948e58b670859008b44cb2264adb5f4.jpg" alt="Devilman 6">
+          <h3>Capítulo 6</h3>
+        </div>
+        <div class="movie-card"
+             data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="img/076ae73c2e3f36793c6669a5a6cd4ceb.jpg" alt="Devilman 7">
+          <h3>Capítulo 7</h3>
+        </div>
+        <div class="movie-card"
+             data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="img/5-1.jpg" alt="Devilman 8">
+          <h3>Capítulo 8</h3>
+        </div>
+        <div class="movie-card"
+             data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="img/fobMpMg2UVdXEObAF.jpg" alt="Devilman 9">
+          <h3>Capítulo 9</h3>
+        </div>
+        <div class="movie-card"
+             data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="img/vkuvHjPelJegMv22AeNT2npB5qC.webp" alt="Devilman 10">
+          <h3>Capítulo 10</h3>
+        </div>
       </div>
       <button class="slide-btn right-btn">&#10095;</button>
     </div>
 
-    <!-- CATEGORÍA: Mimimi -->
-    <h2 class="category-title">Mimimi</h2>
+    <!-- CATEGORÍA: Don't Hug Me I'm Scared -->
+    <h2 class="category-title">Don't Hug Me I'm Scared</h2>
     <div class="slider-container">
       <button class="slide-btn left-btn">&#10094;</button>
       <div class="slider">
-        <div class="movie-card" data-bg="images/mimimi1_bg.jpg"><img src="images/mimimi1.jpg" alt="Mimimi 1"><h3>Mimimi 1</h3></div>
-        <div class="movie-card" data-bg="images/mimimi2_bg.jpg"><img src="images/mimimi2.jpg" alt="Mimimi 2"><h3>Mimimi 2</h3></div>
-        <div class="movie-card" data-bg="images/mimimi3_bg.jpg"><img src="images/mimimi3.jpg" alt="Mimimi 3"><h3>Mimimi 3</h3></div>
-        <div class="movie-card" data-bg="images/mimimi4_bg.jpg"><img src="images/mimimi4.jpg" alt="Mimimi 4"><h3>Mimimi 4</h3></div>
-        <div class="movie-card" data-bg="images/mimimi5_bg.jpg"><img src="images/mimimi5.jpg" alt="Mimimi 5"><h3>Mimimi 5</h3></div>
-        <div class="movie-card" data-bg="images/mimimi6_bg.jpg"><img src="images/mimimi6.jpg" alt="Mimimi 6"><h3>Mimimi 6</h3></div>
-        <div class="movie-card" data-bg="images/mimimi7_bg.jpg"><img src="images/mimimi7.jpg" alt="Mimimi 7"><h3>Mimimi 7</h3></div>
-        <div class="movie-card" data-bg="images/mimimi8_bg.jpg"><img src="images/mimimi8.jpg" alt="Mimimi 8"><h3>Mimimi 8</h3></div>
-        <div class="movie-card" data-bg="images/mimimi9_bg.jpg"><img src="images/mimimi9.jpg" alt="Mimimi 9"><h3>Mimimi 9</h3></div>
-        <div class="movie-card" data-bg="images/mimimi10_bg.jpg"><img src="images/mimimi10.jpg" alt="Mimimi 10"><h3>Mimimi 10</h3></div>
+        <div class="movie-card" 
+             data-bg="https://images.unsplash.com/photo-1616530940355-351fabd9526b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="https://images.unsplash.com/photo-1616530940355-351fabd9526b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="DHMIS 1">
+          <h3>Episodio 1</h3>
+        </div>
+        <div class="movie-card" 
+             data-bg="https://images.unsplash.com/photo-1616530940355-351fabd9526b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="https://images.unsplash.com/photo-1616530940355-351fabd9526b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="DHMIS 2">
+          <h3>Episodio 2</h3>
+        </div>
+        <div class="movie-card" 
+             data-bg="https://images.unsplash.com/photo-1616530940355-351fabd9526b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+             data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+          <img src="https://images.unsplash.com/photo-1616530940355-351fabd9526b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="DHMIS 3">
+          <h3>Episodio 3</h3>
+        </div>
       </div>
       <button class="slide-btn right-btn">&#10095;</button>
     </div>
 
-    <!-- CATEGORÍA: Ninini -->
-    <h2 class="category-title">Ninini</h2>
-    <div class="slider-container">
-      <button class="slide-btn left-btn">&#10094;</button>
-      <div class="slider">
-        <div class="movie-card" data-bg="images/ninini1_bg.jpg"><img src="images/ninini1.jpg" alt="Ninini 1"><h3>Ninini 1</h3></div>
-        <div class="movie-card" data-bg="images/ninini2_bg.jpg"><img src="images/ninini2.jpg" alt="Ninini 2"><h3>Ninini 2</h3></div>
-        <div class="movie-card" data-bg="images/ninini3_bg.jpg"><img src="images/ninini3.jpg" alt="Ninini 3"><h3>Ninini 3</h3></div>
-        <div class="movie-card" data-bg="images/ninini4_bg.jpg"><img src="images/ninini4.jpg" alt="Ninini 4"><h3>Ninini 4</h3></div>
-        <div class="movie-card" data-bg="images/ninini5_bg.jpg"><img src="images/ninini5.jpg" alt="Ninini 5"><h3>Ninini 5</h3></div>
-        <div class="movie-card" data-bg="images/ninini6_bg.jpg"><img src="images/ninini6.jpg" alt="Ninini 6"><h3>Ninini 6</h3></div>
-        <div class="movie-card" data-bg="images/ninini7_bg.jpg"><img src="images/ninini7.jpg" alt="Ninini 7"><h3>Ninini 7</h3></div>
-        <div class="movie-card" data-bg="images/ninini8_bg.jpg"><img src="images/ninini8.jpg" alt="Ninini 8"><h3>Ninini 8</h3></div>
-        <div class="movie-card" data-bg="images/ninini9_bg.jpg"><img src="images/ninini9.jpg" alt="Ninini 9"><h3>Ninini 9</h3></div>
-        <div class="movie-card" data-bg="images/ninini10_bg.jpg"><img src="images/ninini10.jpg" alt="Ninini 10"><h3>Ninini 10</h3></div>
-      </div>
-      <button class="slide-btn right-btn">&#10095;</button>
-    </div>
   </main>
 
   <!-- FOOTER -->
   <footer class="hbo-footer">
     <p>© 2025 El pero y la pera 🍐 - Todos los derechos reservados</p>
   </footer>
-
-  <!-- SCRIPT -->
-  <script>
-    // Fondo dinámico al pasar por series
+<script>
+    // Efecto de fondo dinámico y cambio de imagen al hacer hover
     const movieCards = document.querySelectorAll(".movie-card");
+    
     movieCards.forEach(card => {
-      card.addEventListener("mouseenter", () => {
-        const bg = card.getAttribute("data-bg");
-        document.body.style.backgroundImage = `url('${bg}')`;
-      });
-      card.addEventListener("mouseleave", () => {
-        document.body.style.backgroundImage = "";
-      });
+        const originalImg = card.querySelector("img").src;
+        const hoverImg = card.getAttribute("data-hover-img");
+        
+        card.addEventListener("mouseenter", () => {
+            // Cambiar fondo de la página
+            const bg = card.getAttribute("data-bg");
+            document.body.style.backgroundImage = `url('${bg}')`;
+            
+            // Cambiar imagen de la tarjeta
+            card.querySelector("img").src = hoverImg;
+        });
+        
+        card.addEventListener("mouseleave", () => {
+            // Restaurar fondo original
+            document.body.style.backgroundImage = "";
+            
+            // Restaurar imagen original
+            card.querySelector("img").src = originalImg;
+        });
     });
 
-    // Buscador de series
+    // BUSCADOR - SOLO SE EJECUTA SI EXISTE EL ELEMENTO .search
     const searchInput = document.querySelector(".search input");
-    const allMovieCards = document.querySelectorAll(".movie-card");
-    const mainContent = document.querySelector("main.hbo-container");
-    const footer = document.querySelector(".hbo-footer");
+    
+    if (searchInput) {
+        const allMovieCards = document.querySelectorAll(".movie-card");
+        const mainContent = document.querySelector("main.hbo-container");
+        const footer = document.querySelector(".hbo-footer");
 
-    let searchResults = document.createElement("div");
-    searchResults.id = "search-results";
-    searchResults.style.display = "none";
-    searchResults.style.justifyContent = "center";
-    searchResults.style.alignItems = "center";
-    searchResults.style.height = "80vh";
-    document.body.appendChild(searchResults);
-
-    searchInput.addEventListener("input", () => {
-      const query = searchInput.value.toLowerCase().trim();
-      if (query === "") {
-        mainContent.style.display = "block";
-        footer.style.display = "block";
+        let searchResults = document.createElement("div");
+        searchResults.id = "search-results";
         searchResults.style.display = "none";
-        document.body.style.backgroundImage = "";
-        return;
-      }
-      mainContent.style.display = "none";
-      footer.style.display = "none";
-      searchResults.style.display = "flex";
-      searchResults.innerHTML = "";
-      const titlesShown = new Set();
-      let found = false;
-      for (let card of allMovieCards) {
-        const title = card.querySelector("h3").textContent.toLowerCase();
-        if (title.includes(query) && !titlesShown.has(title)) {
-          found = true;
-          titlesShown.add(title);
-          const clone = card.cloneNode(true);
-          clone.style.width = "600px";
-          clone.style.height = "900px";
-          clone.querySelector("img").style.height = "90%";
-          searchResults.appendChild(clone);
-          const bg = clone.getAttribute("data-bg");
-          document.body.style.backgroundImage = `url('${bg}')`;
-          break;
-        }
-      }
-      if (!found) {
-        searchResults.innerHTML = "<p style='color:white; font-size:20px;'>No se encontró ninguna serie.</p>";
-        document.body.style.backgroundImage = "";
-      }
-    });
+        searchResults.style.justifyContent = "center";
+        searchResults.style.alignItems = "center";
+        searchResults.style.height = "80vh";
+        document.body.appendChild(searchResults);
 
-    // Slider buttons
+        searchInput.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase().trim();
+            if (query === "") {
+                mainContent.style.display = "block";
+                footer.style.display = "block";
+                searchResults.style.display = "none";
+                document.body.style.backgroundImage = "";
+                return;
+            }
+
+            mainContent.style.display = "none";
+            footer.style.display = "none";
+            searchResults.style.display = "flex";
+            searchResults.innerHTML = "";
+
+            const titlesShown = new Set();
+            let found = false;
+
+            for (let card of allMovieCards) {
+                const title = card.querySelector("h3").textContent.toLowerCase();
+                if (title.includes(query) && !titlesShown.has(title)) {
+                    found = true;
+                    titlesShown.add(title);
+
+                    const clone = card.cloneNode(true);
+                    clone.style.width = "600px";
+                    clone.style.height = "900px";
+                    clone.querySelector("img").style.height = "90%";
+                    searchResults.appendChild(clone);
+
+                    const bg = clone.getAttribute("data-bg");
+                    document.body.style.backgroundImage = `url('${bg}')`;
+                    break;
+                }
+            }
+
+            if (!found) {
+                searchResults.innerHTML = "<p style='color:white; font-size:20px;'>No se encontró ninguna serie.</p>";
+                document.body.style.backgroundImage = "";
+            }
+        });
+    } else {
+        console.log("Buscador no encontrado - continuando sin funcionalidad de búsqueda");
+    }
+
+    // Slider buttons - ESTO AHORA DEBERÍA FUNCIONAR
     document.querySelectorAll('.slider-container').forEach(container => {
-      const slider = container.querySelector('.slider');
-      const leftBtn = container.querySelector('.left-btn');
-      const rightBtn = container.querySelector('.right-btn');
+        const slider = container.querySelector('.slider');
+        const leftBtn = container.querySelector('.left-btn');
+        const rightBtn = container.querySelector('.right-btn');
 
-      leftBtn.addEventListener('click', () => {
-        slider.scrollBy({ left: -400, behavior: 'smooth' });
-      });
-      rightBtn.addEventListener('click', () => {
-        slider.scrollBy({ left: 400, behavior: 'smooth' });
-      });
+        // Verificar que los elementos existen antes de añadir eventos
+        if (leftBtn && slider) {
+            leftBtn.addEventListener('click', () => {
+                slider.scrollBy({ left: -400, behavior: 'smooth' });
+            });
+        }
+
+        if (rightBtn && slider) {
+            rightBtn.addEventListener('click', () => {
+                slider.scrollBy({ left: 400, behavior: 'smooth' });
+            });
+        }
     });
-  </script>
+
+    // Efecto de tarjetas que empujan a las adyacentes - AJUSTADO
+    const sliders = document.querySelectorAll('.slider');
+
+    sliders.forEach(slider => {
+        const cards = slider.querySelectorAll('.movie-card');
+
+        cards.forEach((card, i) => {
+            const categoryTitle = slider.closest('.slider-container').previousElementSibling;
+            const originalTitle = categoryTitle.textContent;
+
+            card.addEventListener('mouseenter', () => {
+                // Solo afectar a las tarjetas inmediatamente adyacentes
+                cards.forEach((other, j) => {
+                    if (i === j) {
+                        other.style.transform = `scale(1.05)`;
+                        other.style.zIndex = '10';
+                    } else if (j === i - 1 || j === i + 1) {
+                        // Solo las tarjetas inmediatamente adyacentes se mueven
+                        const direction = j < i ? -1 : 1;
+                        const offset = direction * 30; // Reducido de 40-50px a 30px
+                        other.style.transform = `translateX(${offset}px)`;
+                    } else {
+                        // Las demás tarjetas no se mueven
+                        other.style.transform = 'translateX(0)';
+                    }
+                });
+
+                // Cambiar título de la categoría al nombre de la tarjeta
+                categoryTitle.textContent = card.querySelector('h3').textContent;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                cards.forEach(other => {
+                    other.style.transform = 'scale(1) translateX(0)';
+                    other.style.zIndex = '1';
+                });
+
+                // Restaurar título original
+                categoryTitle.textContent = originalTitle;
+            });
+        });
+    });
+</script>
 </body>
 </html>
