@@ -937,6 +937,10 @@
         <button class="copy-btn" onclick="copyToClipboard('https://www.cinecalidad.rs/')">Copy</button>
         <a href="https://www.cinecalidad.rs/" target="_blank">Películas Cinecalidad</a>
     </li>
+    <li>
+        <button class="copy-btn" onclick="copyToClipboard('https://auto-info.gratis/es/')">Copy</button>
+        <a href="https://auto-info.gratis/es/" target="_blank">Averiguar coche por matrícula</a>
+    </li>
         </ul>
     </div>
 
