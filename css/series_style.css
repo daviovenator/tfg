@@ -38,8 +38,8 @@ body {
 
 .logo h1 {
   font-size: 1.8rem;
-  color: #fafafa;
-  text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+  color: #ffffff;
+  text-shadow: none;
 }
 
 /* Navegación CENTRADA */
