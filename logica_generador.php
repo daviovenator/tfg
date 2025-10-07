@@ -17,19 +17,22 @@ class GeneradorTarjetasWeb {
                 'fondo' => 'linear-gradient(135deg, #1a1f71 0%, #3a5ccc 100%)',
                 'color_texto' => '#ffffff',
                 'logo_color' => '#ffffff',
-                'nombre' => 'VISA'
+                'nombre' => 'VISA',
+                'logo' => 'VISA'
             ],
             'mastercard' => [
                 'fondo' => 'linear-gradient(135deg, #eb001b 0%, #f79e1b 100%)',
                 'color_texto' => '#ffffff',
                 'logo_color' => '#ffffff',
-                'nombre' => 'MasterCard'
+                'nombre' => 'MasterCard',
+                'logo' => 'MASTERCARD'
             ],
             'amex' => [
                 'fondo' => 'linear-gradient(135deg, #0070ba 0%, #2e7ebd 100%)',
                 'color_texto' => '#ffffff',
                 'logo_color' => '#ffffff',
-                'nombre' => 'American Express'
+                'nombre' => 'American Express',
+                'logo' => 'AMEX'
             ]
         ];
     }
@@ -189,10 +192,10 @@ class GeneradorTarjetasWeb {
         
         return [
             'calle' => "C/ $calle, $numero",
-            'piso' => "$pisoº $puerta",
+            'piso' => "{$piso}º $puerta", // CORREGIDO: quitado el º del nombre de variable
             'ciudad' => $ciudad,
             'codigo_postal' => $codigo_postal,
-            'completa' => "C/ $calle, $numero, $pisoº $puerta, $codigo_postal $ciudad"
+            'completa' => "C/ $calle, $numero, {$piso}º $puerta, $codigo_postal $ciudad" // CORREGIDO
         ];
     }
 
@@ -225,41 +228,55 @@ class GeneradorTarjetasWeb {
         $estilo = $datos_tarjeta['estilo_tarjeta'];
         
         $html = "
-        <div class='tarjeta' style='
-            background: {$estilo['fondo']};
-            color: {$estilo['color_texto']};
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            font-family: Arial, sans-serif;
-            width: 400px;
-            height: 250px;
-            position: relative;
-            overflow: hidden;
-        '>
-            <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;'>
-                <div style='font-size: 24px; font-weight: bold;'>{$estilo['nombre']}</div>
-                <div style='font-size: 18px; opacity: 0.9;'>● ● ● ●</div>
-            </div>
-            
-            <div style='font-size: 22px; letter-spacing: 2px; margin-bottom: 30px; font-weight: bold;'>
-                {$datos_tarjeta['numero_tarjeta']}
-            </div>
-            
-            <div style='display: flex; justify-content: space-between; align-items: flex-end;'>
-                <div>
-                    <div style='font-size: 12px; opacity: 0.8;'>TITULAR</div>
-                    <div style='font-size: 16px; font-weight: bold;'>{$datos_tarjeta['nombre_completo']}</div>
+        <div style='display: flex; justify-content: center; margin: 20px 0;'>
+            <div class='tarjeta' style='
+                background: {$estilo['fondo']};
+                color: {$estilo['color_texto']};
+                border-radius: 20px;
+                padding: 30px;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+                font-family: \"Arial\", sans-serif;
+                width: 450px;
+                height: 280px;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.3s ease;
+            ' onmouseover='this.style.transform=\"rotateY(5deg)\"' onmouseout='this.style.transform=\"rotateY(0deg)\"'>
+                
+                <!-- Logo de la tarjeta -->
+                <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;'>
+                    <div style='font-size: 28px; font-weight: bold; letter-spacing: 1px;'>{$estilo['logo']}</div>
+                    <div style='font-size: 20px; opacity: 0.9;'>● ● ● ●</div>
                 </div>
-                <div>
-                    <div style='font-size: 12px; opacity: 0.8;'>EXPIRA</div>
-                    <div style='font-size: 16px; font-weight: bold;'>{$datos_tarjeta['fecha_expiracion']}</div>
+                
+                <!-- Número de tarjeta -->
+                <div style='font-size: 24px; letter-spacing: 3px; margin-bottom: 40px; font-weight: bold; text-align: center;'>
+                    {$datos_tarjeta['numero_tarjeta']}
                 </div>
-            </div>
-            
-            <div style='position: absolute; bottom: 20px; right: 25px; font-size: 14px; opacity: 0.7;'>
-                CVV: {$datos_tarjeta['codigo_seguridad']}
+                
+                <!-- Información inferior -->
+                <div style='display: flex; justify-content: space-between; align-items: flex-end;'>
+                    <div style='flex: 2;'>
+                        <div style='font-size: 12px; opacity: 0.8; margin-bottom: 5px;'>TITULAR</div>
+                        <div style='font-size: 16px; font-weight: bold; letter-spacing: 1px;'>{$datos_tarjeta['nombre_completo']}</div>
+                    </div>
+                    <div style='flex: 1; text-align: right;'>
+                        <div style='font-size: 12px; opacity: 0.8; margin-bottom: 5px;'>EXPIRA</div>
+                        <div style='font-size: 18px; font-weight: bold;'>{$datos_tarjeta['fecha_expiracion']}</div>
+                    </div>
+                </div>
+                
+                <!-- Chip y CVV -->
+                <div style='position: absolute; bottom: 25px; right: 30px; display: flex; align-items: center; gap: 15px;'>
+                    <div style='width: 40px; height: 30px; background: linear-gradient(45deg, gold, orange); border-radius: 5px;'></div>
+                    <div style='font-size: 14px; opacity: 0.8;'>
+                        CVV: {$datos_tarjeta['codigo_seguridad']}
+                    </div>
+                </div>
+                
+                <!-- Efectos decorativos -->
+                <div style='position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%;'></div>
+                <div style='position: absolute; bottom: -30px; left: -30px; width: 100px; height: 100px; background: rgba(255,255,255,0.05); border-radius: 50%;'></div>
             </div>
         </div>";
         
@@ -267,28 +284,118 @@ class GeneradorTarjetasWeb {
     }
 }
 
-// Ejemplo de uso
+// Ejemplo de uso con formulario para seleccionar tipo
+echo "
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Generador de Tarjetas de Prueba</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        select, button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            margin: 0 10px;
+        }
+        select {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        .tarjeta-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .datos-tarjeta {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .datos-tarjeta h3 {
+            margin-top: 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <h1>🎴 Generador de Tarjetas de Prueba</h1>
+        
+        <div class='form-group'>
+            <form method='POST'>
+                <select name='tipo_tarjeta'>
+                    <option value='visa'>VISA</option>
+                    <option value='mastercard'>MasterCard</option>
+                    <option value='amex'>American Express</option>
+                </select>
+                <button type='submit' name='generar'>Generar Tarjeta</button>
+            </form>
+        </div>
+";
+
+// Generar tarjeta según selección
 $generador = new GeneradorTarjetasWeb();
+$tipo_seleccionado = $_POST['tipo_tarjeta'] ?? 'visa';
 
-// Generar tarjetas de diferentes tipos
-$tipos = ['visa', 'mastercard', 'amex'];
-
-foreach ($tipos as $tipo) {
-    $tarjeta = $generador->generarTarjetaCompleta($tipo);
+if (isset($_POST['generar'])) {
+    $tarjeta = $generador->generarTarjetaCompleta($tipo_seleccionado);
     
-    echo "<h3>Tarjeta {$tarjeta['tipo_tarjeta']} Generada:</h3>";
+    echo "<h2 style='text-align: center; color: #333;'>Tarjeta {$tarjeta['tipo_tarjeta']} Generada</h2>";
     echo $generador->mostrarTarjetaHTML($tarjeta);
     
-    echo "<div style='background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 8px;'>";
-    echo "<strong>Datos completos:</strong><br>";
-    echo "Nombre: {$tarjeta['nombre_completo']}<br>";
-    echo "Email: {$tarjeta['email']}<br>";
-    echo "Teléfono: {$tarjeta['telefono']}<br>";
-    echo "Dirección: {$tarjeta['direccion_completa']}<br>";
-    echo "Número: {$tarjeta['numero_tarjeta']}<br>";
-    echo "Expira: {$tarjeta['fecha_expiracion']}<br>";
-    echo "CVV: {$tarjeta['codigo_seguridad']}<br>";
+    echo "<div class='datos-tarjeta'>";
+    echo "<h3>📋 Datos Completos de la Tarjeta:</h3>";
+    echo "<strong>👤 Nombre:</strong> {$tarjeta['nombre_completo']}<br>";
+    echo "<strong>📧 Email:</strong> {$tarjeta['email']}<br>";
+    echo "<strong>📞 Teléfono:</strong> {$tarjeta['telefono']}<br>";
+    echo "<strong>🏠 Dirección:</strong> {$tarjeta['direccion_completa']}<br>";
+    echo "<strong>💳 Número:</strong> {$tarjeta['numero_tarjeta']}<br>";
+    echo "<strong>📅 Expira:</strong> {$tarjeta['fecha_expiracion']}<br>";
+    echo "<strong>🔒 CVV:</strong> {$tarjeta['codigo_seguridad']}<br>";
+    echo "<strong>🎴 Tipo:</strong> {$tarjeta['tipo_tarjeta']}<br>";
     echo "</div>";
-    echo "<hr>";
 }
+
+echo "
+    </div>
+</body>
+</html>
+";
 ?>
