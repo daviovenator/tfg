@@ -214,7 +214,7 @@
         
         <div class="footer">
             <p>🔐 Este generador crea números que pasan validación Luhn pero NO son reales</p>
-            <p>Úsalo solo para pruebas legítimas de desarrollo</p>
+            <p>Diseñado solo para pruebas legítimas de desarrollo</p>
         </div>
     </div>
 </body>
