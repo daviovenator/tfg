@@ -941,6 +941,10 @@
         <button class="copy-btn" onclick="copyToClipboard('https://auto-info.gratis/es/')">Copy</button>
         <a href="https://auto-info.gratis/es/" target="_blank">Averiguar coche por matrícula</a>
     </li>
+        <li>
+        <button class="copy-btn" onclick="copyToClipboard('https://ww3.monoschinos3.com/')">Copy</button>
+        <a href="https://ww3.monoschinos3.com/" target="_blank">Descargar Anime</a>
+    </li>
         </ul>
     </div>
 
