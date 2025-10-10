@@ -190,6 +190,31 @@
 
   <!-- SCRIPT -->
 <script>
+  // === Efecto de Ascuas ===
+  function crearAscua() {
+    const ascua = document.createElement('div');
+    ascua.classList.add('ascua');
+
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * window.innerHeight;
+    const dx = (Math.random() - 0.5) * 400 + 'px';
+    const dy = (Math.random() - 0.5) * 400 + 'px';
+
+    ascua.style.left = startX + 'px';
+    ascua.style.top = startY + 'px';
+    ascua.style.setProperty('--dx', dx);
+    ascua.style.setProperty('--dy', dy);
+
+    document.body.appendChild(ascua);
+
+    setTimeout(() => ascua.remove(), 4000);
+  }
+
+  // Iniciar efecto de ascuas
+  setInterval(() => {
+    for (let i = 0; i < 5; i++) crearAscua();
+  }, 300);
+
   // === Cambio automático Lilo & Stitch con enlace y fondo ===
   const liloCard = document.getElementById('lilo-card');
   const liloLink = document.getElementById('lilo-link');
