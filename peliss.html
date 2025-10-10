@@ -187,9 +187,102 @@
   <footer class="hbo-footer">
     <p>© Helado amarillo😮‍💨</p>
   </footer>
-
-  <!-- SCRIPT -->
 <script>
+  // === Efecto de Corazones Voladores ===
+  function crearAve() {
+    const ave = document.createElement('div');
+    ave.classList.add('ave');
+    
+    // Variedad de corazones
+    const corazones = ['❤️', '💖', '💕', '💘', '💓', '💗', '💞', '😍', '😻'];
+    const corazonAleatorio = corazones[Math.floor(Math.random() * corazones.length)];
+    
+    // Tamaño aleatorio
+    const tamano = 30 + Math.random() * 30; // Entre 30px y 60px
+
+    ave.innerHTML = `
+      <div style="
+        width: ${tamano}px; 
+        height: ${tamano}px; 
+        font-size: ${tamano}px; 
+        line-height: 1;
+        text-align: center;
+      ">${corazonAleatorio}</div>
+    `;
+    
+    // Posición inicial (fuera de la pantalla por la izquierda)
+    const startX = -50;
+    const startY = Math.random() * window.innerHeight;
+    
+    // Posición donde se posará (punto medio)
+    const perchX = 100 + Math.random() * (window.innerWidth - 200);
+    const perchY = 100 + Math.random() * (window.innerHeight - 200);
+    
+    // Posición final (fuera de la pantalla por la derecha)
+    const endX = window.innerWidth + 50;
+    const endY = Math.random() * window.innerHeight;
+
+    // Estilos del ave
+    ave.style.position = 'fixed';
+    ave.style.left = startX + 'px';
+    ave.style.top = startY + 'px';
+    ave.style.width = tamano + 'px';
+    ave.style.height = tamano + 'px';
+    ave.style.zIndex = '9998';
+    ave.style.pointerEvents = 'none';
+    ave.style.transition = 'all 2s ease-in-out';
+
+    document.body.appendChild(ave);
+
+    // Fase 1: Volar hasta la posición de descanso (2 segundos)
+    setTimeout(() => {
+      ave.style.left = perchX + 'px';
+      ave.style.top = perchY + 'px';
+    }, 1700);
+
+    // Fase 2: Esperar 10 segundos posado
+    setTimeout(() => {
+      // Fase 3: Volar hacia fuera de la pantalla (2 segundos)
+      ave.style.left = endX + 'px';
+      ave.style.top = endY + 'px';
+      
+      // Eliminar el ave después de salir
+      setTimeout(() => {
+        if (ave.parentNode) {
+          ave.remove();
+        }
+      }, 4000);
+    }, 8100); // 2 segundos de vuelo + 10 segundos posado
+
+    // Crear efecto de aleteo sutil
+    let flapCount = 0;
+    const flapInterval = setInterval(() => {
+      if (flapCount % 2 === 0) {
+        ave.style.transform = 'translateY(-2px)';
+      } else {
+        ave.style.transform = 'translateY(2px)';
+      }
+      flapCount++;
+    }, 300);
+
+    // Limpiar el intervalo cuando el ave desaparezca
+    setTimeout(() => {
+      clearInterval(flapInterval);
+    }, 14100); // 2s vuelo + 10s posado + 2s salida
+  }
+
+  // Intervalo para crear aves (cada 4 segundos)
+  setInterval(() => {
+    if (Math.random() > 0.5) { // 50% de probabilidad
+      crearAve();
+    }
+  }, 4000);
+
+  // Crear un ave inicial para probar
+  setTimeout(() => {
+    crearAve();
+  }, 2000);
+
   // === Efecto de Ascuas ===
   function crearAscua() {
     const ascua = document.createElement('div');
@@ -264,6 +357,5 @@
   // Fondo inicial al cargar
   setHBOBackground(liloImages[liloIndex].bg);
 </script>
-
 </body>
 </html>
