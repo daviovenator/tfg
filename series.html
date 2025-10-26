@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>📺 Taquilla de Series - Estilo HBO</title>
   <link rel="stylesheet" href="css/series_style.css">
+
 </head>
 <body>
   <!-- HEADER -->
@@ -21,6 +22,26 @@
     </nav>
   </header>
 
+  <!-- REPRODUCTOR DE VIDEO -->
+  <div id="videoOverlay" class="video-overlay">
+    <div class="video-container">
+      <button class="close-btn" onclick="closeVideo()">×</button>
+      <div class="loading" id="loading" style="display: none;">Cargando video...</div>
+      <iframe id="videoPlayer" class="video-player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+      </iframe>
+      <div class="video-info">
+        <h3 id="videoTitle" class="video-title"></h3>
+        <div class="chapter-controls">
+          <button class="chapter-btn" id="prevChapter" onclick="playPreviousChapter()" disabled>← Anterior</button>
+          <button class="chapter-btn" id="nextChapter" onclick="playNextChapter()" disabled>Siguiente →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- MAIN CONTENT -->
   <main class="hbo-container">
 
@@ -29,88 +50,88 @@
     <div class="slider-container">
       <button class="slide-btn left-btn">&#10094;</button>
       <div class="slider">
-<div class="movie-card" 
-     data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
-     data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1MVbntqZTJDRK7_oy0g9cciASp3T4vCp7/view?usp=sharing', '_blank')">
-  <img src="img/JV-7Uk-KHeeQ.jpg" alt="Devilman 1">
-  <h3>Capítulo 1</h3>
-</div>
-
-<div class="movie-card" 
-     data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
-     data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/13ZBEPfVwHbAr1OVtU5ElvfHOCo1HulHG/view?usp=sharing', '_blank')">
-  <img src="img/Devilman-Crybaby-02-11.jpg" alt="Devilman 2">
-  <h3>Capítulo 2</h3>
-</div>
-
-<div class="movie-card" 
-     data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
-     data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1sPa32A51AYtwpS4zlDyCI6R-GDTNohPy/view?usp=sharing', '_blank')">
-  <img src="img/1_sN7qRbX4wYIbq1ztiiWhyA.jpg" alt="Devilman 3">
-  <h3>Capítulo 3</h3>
-</div>
-
-<div class="movie-card" 
-     data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
-     data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1Nv41kiSOnJDsfH9fUiRmIR9P5GuHEQpz/view?usp=sharing', '_blank')">
-  <img src="img/q7zsi0TYPLomrsUbnzdOOBaXW4R.webp" alt="Devilman 4">
-  <h3>Capítulo 4</h3>
-</div>
-
-<div class="movie-card"
-     data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
-     data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1KpUbF0K2BcSv4Duj-8G3V83NdspWv6an/view?usp=sharing', '_blank')">
-  <img src="img/1200x675.jpg" alt="Devilman 5">
-  <h3>Capítulo 5</h3>
-</div>
-
-<div class="movie-card"
-     data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
-     data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1sheHt9h-giB0ufNzQIQltFIt7mBdcxh-/view?usp=sharing', '_blank')">
-  <img src="img/2948e58b670859008b44cb2264adb5f4.jpg" alt="Devilman 6">
-  <h3>Capítulo 6</h3>
-</div>
-
-<div class="movie-card"
-     data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
-     data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1YjRdo3uLN2_JyHD74Fl2zoQjCmwEsjm9/view?usp=sharing', '_blank')">
-  <img src="img/076ae73c2e3f36793c6669a5a6cd4ceb.jpg" alt="Devilman 7">
-  <h3>Capítulo 7</h3>
-</div>
-
-<div class="movie-card"
-     data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
-     data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1RcajK85SuvmqxApU2B2WUlGmMzRLIkbF/view?usp=sharing', '_blank')">
-  <img src="img/5-1.jpg" alt="Devilman 8">
-  <h3>Capítulo 8</h3>
-</div>
-
-<div class="movie-card"
-     data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
-     data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1P71jIqo5Uy6r85JQDDd5IlHxGgq00zzS/view?usp=sharing', '_blank')">
-  <img src="img/fobMpMg2UVdXEObAF.jpg" alt="Devilman 9">
-  <h3>Capítulo 9</h3>
-</div>
-
-<div class="movie-card"
-     data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
-     data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1is1NbDhPGBAgnGaAeRRHZYSJLEr0edz6/view?usp=sharing', '_blank')">
-  <img src="img/vkuvHjPelJegMv22AeNT2npB5qC.webp" alt="Devilman 10">
-  <h3>Capítulo 10</h3>
-</div>
-
-      </div>
-      <button class="slide-btn right-btn">&#10095;</button>
+            <!-- Devilman cards aquí -->
+            <div class="movie-card" 
+                 data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+                 data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 onclick="playVideo('1MVbntqZTJDRK7_oy0g9cciASp3T4vCp7', 'Devilman - Capítulo 1', 'devilman', 0)">
+                <img src="img/JV-7Uk-KHeeQ.jpg" alt="Devilman 1">
+                <h3>Capítulo 1</h3>
+            </div>
+            
+            <div class="movie-card" 
+                 data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+                 data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 onclick="playVideo('13ZBEPfVwHbAr1OVtU5ElvfHOCo1HulHG', 'Devilman - Capítulo 2', 'devilman', 1)">
+                <img src="img/Devilman-Crybaby-02-11.jpg" alt="Devilman 2">
+                <h3>Capítulo 2</h3>
+            </div>
+            
+            <div class="movie-card" 
+                 data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+                 data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 onclick="playVideo('1sPa32A51AYtwpS4zlDyCI6R-GDTNohPy', 'Devilman - Capítulo 3', 'devilman', 2)">
+                <img src="img/1_sN7qRbX4wYIbq1ztiiWhyA.jpg" alt="Devilman 3">
+                <h3>Capítulo 3</h3>
+            </div>
+            
+            <div class="movie-card" 
+                 data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+                 data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 onclick="playVideo('1Nv41kiSOnJDsfH9fUiRmIR9P5GuHEQpz', 'Devilman - Capítulo 4', 'devilman', 3)">
+                <img src="img/q7zsi0TYPLomrsUbnzdOOBaXW4R.webp" alt="Devilman 4">
+                <h3>Capítulo 4</h3>
+            </div>
+            
+            <div class="movie-card"
+                 data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+                 data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 onclick="playVideo('1KpUbF0K2BcSv4Duj-8G3V83NdspWv6an', 'Devilman - Capítulo 5', 'devilman', 4)">
+                <img src="img/1200x675.jpg" alt="Devilman 5">
+                <h3>Capítulo 5</h3>
+            </div>
+            
+            <div class="movie-card"
+                 data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+                 data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 onclick="playVideo('1sheHt9h-giB0ufNzQIQltFIt7mBdcxh-', 'Devilman - Capítulo 6', 'devilman', 5)">
+                <img src="img/2948e58b670859008b44cb2264adb5f4.jpg" alt="Devilman 6">
+                <h3>Capítulo 6</h3>
+            </div>
+            
+            <div class="movie-card"
+                 data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+                 data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 onclick="playVideo('1YjRdo3uLN2_JyHD74Fl2zoQjCmwEsjm9', 'Devilman - Capítulo 7', 'devilman', 6)">
+                <img src="img/076ae73c2e3f36793c6669a5a6cd4ceb.jpg" alt="Devilman 7">
+                <h3>Capítulo 7</h3>
+            </div>
+            
+            <div class="movie-card"
+                 data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+                 data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 onclick="playVideo('1RcajK85SuvmqxApU2B2WUlGmMzRLIkbF', 'Devilman - Capítulo 8', 'devilman', 7)">
+                <img src="img/5-1.jpg" alt="Devilman 8">
+                <h3>Capítulo 8</h3>
+            </div>
+            
+            <div class="movie-card"
+                 data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+                 data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 onclick="playVideo('1P71jIqo5Uy6r85JQDDd5IlHxGgq00zzS', 'Devilman - Capítulo 9', 'devilman', 8)">
+                <img src="img/fobMpMg2UVdXEObAF.jpg" alt="Devilman 9">
+                <h3>Capítulo 9</h3>
+            </div>
+            
+            <div class="movie-card"
+                 data-bg="img/baby-illustration-u1t33tm5vx2th0qc.jpg"
+                 data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                 onclick="playVideo('1is1NbDhPGBAgnGaAeRRHZYSJLEr0edz6', 'Devilman - Capítulo 10', 'devilman', 9)">
+                <img src="img/vkuvHjPelJegMv22AeNT2npB5qC.webp" alt="Devilman 10">
+                <h3>Capítulo 10</h3>
+            </div>
+        </div>
+        <button class="slide-btn right-btn">&#10095;</button>
     </div>
 
     <!-- CATEGORÍA: Don't Hug Me I'm Scared -->
@@ -121,7 +142,7 @@
 <div class="movie-card" 
      data-bg="img/MzVhXkEyXkFqcGc@._V1_.jpg"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1MDCh5Zdjto9pVasOhmMptyjIFP_TqC-I/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1MDCh5Zdjto9pVasOhmMptyjIFP_TqC-I/preview', 'DHMIS - Episodio 1', 'dhmis1', 0)">
   <img src="img/maxresdefault.jpg" alt="DHMIS 1">
   <h3>Episodio 1</h3>
 </div>
@@ -129,7 +150,7 @@
 <div class="movie-card" 
      data-bg="img/MzVhXkEyXkFqcGc@._V1_.jpg"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1pXpnapq8GeO3pS9l5zYC-ifUffxx9KJD/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1pXpnapq8GeO3pS9l5zYC-ifUffxx9KJD/preview', 'DHMIS - Episodio 2', 'dhmis1', 1)">
   <img src="img/17b8559.jpg" alt="DHMIS 2">
   <h3>Episodio 2</h3>
 </div>
@@ -137,7 +158,7 @@
 <div class="movie-card" 
      data-bg="img/MzVhXkEyXkFqcGc@._V1_.jpg"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1Lu-f124MvtTjYGorrXH5iew2jOoQdMiA/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1Lu-f124MvtTjYGorrXH5iew2jOoQdMiA/preview', 'DHMIS - Episodio 3', 'dhmis1', 2)">
   <img src="img/7a4f86fbd.jpg" alt="DHMIS 3">
   <h3>Episodio 3</h3>
 </div>
@@ -145,7 +166,7 @@
 <div class="movie-card"
      data-bg="img/MzVhXkEyXkFqcGc@._V1_.jpg"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1-mZJiXZG2HPQQtuXQuo73dg_ycWmrTMX/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1-mZJiXZG2HPQQtuXQuo73dg_ycWmrTMX/preview', 'DHMIS - Episodio 4', 'dhmis1', 3)">
   <img src="img/-1215564571dc.jpg" alt="DHMIS 4">
   <h3>Episodio 4</h3>
 </div>
@@ -153,7 +174,7 @@
 <div class="movie-card"
      data-bg="img/MzVhXkEyXkFqcGc@._V1_.jpg"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/16azVU70PnwzBsGr9ikj9_WihQcyd-NmC/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/16azVU70PnwzBsGr9ikj9_WihQcyd-NmC/preview', 'DHMIS - Episodio 5', 'dhmis1', 4)">
   <img src="img/Food.webp" alt="DHMIS 5">
   <h3>Episodio 5</h3>
 </div>
@@ -161,7 +182,7 @@
 <div class="movie-card"
      data-bg="img/MzVhXkEyXkFqcGc@._V1_.jpg"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/12tCN0CvMxmUkjdipjSy1vCr0tr6dJwNU/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/12tCN0CvMxmUkjdipjSy1vCr0tr6dJwNU/preview', 'DHMIS - Episodio 6', 'dhmis1', 5)">
   <img src="img/Dreams.webp" alt="DHMIS 6">
   <h3>Episodio 6</h3>
 </div>
@@ -169,7 +190,7 @@
 <div class="movie-card"
      data-bg="img/MzVhXkEyXkFqcGc@._V1_.jpg"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1n0Mc8TBHhbPCWp3xzJnleWbMcaBSvhSz/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1n0Mc8TBHhbPCWp3xzJnleWbMcaBSvhSz/preview', 'DHMIS - Episodio 7', 'dhmis1', 6)">
   <img src="img/ma22xresdefault.jpg" alt="DHMIS 7">
   <h3>Episodio 7</h3>
 </div>
@@ -177,7 +198,7 @@
 <div class="movie-card"
      data-bg="img/MzVhXkEyXkFqcGc@._V1_.jpg"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/11AKRmpsCSJ7r0kozYyR-h4hnBLIdkdhe/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/11AKRmpsCSJ7r0kozYyR-h4hnBLIdkdhe/preview', 'DHMIS - Episodio 8', 'dhmis1', 7)">
   <img src="img/7y7maxresdefault.jpg" alt="DHMIS 8">
   <h3>Episodio 8</h3>
 </div>
@@ -185,7 +206,7 @@
 <div class="movie-card"
      data-bg="img/MzVhXkEyXkFqcGc@._V1_.jpg"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1Xc6lcGgB8FkRkAQggd1FjnhJZk4biSvx/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1Xc6lcGgB8FkRkAQggd1FjnhJZk4biSvx/preview', 'DHMIS - Episodio 9', 'dhmis1', 8)">
   <img src="img/FqcGc@._V1_.jpg" alt="DHMIS 9">
   <h3>Episodio 9</h3>
 </div>
@@ -193,15 +214,15 @@
 <div class="movie-card"
      data-bg="img/MzVhXkEyXkFqcGc@._V1_.jpg"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1L861mYbpE-bkCH3tu_IybvRwpX6gslfA/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1L861mYbpE-bkCH3tu_IybvRwpX6gslfA/preview', 'DHMIS - Episodio 10', 'dhmis1', 9)">
   <img src="img/FqcGssc@._V1_.jpg" alt="DHMIS 10">
   <h3>Episodio 10</h3>
 </div>
-
       </div>
       <button class="slide-btn right-btn">&#10095;</button>
     </div>
-    <!-- CATEGORÍA: Don't Hug Me I'm Scared -->
+
+    <!-- CATEGORÍA: Don't Hug Me I'm Scared Temporada 2 -->
     <h2 class="category-title">Don't Hug Me I'm Scared (Temporada 2)</h2>
     <div class="slider-container">
       <button class="slide-btn left-btn">&#10094;</button>
@@ -209,7 +230,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1w57J_Bex7E2luR-wXMJ3aSCEHcyvcoiE/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1w57J_Bex7E2luR-wXMJ3aSCEHcyvcoiE/preview', 'DHMIS Temporada 2 - Episodio 1', 'dhmis2', 0)">
   <img src="img/dihsjjSin título.jpeg" alt="DHMISt2 1">
   <h3>Episodio 1</h3>
 </div>
@@ -217,7 +238,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1KuWIl5sofHm88buRokpALuNo3kKVGGh3/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1KuWIl5sofHm88buRokpALuNo3kKVGGh3/preview', 'DHMIS Temporada 2 - Episodio 2', 'dhmis2', 1)">
   <img src="img/aaaDont-Hug-Me-Im-Scared.jpg" alt="DHMISt2 2">
   <h3>Episodio 2</h3>
 </div>
@@ -225,7 +246,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1BhbX6DpDPMNR_FVXbSch9u0iZG2HYMlz/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1BhbX6DpDPMNR_FVXbSch9u0iZG2HYMlz/preview', 'DHMIS Temporada 2 - Episodio 3', 'dhmis2', 2)">
   <img src="img/jsnmaxresdefault.jpg" alt="DHMISt2 3">
   <h3>Episodio 3</h3>
 </div>
@@ -233,7 +254,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1hVA50UMgCzPitACgTlk0uyBlUrfWhFyB/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1hVA50UMgCzPitACgTlk0uyBlUrfWhFyB/preview', 'DHMIS Temporada 2 - Episodio 4', 'dhmis2', 3)">
   <img src="img/jmes-1024x682.jpg" alt="DHMISt2 4">
   <h3>Episodio 4</h3>
 </div>
@@ -241,7 +262,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1f_MGKhYviPleDSti-O3st2jZ-5NpIFn2/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1f_MGKhYviPleDSti-O3st2jZ-5NpIFn2/preview', 'DHMIS Temporada 2 - Episodio 5', 'dhmis2', 4)">
   <img src="img/donthugme.jpg" alt="DHMISt2 5">
   <h3>Episodio 5</h3>
 </div>
@@ -249,7 +270,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1UHIKqk1pnabaOGtH23tQerVU4p3RGfP1/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1UHIKqk1pnabaOGtH23tQerVU4p3RGfP1/preview', 'DHMIS Temporada 2 - Episodio 6', 'dhmis2', 5)">
   <img src="img/smefault.jpg" alt="DHMISt2 6">
   <h3>Episodio 6</h3>
 </div>
@@ -257,7 +278,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1G7jXuGtkafWXlpDJzXV5MQM4Azf5z9u7/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1G7jXuGtkafWXlpDJzXV5MQM4Azf5z9u7/preview', 'DHMIS Temporada 2 - Episodio 7', 'dhmis2', 6)">
   <img src="img/qcGc@._V1_.jpg" alt="DHMISt2 7">
   <h3>Episodio 7</h3>
 </div>
@@ -265,7 +286,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1GiDv3RySv7-R0Pv2n-Vhrp-fmLkBamm5/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1GiDv3RySv7-R0Pv2n-Vhrp-fmLkBamm5/preview', 'DHMIS Temporada 2 - Episodio 8', 'dhmis2', 7)">
   <img src="img/cared-Ep1-.avif" alt="DHMISt2 8">
   <h3>Episodio 8</h3>
 </div>
@@ -273,7 +294,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1C8oljNFG89F9uz4leNmWMwYfTfl1WW4P/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1C8oljNFG89F9uz4leNmWMwYfTfl1WW4P/preview', 'DHMIS Temporada 2 - Episodio 9', 'dhmis2', 8)">
   <img src="img/red-7346f3d.jpg" alt="DHMISt2 9">
   <h3>Episodio 9</h3>
 </div>
@@ -281,7 +302,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1E457BMfoy8iHMY_8xJvKmdk3eMIG69xn/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1E457BMfoy8iHMY_8xJvKmdk3eMIG69xn/preview', 'DHMIS Temporada 2 - Episodio 10', 'dhmis2', 9)">
   <img src="img/388_.jpg" alt="DHMISt2 10">
   <h3>Episodio 10</h3>
 </div>
@@ -289,7 +310,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1704hcEMKHeilXsOnxtywLbclUy9xiGET/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1704hcEMKHeilXsOnxtywLbclUy9xiGET/preview', 'DHMIS Temporada 2 - Episodio 11', 'dhmis2', 10)">
   <img src="img/e-Back-Im-Scared-header.avif" alt="DHMISt2 11">
   <h3>Episodio 11</h3>
 </div>
@@ -297,7 +318,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1nYBDUkqzmzm5O40DeGGIXW5KRYBtDqq6/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1nYBDUkqzmzm5O40DeGGIXW5KRYBtDqq6/preview', 'DHMIS Temporada 2 - Episodio 12', 'dhmis2', 11)">
   <img src="img/csdt.jpg" alt="DHMISt2 12">
   <h3>Episodio 12</h3>
 </div>
@@ -305,7 +326,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1Uacq9lC6B5zH3AI2Vfvy55ZGamPA61YJ/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1Uacq9lC6B5zH3AI2Vfvy55ZGamPA61YJ/preview', 'DHMIS Temporada 2 - Episodio 13', 'dhmis2', 12)">
   <img src="img/00.jpeg" alt="DHMISt2 13">
   <h3>Episodio 13</h3>
 </div>
@@ -313,7 +334,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/17G2WEy3d6QRyTRyK_Ih1pvky2H1xVq4Z/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/17G2WEy3d6QRyTRyK_Ih1pvky2H1xVq4Z/preview', 'DHMIS Temporada 2 - Episodio 14', 'dhmis2', 13)">
   <img src="img/tain_edward.webp" alt="DHMISt2 14">
   <h3>Episodio 14</h3>
 </div>
@@ -321,7 +342,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1g8OgtODXAmZM0ylLS-IifD-f8Ip-7Zyu/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1g8OgtODXAmZM0ylLS-IifD-f8Ip-7Zyu/preview', 'DHMIS Temporada 2 - Episodio 15', 'dhmis2', 14)">
   <img src="img/hq720.jpg" alt="DHMISt2 15">
   <h3>Episodio 15</h3>
 </div>
@@ -329,7 +350,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1rcxHbtagXucJICaecJceXRU7VodUiWtd/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1rcxHbtagXucJICaecJceXRU7VodUiWtd/preview', 'DHMIS Temporada 2 - Episodio 16', 'dhmis2', 15)">
   <img src="img/cared.gif" alt="DHMISt2 16">
   <h3>Episodio 16</h3>
 </div>
@@ -337,7 +358,7 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1lA5yVD7dLvnAeJfDImylPyjsxfzztiqz/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1lA5yVD7dLvnAeJfDImylPyjsxfzztiqz/preview', 'DHMIS Temporada 2 - Episodio 17', 'dhmis2', 16)">
   <img src="img/es91.webp" alt="DHMISt2 17">
   <h3>Episodio 17</h3>
 </div>
@@ -345,15 +366,17 @@
 <div class="movie-card"
      data-bg="img/2a-1c06-473e-9b27-43be8acffc42.png"
      data-hover-img="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1170&q=80"
-     onclick="window.open('https://drive.google.com/file/d/1wGHGm52p_MitZ1iFrNOAfmjDRI6RADEs/view?usp=sharing', '_blank')">
+     onclick="playVideo('https://drive.google.com/file/d/1wGHGm52p_MitZ1iFrNOAfmjDRI6RADEs/preview', 'DHMIS Temporada 2 - Episodio 18', 'dhmis2', 17)">
   <img src="img/dbashxSin título.jpeg" alt="DHMISt2 18">
   <h3>Episodio 18</h3>
 </div>
-
-    </div>
+      </div>
       <button class="slide-btn right-btn">&#10095;</button>
     </div>
-s
+
+      </div>
+      <button class="slide-btn right-btn">&#10095;</button>
+    </div>
 
   </main>
 
@@ -629,6 +652,216 @@ s
                 categoryTitle.textContent = originalTitle;
             });
         });
+    });
+    
+    // VARIABLES GLOBALES
+    let currentSeries = '';
+    let currentChapterIndex = -1;
+    let seriesChapters = {
+      'devilman': [
+        { id: '1MVbntqZTJDRK7_oy0g9cciASp3T4vCp7', title: 'Devilman - Capítulo 1' },
+        { id: '13ZBEPfVwHbAr1OVtU5ElvfHOCo1HulHG', title: 'Devilman - Capítulo 2' },
+        { id: '1sPa32A51AYtwpS4zlDyCI6R-GDTNohPy', title: 'Devilman - Capítulo 3' },
+        { id: '1Nv41kiSOnJDsfH9fUiRmIR9P5GuHEQpz', title: 'Devilman - Capítulo 4' },
+        { id: '1KpUbF0K2BcSv4Duj-8G3V83NdspWv6an', title: 'Devilman - Capítulo 5' },
+        { id: '1sheHt9h-giB0ufNzQIQltFIt7mBdcxh-', title: 'Devilman - Capítulo 6' },
+        { id: '1YjRdo3uLN2_JyHD74Fl2zoQjCmwEsjm9', title: 'Devilman - Capítulo 7' },
+        { id: '1RcajK85SuvmqxApU2B2WUlGmMzRLIkbF', title: 'Devilman - Capítulo 8' },
+        { id: '1P71jIqo5Uy6r85JQDDd5IlHxGgq00zzS', title: 'Devilman - Capítulo 9' },
+        { id: '1is1NbDhPGBAgnGaAeRRHZYSJLEr0edz6', title: 'Devilman - Capítulo 10' }
+      ],
+      'dhmis1': [
+        { id: '1MDCh5Zdjto9pVasOhmMptyjIFP_TqC-I', title: 'DHMIS - Episodio 1' },
+        { id: '1pXpnapq8GeO3pS9l5zYC-ifUffxx9KJD', title: 'DHMIS - Episodio 2' },
+        { id: '1Lu-f124MvtTjYGorrXH5iew2jOoQdMiA', title: 'DHMIS - Episodio 3' },
+        { id: '1-mZJiXZG2HPQQtuXQuo73dg_ycWmrTMX', title: 'DHMIS - Episodio 4' },
+        { id: '16azVU70PnwzBsGr9ikj9_WihQcyd-NmC', title: 'DHMIS - Episodio 5' },
+        { id: '12tCN0CvMxmUkjdipjSy1vCr0tr6dJwNU', title: 'DHMIS - Episodio 6' },
+        { id: '1n0Mc8TBHhbPCWp3xzJnleWbMcaBSvhSz', title: 'DHMIS - Episodio 7' },
+        { id: '11AKRmpsCSJ7r0kozYyR-h4hnBLIdkdhe', title: 'DHMIS - Episodio 8' },
+        { id: '1Xc6lcGgB8FkRkAQggd1FjnhJZk4biSvx', title: 'DHMIS - Episodio 9' },
+        { id: '1L861mYbpE-bkCH3tu_IybvRwpX6gslfA', title: 'DHMIS - Episodio 10' }
+      ],
+      'dhmis2': [
+        { id: '1w57J_Bex7E2luR-wXMJ3aSCEHcyvcoiE', title: 'DHMIS Temporada 2 - Episodio 1' },
+        { id: '1KuWIl5sofHm88buRokpALuNo3kKVGGh3', title: 'DHMIS Temporada 2 - Episodio 2' },
+        { id: '1BhbX6DpDPMNR_FVXbSch9u0iZG2HYMlz', title: 'DHMIS Temporada 2 - Episodio 3' },
+        { id: '1hVA50UMgCzPitACgTlk0uyBlUrfWhFyB', title: 'DHMIS Temporada 2 - Episodio 4' },
+        { id: '1f_MGKhYviPleDSti-O3st2jZ-5NpIFn2', title: 'DHMIS Temporada 2 - Episodio 5' },
+        { id: '1UHIKqk1pnabaOGtH23tQerVU4p3RGfP1', title: 'DHMIS Temporada 2 - Episodio 6' },
+        { id: '1G7jXuGtkafWXlpDJzXV5MQM4Azf5z9u7', title: 'DHMIS Temporada 2 - Episodio 7' },
+        { id: '1GiDv3RySv7-R0Pv2n-Vhrp-fmLkBamm5', title: 'DHMIS Temporada 2 - Episodio 8' },
+        { id: '1C8oljNFG89F9uz4leNmWMwYfTfl1WW4P', title: 'DHMIS Temporada 2 - Episodio 9' },
+        { id: '1E457BMfoy8iHMY_8xJvKmdk3eMIG69xn', title: 'DHMIS Temporada 2 - Episodio 10' },
+        { id: '1704hcEMKHeilXsOnxtywLbclUy9xiGET', title: 'DHMIS Temporada 2 - Episodio 11' },
+        { id: '1nYBDUkqzmzm5O40DeGGIXW5KRYBtDqq6', title: 'DHMIS Temporada 2 - Episodio 12' },
+        { id: '1Uacq9lC6B5zH3AI2Vfvy55ZGamPA61YJ', title: 'DHMIS Temporada 2 - Episodio 13' },
+        { id: '17G2WEy3d6QRyTRyK_Ih1pvky2H1xVq4Z', title: 'DHMIS Temporada 2 - Episodio 14' },
+        { id: '1g8OgtODXAmZM0ylLS-IifD-f8Ip-7Zyu', title: 'DHMIS Temporada 2 - Episodio 15' },
+        { id: '1rcxHbtagXucJICaecJceXRU7VodUiWtd', title: 'DHMIS Temporada 2 - Episodio 16' },
+        { id: '1lA5yVD7dLvnAeJfDImylPyjsxfzztiqz', title: 'DHMIS Temporada 2 - Episodio 17' },
+        { id: '1wGHGm52p_MitZ1iFrNOAfmjDRI6RADEs', title: 'DHMIS Temporada 2 - Episodio 18' }
+      ]
+    };
+
+    // FUNCIONES PARA EL REPRODUCTOR
+    function playVideo(fileId, title, series, chapterIndex) {
+      const overlay = document.getElementById('videoOverlay');
+      const videoPlayer = document.getElementById('videoPlayer');
+      const videoTitle = document.getElementById('videoTitle');
+      const loading = document.getElementById('loading');
+      
+      // Configurar variables globales
+      currentSeries = series;
+      currentChapterIndex = chapterIndex;
+      
+      // Mostrar loading
+      loading.style.display = 'block';
+      videoPlayer.style.display = 'none';
+      
+      // Verificar si es una URL completa de Google Drive o solo el ID
+      let videoUrl;
+      if (fileId.includes('drive.google.com')) {
+        // Si ya es una URL completa de preview
+        videoUrl = fileId;
+      } else {
+        // Si es solo el ID, construir la URL
+        videoUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+      }
+      
+      // Configurar el iframe
+      videoPlayer.src = videoUrl;
+      videoTitle.textContent = title;
+      
+      // Mostrar el reproductor
+      overlay.style.display = 'flex';
+      document.body.classList.add('video-open');
+      
+      // Actualizar controles de capítulos
+      updateChapterControls();
+      
+      // Cuando el iframe esté listo
+      videoPlayer.onload = function() {
+        loading.style.display = 'none';
+        videoPlayer.style.display = 'block';
+      };
+      
+      // Manejar errores
+      videoPlayer.onerror = function() {
+        loading.style.display = 'none';
+        // Si falla el iframe, ofrecer alternativa
+        if(confirm('No se puede cargar el reproductor. ¿Quieres ver el video en Google Drive?')) {
+          const driveUrl = fileId.includes('drive.google.com') 
+            ? fileId.replace('/preview', '/view')
+            : `https://drive.google.com/file/d/${fileId}/view`;
+          window.open(driveUrl, '_blank');
+          closeVideo();
+        }
+      };
+    }
+
+    function playNextChapter() {
+      if (currentSeries && currentChapterIndex >= 0) {
+        const chapters = seriesChapters[currentSeries];
+        if (chapters && currentChapterIndex < chapters.length - 1) {
+          const nextChapter = chapters[currentChapterIndex + 1];
+          playVideo(nextChapter.id, nextChapter.title, currentSeries, currentChapterIndex + 1);
+        }
+      }
+    }
+
+    function playPreviousChapter() {
+      if (currentSeries && currentChapterIndex > 0) {
+        const chapters = seriesChapters[currentSeries];
+        if (chapters && currentChapterIndex > 0) {
+          const prevChapter = chapters[currentChapterIndex - 1];
+          playVideo(prevChapter.id, prevChapter.title, currentSeries, currentChapterIndex - 1);
+        }
+      }
+    }
+
+    function updateChapterControls() {
+      const prevBtn = document.getElementById('prevChapter');
+      const nextBtn = document.getElementById('nextChapter');
+      const chapters = seriesChapters[currentSeries];
+      
+      if (chapters) {
+        prevBtn.disabled = currentChapterIndex <= 0;
+        nextBtn.disabled = currentChapterIndex >= chapters.length - 1;
+      } else {
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+      }
+    }
+
+    function closeVideo() {
+      const overlay = document.getElementById('videoOverlay');
+      const videoPlayer = document.getElementById('videoPlayer');
+      const loading = document.getElementById('loading');
+      
+      // Detener el video
+      videoPlayer.src = '';
+      
+      // Resetear variables
+      currentSeries = '';
+      currentChapterIndex = -1;
+      
+      // Ocultar elementos
+      loading.style.display = 'none';
+      videoPlayer.style.display = 'block';
+      overlay.style.display = 'none';
+      document.body.classList.remove('video-open');
+    }
+
+    // Navegación con teclado
+    document.addEventListener('keydown', function(e) {
+      if (document.getElementById('videoOverlay').style.display === 'flex') {
+        switch(e.key) {
+          case 'Escape':
+            closeVideo();
+            break;
+          case 'ArrowRight':
+            playNextChapter();
+            break;
+          case 'ArrowLeft':
+            playPreviousChapter();
+            break;
+        }
+      }
+    });
+
+    // Cerrar al hacer click fuera del video
+    document.getElementById('videoOverlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeVideo();
+      }
+    });
+
+    // Slider functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const sliders = document.querySelectorAll('.slider-container');
+      
+      sliders.forEach(container => {
+        const slider = container.querySelector('.slider');
+        const leftBtn = container.querySelector('.left-btn');
+        const rightBtn = container.querySelector('.right-btn');
+        
+        if (leftBtn && rightBtn) {
+          leftBtn.addEventListener('click', function() {
+            slider.scrollBy({
+              left: -300,
+              behavior: 'smooth'
+            });
+          });
+          
+          rightBtn.addEventListener('click', function() {
+            slider.scrollBy({
+              left: 300,
+              behavior: 'smooth'
+            });
+          });
+        }
+      });
     });
 </script>
 </body>
