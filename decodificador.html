@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decodificador Multi-Capa - Herramienta Criptográfica</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --dark: #1a252f;
+            --light: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .mission-badge {
+            display: inline-block;
+            background: var(--warning);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .card-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: monospace;
+            resize: vertical;
+            transition: border 0.3s;
+        }
+        
+        textarea:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .btn-decode {
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn-encode {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-clear {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .btn-special {
+            background: var(--warning);
+            color: white;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+            min-height: 60px;
+        }
+        
+        .empty-result {
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            button {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Decodificador Multi-Capa</h1>
+            <p class="subtitle">Herramienta criptográfica para operaciones de intrusión técnica</p>
+            <div class="mission-badge">
+  MISIÓN 1: HERMES LOCK 
+  <span class="credits"> - Daviovenator</span>
+</div>
+
+        </header>
+        
+        <div class="grid">
+            <!-- Texto Invertido -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">↔️</div>
+                    <div class="card-title">Texto Invertido</div>
+                </div>
+                <p class="card-description">Invierte el orden de los caracteres en el texto. Ejemplo: "Hola" → "aloH"</p>
+                <div class="input-group">
+                    <label for="reverse-input">Texto a procesar:</label>
+                    <textarea id="reverse-input" rows="3" placeholder="Ej: D3srever se 2edocne ed añesartnoc aL"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="reverseText()">Invertir</button>
+                    <button class="btn-clear" onclick="clearText('reverse')">Limpiar</button>
+                </div>
+                <div class="result" id="reverse-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+            
+            <!-- Base64 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔢</div>
+                    <div class="card-title">Base64</div>
+                </div>
+                <p class="card-description">Codificación en base 64. Usa caracteres A-Z, a-z, 0-9, +, / y = para padding.</p>
+                <div class="input-group">
+                    <label for="base64-input">Texto a procesar:</label>
+                    <textarea id="base64-input" rows="3" placeholder="Ej: TGEgY29udHJhc2XDsWEgZGUgZW5jb2RlMw=="></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="base64Decode()">Decodificar</button>
+                    <button class="btn-encode" onclick="base64Encode()">Codificar</button>
+                    <button class="btn-clear" onclick="clearText('base64')">Limpiar</button>
+                </div>
+                <div class="result" id="base64-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+
+            <!-- Base64 Reverso -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔄</div>
+                    <div class="card-title">Base64 Reverso</div>
+                </div>
+                <p class="card-description">Base64 que necesita ser invertido antes de decodificar. Ejemplo real de la misión.</p>
+                <div class="input-group">
+                    <label for="base64reverse-input">Texto a procesar:</label>
+                    <textarea id="base64reverse-input" rows="3" placeholder="Ej: =ogQ0MXZ2QjUlZXZyN3MEByclBCNlR2bj5WZgUGZgEWsDX2chJHdu92YgEGT"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="base64ReverseDecode()">Decodificar Reverso</button>
+                    <button class="btn-encode" onclick="base64ReverseEncode()">Codificar Reverso</button>
+                    <button class="btn-clear" onclick="clearText('base64reverse')">Limpiar</button>
+                </div>
+                <div class="result" id="base64reverse-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+            
+            <!-- Hexadecimal -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔣</div>
+                    <div class="card-title">Hexadecimal</div>
+                </div>
+                <p class="card-description">Representación de datos usando 16 símbolos (0-9, A-F). Los bytes están separados por espacios.</p>
+                <div class="input-group">
+                    <label for="hex-input">Texto a procesar:</label>
+                    <textarea id="hex-input" rows="3" placeholder="Ej: 4C 61 20 63 6F 6E 74 72 61 73 65 F1 61"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="hexDecode()">Decodificar</button>
+                    <button class="btn-encode" onclick="hexEncode()">Codificar</button>
+                    <button class="btn-clear" onclick="clearText('hex')">Limpiar</button>
+                </div>
+                <div class="result" id="hex-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+            
+            <!-- Decimal/ASCII -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔢</div>
+                    <div class="card-title">Decimal/UTF-8</div>
+                </div>
+                <p class="card-description">Valores decimales que representan caracteres ASCII/UTF-8. Los números están separados por espacios.</p>
+                <div class="input-group">
+                    <label for="decimal-input">Texto a procesar:</label>
+                    <textarea id="decimal-input" rows="3" placeholder="Ej: 76 97 32 99 111 110 116 114 97 115 101 195 177"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="decimalDecode()">Decodificar</button>
+                    <button class="btn-encode" onclick="decimalEncode()">Codificar</button>
+                    <button class="btn-clear" onclick="clearText('decimal')">Limpiar</button>
+                </div>
+                <div class="result" id="decimal-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+            
+            <!-- URL Encoding -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🌐</div>
+                    <div class="card-title">URL Encoding</div>
+                </div>
+                <p class="card-description">Codificación porcentual para URLs. Los caracteres especiales se representan como % seguido de dos dígitos hex.</p>
+                <div class="input-group">
+                    <label for="url-input">Texto a procesar:</label>
+                    <textarea id="url-input" rows="3" placeholder="Ej: La%20contrase%C3%B1a%20de%20encode7"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="urlDecode()">Decodificar</button>
+                    <button class="btn-encode" onclick="urlEncode()">Codificar</button>
+                    <button class="btn-clear" onclick="clearText('url')">Limpiar</button>
+                </div>
+                <div class="result" id="url-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+            
+            <!-- Binario -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">💻</div>
+                    <div class="card-title">Binario</div>
+                </div>
+                <p class="card-description">Representación en base 2. Grupos de 8 bits (bytes) separados por espacios.</p>
+                <div class="input-group">
+                    <label for="binary-input">Texto a procesar:</label>
+                    <textarea id="binary-input" rows="3" placeholder="Ej: 01001100 01100001 00100000 01100011 01101111"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="binaryDecode()">Decodificar</button>
+                    <button class="btn-encode" onclick="binaryEncode()">Codificar</button>
+                    <button class="btn-clear" onclick="clearText('binary')">Limpiar</button>
+                </div>
+                <div class="result" id="binary-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>🔐 Herramienta desarrollada para operaciones criptográficas - Misión Hermes Lock</p>
+            <p>© 2024 Unidad de Operaciones Digitales</p>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar resultados
+        function showResult(elementId, text) {
+            const resultElement = document.getElementById(elementId);
+            if (text.trim() === '') {
+                resultElement.innerHTML = '<span class="empty-result">Resultado aparecerá aquí...</span>';
+            } else {
+                resultElement.textContent = text;
+            }
+        }
+        
+        // Función para limpiar campos
+        function clearText(type) {
+            document.getElementById(`${type}-input`).value = '';
+            showResult(`${type}-result`, '');
+        }
+        
+        // Texto Invertido
+        function reverseText() {
+            const input = document.getElementById('reverse-input').value;
+            const reversed = input.split('').reverse().join('');
+            showResult('reverse-result', reversed);
+        }
+        
+        // Base64
+        function base64Decode() {
+            const input = document.getElementById('base64-input').value;
+            try {
+                const decoded = atob(input);
+                showResult('base64-result', decoded);
+            } catch (e) {
+                showResult('base64-result', 'Error: Texto Base64 inválido');
+            }
+        }
+        
+        function base64Encode() {
+            const input = document.getElementById('base64-input').value;
+            const encoded = btoa(input);
+            showResult('base64-result', encoded);
+        }
+
+        // Base64 Reverso
+        function base64ReverseDecode() {
+            const input = document.getElementById('base64reverse-input').value;
+            try {
+                // Primero invertir el texto, luego decodificar Base64
+                const reversed = input.split('').reverse().join('');
+                const decoded = atob(reversed);
+                showResult('base64reverse-result', decoded);
+            } catch (e) {
+                showResult('base64reverse-result', 'Error: Base64 reverso inválido');
+            }
+        }
+        
+        function base64ReverseEncode() {
+            const input = document.getElementById('base64reverse-input').value;
+            try {
+                // Primero codificar a Base64, luego invertir
+                const encoded = btoa(input);
+                const reversed = encoded.split('').reverse().join('');
+                showResult('base64reverse-result', reversed);
+            } catch (e) {
+                showResult('base64reverse-result', 'Error: No se puede codificar el texto');
+            }
+        }
+        
+        // Hexadecimal
+        function hexDecode() {
+            const input = document.getElementById('hex-input').value;
+            const hexArray = input.trim().split(/\s+/);
+            let result = '';
+            
+            try {
+                for (let hex of hexArray) {
+                    if (hex) {
+                        result += String.fromCharCode(parseInt(hex, 16));
+                    }
+                }
+                showResult('hex-result', result);
+            } catch (e) {
+                showResult('hex-result', 'Error: Hexadecimal inválido');
+            }
+        }
+        
+        function hexEncode() {
+            const input = document.getElementById('hex-input').value;
+            let result = '';
+            
+            for (let i = 0; i < input.length; i++) {
+                result += input.charCodeAt(i).toString(16).padStart(2, '0') + ' ';
+            }
+            
+            showResult('hex-result', result.trim());
+        }
+        
+        // Decimal/UTF-8
+        function decimalDecode() {
+            const input = document.getElementById('decimal-input').value;
+            const decimalArray = input.trim().split(/\s+/);
+            let result = '';
+            
+            try {
+                const bytes = decimalArray.map(byte => parseInt(byte, 10));
+                result = new TextDecoder('utf-8').decode(new Uint8Array(bytes));
+                showResult('decimal-result', result);
+            } catch (e) {
+                showResult('decimal-result', 'Error: Valores decimales inválidos');
+            }
+        }
+        
+        function decimalEncode() {
+            const input = document.getElementById('decimal-input').value;
+            let result = '';
+            
+            const encoder = new TextEncoder();
+            const bytes = encoder.encode(input);
+            
+            for (let byte of bytes) {
+                result += byte + ' ';
+            }
+            
+            showResult('decimal-result', result.trim());
+        }
+        
+        // URL Encoding
+        function urlDecode() {
+            const input = document.getElementById('url-input').value;
+            try {
+                const decoded = decodeURIComponent(input);
+                showResult('url-result', decoded);
+            } catch (e) {
+                showResult('url-result', 'Error: URL encoding inválido');
+            }
+        }
+        
+        function urlEncode() {
+            const input = document.getElementById('url-input').value;
+            const encoded = encodeURIComponent(input);
+            showResult('url-result', encoded);
+        }
+        
+        // Binario
+        function binaryDecode() {
+            const input = document.getElementById('binary-input').value;
+            const binaryArray = input.trim().split(/\s+/);
+            let result = '';
+            
+            try {
+                for (let binary of binaryArray) {
+                    if (binary) {
+                        result += String.fromCharCode(parseInt(binary, 2));
+                    }
+                }
+                showResult('binary-result', result);
+            } catch (e) {
+                showResult('binary-result', 'Error: Binario inválido');
+            }
+        }
+        
+        function binaryEncode() {
+            const input = document.getElementById('binary-input').value;
+            let result = '';
+            
+            for (let i = 0; i < input.length; i++) {
+                result += input.charCodeAt(i).toString(2).padStart(8, '0') + ' ';
+            }
+            
+            showResult('binary-result', result.trim());
+        }
+        
+        // Ejemplos iniciales para cada codificación
+        document.addEventListener('DOMContentLoaded', function() {
+            // Establecer ejemplos en los placeholders
+            document.getElementById('reverse-input').placeholder = "Ej: D3srever se 2edocne ed añesartnoc aL";
+            document.getElementById('base64-input').placeholder = "Ej: TGEgY29udHJhc2XDsWEgZGUgZW5jb2RlMw==";
+            document.getElementById('base64reverse-input').placeholder = "Ej: =ogQ0MXZ2QjUlZXZyN3MEByclBCNlR2bj5WZgUGZgEWsDX2chJHdu92YgEGT";
+            document.getElementById('hex-input').placeholder = "Ej: 4C 61 20 63 6F 6E 74 72 61 73 65 F1 61";
+            document.getElementById('decimal-input').placeholder = "Ej: 76 97 32 99 111 110 116 114 97 115 101 195 177";
+            document.getElementById('url-input').placeholder = "Ej: La%20contrase%C3%B1a%20de%20encode7";
+            document.getElementById('binary-input').placeholder = "Ej: 01001100 01100001 00100000 01100011 01101111";
+        });
+    </script>
+</body>
+</html>
