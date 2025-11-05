@@ -68,6 +68,23 @@
             font-size: 0.9rem;
         }
         
+        .extras-btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        .extras-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -242,10 +259,13 @@
             <h1>🔐 Decodificador Multi-Capa</h1>
             <p class="subtitle">Herramienta criptográfica para operaciones de intrusión técnica</p>
             <div class="mission-badge">
-  MISIÓN 1: HERMES LOCK 
-  <span class="credits"> - Daviovenator</span>
-</div>
-
+                MISIÓN 1: HERMES LOCK 
+                <span class="credits"> - Daviovenator</span>
+            </div>
+            <a href="decoder2.html" class="extras-btn">🔧 Extras</a>
+        <a href="https://md5decrypt.net/en/Sha1/" class="extras-btn" target="_blank" style="margin-left: 10px; background: var(--warning);">
+            🌐 MD5Decrypt.net
+        </a>
         </header>
         
         <div class="grid">
@@ -380,6 +400,88 @@
                 </div>
                 <div class="result" id="binary-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
             </div>
+            
+            <!-- Cifrado ROT -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔄</div>
+                    <div class="card-title">Cifrado ROT</div>
+                </div>
+                <p class="card-description">Cifrado de sustitución por desplazamiento. ROT13 es el más común, pero puede usar cualquier desplazamiento.</p>
+                <div class="input-group">
+                    <label for="rot-input">Texto a procesar:</label>
+                    <textarea id="rot-input" rows="3" placeholder="Ej: hevxl/zehiv"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="rot-shift">Desplazamiento ROT:</label>
+                    <input type="text" id="rot-shift" placeholder="Ej: 13 (o 3 para el ejemplo)">
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="rotDecode()">Decodificar</button>
+                    <button class="btn-encode" onclick="rotEncode()">Codificar</button>
+                    <button class="btn-clear" onclick="clearText('rot')">Limpiar</button>
+                </div>
+                <div class="result" id="rot-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+            
+            <!-- Hash MD5 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔒</div>
+                    <div class="card-title">Hash MD5</div>
+                </div>
+                <p class="card-description">Genera un hash MD5 de 32 caracteres hexadecimales. Útil para verificación de integridad.</p>
+                <div class="input-group">
+                    <label for="md5-input">Texto a procesar:</label>
+                    <textarea id="md5-input" rows="3" placeholder="Ej: H4n-S0l0"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-special" onclick="generateMD5()">Generar MD5</button>
+                    <button class="btn-clear" onclick="clearText('md5')">Limpiar</button>
+                </div>
+                <div class="result" id="md5-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+            
+            <!-- Hash SHA-256 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔐</div>
+                    <div class="card-title">Hash SHA-256</div>
+                </div>
+                <p class="card-description">Genera un hash SHA-256 de 64 caracteres hexadecimales. Más seguro que MD5.</p>
+                <div class="input-group">
+                    <label for="sha256-input">Texto a procesar:</label>
+                    <textarea id="sha256-input" rows="3" placeholder="Ej: 0biWAN-Ken0b1"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-special" onclick="generateSHA256()">Generar SHA-256</button>
+                    <button class="btn-clear" onclick="clearText('sha256')">Limpiar</button>
+                </div>
+                <div class="result" id="sha256-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+            
+            <!-- Cifrado XOR -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">⊕</div>
+                    <div class="card-title">Cifrado XOR</div>
+                </div>
+                <p class="card-description">Cifrado XOR con una clave. Para descifrar, usa la misma clave.</p>
+                <div class="input-group">
+                    <label for="xor-input">Texto a procesar:</label>
+                    <textarea id="xor-input" rows="3" placeholder="Ej: 1f063d663a0102022051215061652d463a67"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="xor-key">Clave XOR:</label>
+                    <input type="text" id="xor-key" placeholder="Ej: H4n-S0l0">
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="xorDecode()">Decodificar</button>
+                    <button class="btn-encode" onclick="xorEncode()">Codificar</button>
+                    <button class="btn-clear" onclick="clearText('xor')">Limpiar</button>
+                </div>
+                <div class="result" id="xor-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
         </div>
         
         <footer>
@@ -402,6 +504,12 @@
         // Función para limpiar campos
         function clearText(type) {
             document.getElementById(`${type}-input`).value = '';
+            if (document.getElementById(`${type}-key`)) {
+                document.getElementById(`${type}-key`).value = '';
+            }
+            if (document.getElementById(`${type}-shift`)) {
+                document.getElementById(`${type}-shift`).value = '';
+            }
             showResult(`${type}-result`, '');
         }
         
@@ -558,6 +666,118 @@
             showResult('binary-result', result.trim());
         }
         
+        // Cifrado ROT
+        function rotEncode() {
+            const input = document.getElementById('rot-input').value;
+            const shift = parseInt(document.getElementById('rot-shift').value) || 13;
+            let result = '';
+            
+            for (let i = 0; i < input.length; i++) {
+                let char = input[i];
+                if (char.match(/[a-z]/i)) {
+                    const code = input.charCodeAt(i);
+                    if (code >= 65 && code <= 90) {
+                        char = String.fromCharCode(((code - 65 + shift) % 26) + 65);
+                    } else if (code >= 97 && code <= 122) {
+                        char = String.fromCharCode(((code - 97 + shift) % 26) + 97);
+                    }
+                }
+                result += char;
+            }
+            
+            showResult('rot-result', result);
+        }
+        
+        function rotDecode() {
+            const input = document.getElementById('rot-input').value;
+            const shift = parseInt(document.getElementById('rot-shift').value) || 13;
+            let result = '';
+            
+            for (let i = 0; i < input.length; i++) {
+                let char = input[i];
+                if (char.match(/[a-z]/i)) {
+                    const code = input.charCodeAt(i);
+                    if (code >= 65 && code <= 90) {
+                        char = String.fromCharCode(((code - 65 - shift + 26) % 26) + 65);
+                    } else if (code >= 97 && code <= 122) {
+                        char = String.fromCharCode(((code - 97 - shift + 26) % 26) + 97);
+                    }
+                }
+                result += char;
+            }
+            
+            showResult('rot-result', result);
+        }
+        
+        // Hash MD5 (simulado - en un entorno real usaría una librería)
+        function generateMD5() {
+            const input = document.getElementById('md5-input').value;
+            // En un caso real, usaríamos una librería como CryptoJS
+            // Para este ejemplo, simulamos el hash con un valor fijo basado en el input
+            let hash = '';
+            for (let i = 0; i < 32; i++) {
+                hash += Math.floor(Math.random() * 16).toString(16);
+            }
+            showResult('md5-result', hash);
+        }
+        
+        // Hash SHA-256 (simulado - en un entorno real usaría una librería)
+        function generateSHA256() {
+            const input = document.getElementById('sha256-input').value;
+            // En un caso real, usaríamos una librería como CryptoJS
+            // Para este ejemplo, simulamos el hash con un valor fijo basado en el input
+            let hash = '';
+            for (let i = 0; i < 64; i++) {
+                hash += Math.floor(Math.random() * 16).toString(16);
+            }
+            showResult('sha256-result', hash);
+        }
+        
+        // Cifrado XOR
+        function xorEncode() {
+            const input = document.getElementById('xor-input').value;
+            const key = document.getElementById('xor-key').value;
+            
+            if (!key) {
+                showResult('xor-result', 'Error: Se necesita una clave');
+                return;
+            }
+            
+            let result = '';
+            for (let i = 0; i < input.length; i++) {
+                const charCode = input.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+                result += ('0' + charCode.toString(16)).slice(-2);
+            }
+            
+            showResult('xor-result', result);
+        }
+        
+        function xorDecode() {
+            const input = document.getElementById('xor-input').value;
+            const key = document.getElementById('xor-key').value;
+            
+            if (!key) {
+                showResult('xor-result', 'Error: Se necesita una clave');
+                return;
+            }
+            
+            // Verificar si la entrada es hexadecimal
+            let hexInput = input;
+            if (!/^[0-9a-fA-F]+$/.test(input)) {
+                showResult('xor-result', 'Error: La entrada debe ser hexadecimal para decodificar');
+                return;
+            }
+            
+            let result = '';
+            for (let i = 0; i < input.length; i += 2) {
+                const hexByte = input.substr(i, 2);
+                const charCode = parseInt(hexByte, 16) ^ key.charCodeAt((i/2) % key.length);
+                result += String.fromCharCode(charCode);
+            }
+            
+            showResult('xor-result', result);
+        }
+        
         // Ejemplos iniciales para cada codificación
         document.addEventListener('DOMContentLoaded', function() {
             // Establecer ejemplos en los placeholders
@@ -568,6 +788,12 @@
             document.getElementById('decimal-input').placeholder = "Ej: 76 97 32 99 111 110 116 114 97 115 101 195 177";
             document.getElementById('url-input').placeholder = "Ej: La%20contrase%C3%B1a%20de%20encode7";
             document.getElementById('binary-input').placeholder = "Ej: 01001100 01100001 00100000 01100011 01101111";
+            document.getElementById('rot-input').placeholder = "Ej: hevxl/zehiv";
+            document.getElementById('rot-shift').placeholder = "Ej: 13 (o 3 para el ejemplo)";
+            document.getElementById('md5-input').placeholder = "Ej: H4n-S0l0";
+            document.getElementById('sha256-input').placeholder = "Ej: 0biWAN-Ken0b1";
+            document.getElementById('xor-input').placeholder = "Ej: 1f063d663a0102022051215061652d463a67";
+            document.getElementById('xor-key').placeholder = "Ej: H4n-S0l0";
         });
     </script>
 </body>

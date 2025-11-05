@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas Extras - Decodificador Multi-Capa</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --dark: #1a252f;
+            --light: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .card-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        textarea, input[type="text"], select {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: monospace;
+            resize: vertical;
+            transition: border 0.3s;
+        }
+        
+        textarea:focus, input[type="text"]:focus, select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .btn-decode {
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn-encode {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-clear {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .btn-special {
+            background: var(--warning);
+            color: white;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+            min-height: 60px;
+        }
+        
+        .empty-result {
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+        
+        .warning {
+            color: var(--warning);
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            button {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔧 Herramientas Extras</h1>
+            <p class="subtitle">Funcionalidades criptográficas avanzadas</p>
+            <a href="decoder.html" class="back-btn">← Volver al Decodificador Principal</a>
+        </header>
+        
+        <div class="grid">
+            <!-- Cifrado Asimétrico (simulado) -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔑</div>
+                    <div class="card-title">Cifrado Asimétrico</div>
+                </div>
+                <p class="card-description">Simulación de cifrado/descifrado con clave pública y privada.</p>
+                <div class="input-group">
+                    <label for="asymmetric-input">Texto a procesar:</label>
+                    <textarea id="asymmetric-input" rows="3" placeholder="Ej: Mensaje secreto"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-encode" onclick="asymmetricEncrypt()">Cifrar</button>
+                    <button class="btn-decode" onclick="asymmetricDecrypt()">Descifrar</button>
+                    <button class="btn-clear" onclick="clearText('asymmetric')">Limpiar</button>
+                </div>
+                <div class="result" id="asymmetric-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+            
+            <!-- Generador de Contraseñas -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔐</div>
+                    <div class="card-title">Generador de Contraseñas</div>
+                </div>
+                <p class="card-description">Genera contraseñas seguras con diferentes opciones.</p>
+                <div class="input-group">
+                    <label for="password-length">Longitud:</label>
+                    <input type="text" id="password-length" value="16">
+                </div>
+                <div class="btn-group">
+                    <button class="btn-special" onclick="generatePassword()">Generar Contraseña</button>
+                    <button class="btn-clear" onclick="clearText('password')">Limpiar</button>
+                </div>
+                <div class="result" id="password-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+            
+            <!-- Análisis de Frecuencia -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Análisis de Frecuencia</div>
+                </div>
+                <p class="card-description">Analiza la frecuencia de caracteres en un texto cifrado.</p>
+                <div class="input-group">
+                    <label for="frequency-input">Texto a analizar:</label>
+                    <textarea id="frequency-input" rows="3" placeholder="Ej: Texto cifrado para análisis"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-special" onclick="analyzeFrequency()">Analizar</button>
+                    <button class="btn-clear" onclick="clearText('frequency')">Limpiar</button>
+                </div>
+                <div class="result" id="frequency-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+
+            <!-- Hash Decryption -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔓</div>
+                    <div class="card-title">Hash Decryption</div>
+                </div>
+                <p class="card-description">Intenta descifrar hashes usando diccionario básico (simulación).</p>
+                <div class="input-group">
+                    <label for="hash-input">Hash a descifrar:</label>
+                    <textarea id="hash-input" rows="2" placeholder="Ej: 5d41402abc4b2a76b9719d911017c592"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="hash-type">Tipo de hash:</label>
+                    <select id="hash-type">
+                        <option value="md5">MD5</option>
+                        <option value="md4">MD4</option>
+                        <option value="sha1">SHA-1</option>
+                        <option value="sha384">SHA-384</option>
+                        <option value="sha512">SHA-512</option>
+                        <option value="ntlm">NTLM</option>
+                    </select>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="decryptHash()">Descifrar Hash</button>
+                    <button class="btn-clear" onclick="clearText('hash')">Limpiar</button>
+                </div>
+                <div class="result" id="hash-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+                <div class="warning">⚠️ Nota: Esta es una simulación con diccionario limitado</div>
+            </div>
+
+            <!-- XOR Decryption -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">⊕</div>
+                    <div class="card-title">XOR Decryption</div>
+                </div>
+                <p class="card-description">Descifra texto cifrado con XOR (con o sin clave conocida).</p>
+                <div class="input-group">
+                    <label for="xor-decrypt-input">Texto cifrado (hex):</label>
+                    <textarea id="xor-decrypt-input" rows="2" placeholder="Ej: 1f063d663a0102022051215061652d463a67"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="xor-decrypt-key">Clave (opcional):</label>
+                    <input type="text" id="xor-decrypt-key" placeholder="Dejar vacío para fuerza bruta">
+                </div>
+                <div class="btn-group">
+                    <button class="btn-decode" onclick="xorDecrypt()">Descifrar XOR</button>
+                    <button class="btn-clear" onclick="clearText('xor-decrypt')">Limpiar</button>
+                </div>
+                <div class="result" id="xor-decrypt-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+
+            <!-- Hash Finder -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔍</div>
+                    <div class="card-title">Hash Finder</div>
+                </div>
+                <p class="card-description">Identifica el tipo de hash basado en su longitud y formato.</p>
+                <div class="input-group">
+                    <label for="hash-finder-input">Hash a identificar:</label>
+                    <textarea id="hash-finder-input" rows="2" placeholder="Ej: 5d41402abc4b2a76b9719d911017c592"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-special" onclick="identifyHash()">Identificar Hash</button>
+                    <button class="btn-clear" onclick="clearText('hash-finder')">Limpiar</button>
+                </div>
+                <div class="result" id="hash-finder-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+
+            <!-- Bcrypt Encryption -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🔒</div>
+                    <div class="card-title">Bcrypt Encryption</div>
+                </div>
+                <p class="card-description">Genera hash bcrypt para contraseñas (simulación).</p>
+                <div class="input-group">
+                    <label for="bcrypt-input">Texto a cifrar:</label>
+                    <textarea id="bcrypt-input" rows="2" placeholder="Ej: mi_contraseña_secreta"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="bcrypt-rounds">Rondas (coste):</label>
+                    <input type="text" id="bcrypt-rounds" value="10">
+                </div>
+                <div class="btn-group">
+                    <button class="btn-encode" onclick="bcryptEncrypt()">Generar Bcrypt</button>
+                    <button class="btn-clear" onclick="clearText('bcrypt')">Limpiar</button>
+                </div>
+                <div class="result" id="bcrypt-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+
+            <!-- Blowfish Encryption -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🐠</div>
+                    <div class="card-title">Blowfish Encryption</div>
+                </div>
+                <p class="card-description">Cifrado Blowfish con clave personalizada (simulación).</p>
+                <div class="input-group">
+                    <label for="blowfish-input">Texto a cifrar:</label>
+                    <textarea id="blowfish-input" rows="2" placeholder="Ej: texto secreto"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="blowfish-key">Clave:</label>
+                    <input type="text" id="blowfish-key" placeholder="Ej: mi_clave_secreta">
+                </div>
+                <div class="btn-group">
+                    <button class="btn-encode" onclick="blowfishEncrypt()">Cifrar</button>
+                    <button class="btn-decode" onclick="blowfishDecrypt()">Descifrar</button>
+                    <button class="btn-clear" onclick="clearText('blowfish')">Limpiar</button>
+                </div>
+                <div class="result" id="blowfish-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+
+            <!-- Whirlpool Encryption -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🌀</div>
+                    <div class="card-title">Whirlpool Encryption</div>
+                </div>
+                <p class="card-description">Genera hash Whirlpool de 128 caracteres (simulación).</p>
+                <div class="input-group">
+                    <label for="whirlpool-input">Texto a procesar:</label>
+                    <textarea id="whirlpool-input" rows="2" placeholder="Ej: datos importantes"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button class="btn-encode" onclick="whirlpoolEncrypt()">Generar Whirlpool</button>
+                    <button class="btn-clear" onclick="clearText('whirlpool')">Limpiar</button>
+                </div>
+                <div class="result" id="whirlpool-result"><span class="empty-result">Resultado aparecerá aquí...</span></div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>🔐 Herramientas extras para operaciones criptográficas avanzadas</p>
+            <p>© 2024 Unidad de Operaciones Digitales</p>
+        </footer>
+    </div>
+
+    <script>
+        // Diccionario básico para descifrado de hashes
+        const hashDictionary = {
+            // Palabras comunes y sus hashes
+            "hello": {
+                md5: "5d41402abc4b2a76b9719d911017c592",
+                md4: "866437cb7a794bce2b727acc0362ee27",
+                sha1: "aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d",
+                sha384: "59e1748777448c69de6b800d7a33bbfb9ff1b463e44354c3553bcdb9c666fa90125a3c79f90397bdf5f6a13de828684f",
+                sha512: "9b71d224bd62f3785d96d46ad3ea3d73319bfbc2890caadae2dff72519673ca72323c3d99ba5c11d7c7acc6e14b8c5da0c4663475c2e5c3adef46f73bcdec043",
+                ntlm: "6d3e12f523986f794cba8d5c429d99e5"
+            },
+            "password": {
+                md5: "5f4dcc3b5aa765d61d8327deb882cf99",
+                sha1: "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"
+            },
+            "admin": {
+                md5: "21232f297a57a5a743894a0e4a801fc3",
+                sha1: "d033e22ae348aeb5660fc2140aec35850c4da997"
+            },
+            "123456": {
+                md5: "e10adc3949ba59abbe56e057f20f883e"
+            }
+        };
+
+        // Función para mostrar resultados
+        function showResult(elementId, text) {
+            const resultElement = document.getElementById(elementId);
+            if (text.trim() === '') {
+                resultElement.innerHTML = '<span class="empty-result">Resultado aparecerá aquí...</span>';
+            } else {
+                resultElement.textContent = text;
+            }
+        }
+        
+        // Función para limpiar campos
+        function clearText(type) {
+            document.getElementById(`${type}-input`).value = '';
+            if (document.getElementById(`${type}-key`)) {
+                document.getElementById(`${type}-key`).value = '';
+            }
+            if (document.getElementById(`${type}-type`)) {
+                document.getElementById(`${type}-type`).selectedIndex = 0;
+            }
+            if (document.getElementById(`${type}-rounds`)) {
+                document.getElementById(`${type}-rounds`).value = '10';
+            }
+            showResult(`${type}-result`, '');
+        }
+        
+        // Cifrado Asimétrico (simulado)
+        function asymmetricEncrypt() {
+            const input = document.getElementById('asymmetric-input').value;
+            // Simulación de cifrado asimétrico
+            let result = '';
+            for (let i = 0; i < input.length; i++) {
+                result += ('0' + (input.charCodeAt(i) + 100).toString(16)).slice(-2);
+            }
+            showResult('asymmetric-result', result);
+        }
+        
+        function asymmetricDecrypt() {
+            const input = document.getElementById('asymmetric-input').value;
+            // Simulación de descifrado asimétrico
+            let result = '';
+            for (let i = 0; i < input.length; i += 2) {
+                const hexByte = input.substr(i, 2);
+                result += String.fromCharCode(parseInt(hexByte, 16) - 100);
+            }
+            showResult('asymmetric-result', result);
+        }
+        
+        // Generador de Contraseñas
+        function generatePassword() {
+            const length = parseInt(document.getElementById('password-length').value) || 16;
+            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+            let password = "";
+            
+            for (let i = 0; i < length; i++) {
+                password += charset.charAt(Math.floor(Math.random() * charset.length));
+            }
+            
+            showResult('password-result', password);
+        }
+        
+        // Análisis de Frecuencia
+        function analyzeFrequency() {
+            const input = document.getElementById('frequency-input').value;
+            const frequency = {};
+            
+            // Contar frecuencia de caracteres
+            for (let char of input) {
+                if (frequency[char]) {
+                    frequency[char]++;
+                } else {
+                    frequency[char] = 1;
+                }
+            }
+            
+            // Ordenar por frecuencia
+            const sorted = Object.entries(frequency).sort((a, b) => b[1] - a[1]);
+            
+            // Formatear resultado
+            let result = "Frecuencia de caracteres:\n\n";
+            for (let [char, count] of sorted) {
+                result += `'${char}': ${count} ocurrencias\n`;
+            }
+            
+            showResult('frequency-result', result);
+        }
+
+        // Hash Decryption
+        function decryptHash() {
+            const hash = document.getElementById('hash-input').value.trim();
+            const hashType = document.getElementById('hash-type').value;
+            
+            if (!hash) {
+                showResult('hash-result', 'Error: Introduce un hash');
+                return;
+            }
+            
+            // Buscar en el diccionario
+            let found = false;
+            let result = "Buscando en diccionario...\n\n";
+            
+            for (const [text, hashes] of Object.entries(hashDictionary)) {
+                if (hashes[hashType] && hashes[hashType].toLowerCase() === hash.toLowerCase()) {
+                    result += `✅ Hash descifrado: "${text}"\n`;
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (!found) {
+                result += "❌ Hash no encontrado en el diccionario.\n";
+                result += "Posibles acciones:\n";
+                result += "- Verificar el tipo de hash seleccionado\n";
+                result += "- Probar con otro diccionario más completo\n";
+                result += "- Usar técnicas de fuerza bruta";
+            }
+            
+            showResult('hash-result', result);
+        }
+
+        // XOR Decryption
+        function xorDecrypt() {
+            const input = document.getElementById('xor-decrypt-input').value.trim();
+            const key = document.getElementById('xor-decrypt-key').value;
+            
+            if (!input) {
+                showResult('xor-decrypt-result', 'Error: Introduce texto cifrado');
+                return;
+            }
+            
+            let result = "";
+            
+            if (key) {
+                // Descifrado con clave conocida
+                for (let i = 0; i < input.length; i += 2) {
+                    const hexByte = input.substr(i, 2);
+                    const charCode = parseInt(hexByte, 16) ^ key.charCodeAt((i/2) % key.length);
+                    result += String.fromCharCode(charCode);
+                }
+            } else {
+                // Fuerza bruta simple (solo prueba algunas claves comunes)
+                result = "Fuerza bruta - Probando claves comunes:\n\n";
+                const commonKeys = ["key", "pass", "secret", "123", "admin", "xor"];
+                
+                for (const testKey of commonKeys) {
+                    let decrypted = "";
+                    for (let i = 0; i < input.length; i += 2) {
+                        const hexByte = input.substr(i, 2);
+                        const charCode = parseInt(hexByte, 16) ^ testKey.charCodeAt((i/2) % testKey.length);
+                        decrypted += String.fromCharCode(charCode);
+                    }
+                    
+                    // Verificar si el resultado parece texto legible
+                    if (/^[a-zA-Z0-9\s.,!?]+$/.test(decrypted)) {
+                        result += `Clave "${testKey}": ${decrypted}\n`;
+                    }
+                }
+            }
+            
+            showResult('xor-decrypt-result', result);
+        }
+
+        // Hash Finder
+        function identifyHash() {
+            const hash = document.getElementById('hash-finder-input').value.trim();
+            
+            if (!hash) {
+                showResult('hash-finder-result', 'Error: Introduce un hash');
+                return;
+            }
+            
+            const hashLength = hash.length;
+            let result = `Longitud del hash: ${hashLength} caracteres\n\n`;
+            result += "Posibles tipos:\n";
+            
+            // Identificar por longitud
+            const hashTypes = {
+                32: "MD5, MD4, NTLM",
+                40: "SHA-1",
+                56: "SHA-224",
+                64: "SHA-256",
+                96: "SHA-384",
+                128: "SHA-512, Whirlpool"
+            };
+            
+            if (hashTypes[hashLength]) {
+                result += `✅ ${hashTypes[hashLength]}`;
+            } else {
+                result += "❌ Tipo de hash no reconocido";
+            }
+            
+            // Verificar caracteres válidos
+            if (!/^[0-9a-fA-F]+$/.test(hash)) {
+                result += "\n⚠️ El hash contiene caracteres no hexadecimales";
+            }
+            
+            showResult('hash-finder-result', result);
+        }
+
+        // Bcrypt Encryption (simulación)
+        function bcryptEncrypt() {
+            const input = document.getElementById('bcrypt-input').value;
+            const rounds = parseInt(document.getElementById('bcrypt-rounds').value) || 10;
+            
+            if (!input) {
+                showResult('bcrypt-result', 'Error: Introduce texto para cifrar');
+                return;
+            }
+            
+            // Simulación de bcrypt
+            let fakeBcrypt = "$2b$" + rounds + "$";
+            for (let i = 0; i < 53; i++) {
+                fakeBcrypt += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./".charAt(
+                    Math.floor(Math.random() * 64)
+                );
+            }
+            
+            showResult('bcrypt-result', fakeBcrypt);
+        }
+
+        // Blowfish Encryption (simulación)
+        function blowfishEncrypt() {
+            const input = document.getElementById('blowfish-input').value;
+            const key = document.getElementById('blowfish-key').value;
+            
+            if (!input || !key) {
+                showResult('blowfish-result', 'Error: Introduce texto y clave');
+                return;
+            }
+            
+            // Simulación de cifrado Blowfish
+            let result = "";
+            for (let i = 0; i < input.length; i++) {
+                result += ('0' + (input.charCodeAt(i) ^ key.charCodeAt(i % key.length) + 50).toString(16)).slice(-2);
+            }
+            
+            showResult('blowfish-result', result);
+        }
+        
+        function blowfishDecrypt() {
+            const input = document.getElementById('blowfish-input').value;
+            const key = document.getElementById('blowfish-key').value;
+            
+            if (!input || !key) {
+                showResult('blowfish-result', 'Error: Introduce texto cifrado y clave');
+                return;
+            }
+            
+            // Simulación de descifrado Blowfish
+            let result = "";
+            for (let i = 0; i < input.length; i += 2) {
+                const hexByte = input.substr(i, 2);
+                result += String.fromCharCode((parseInt(hexByte, 16) - 50) ^ key.charCodeAt((i/2) % key.length));
+            }
+            
+            showResult('blowfish-result', result);
+        }
+
+        // Whirlpool Encryption (simulación)
+        function whirlpoolEncrypt() {
+            const input = document.getElementById('whirlpool-input').value;
+            
+            if (!input) {
+                showResult('whirlpool-result', 'Error: Introduce texto para procesar');
+                return;
+            }
+            
+            // Simulación de hash Whirlpool (128 caracteres)
+            let fakeWhirlpool = "";
+            for (let i = 0; i < 128; i++) {
+                fakeWhirlpool += "0123456789abcdef".charAt(Math.floor(Math.random() * 16));
+            }
+            
+            showResult('whirlpool-result', fakeWhirlpool);
+        }
+    </script>
+</body>
+</html>
