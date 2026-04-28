@@ -4,23 +4,6 @@ require __DIR__ . '/vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Hash pre-calculado de la contraseña original
-$password_hash = "d9b8c7a6e5f4d3c2b1a0f9e8d7c6b5a4938271657a8b9c0d1e2f3a4b5c6d7e8f9";
-
-// Función para verificar la contraseña real desde variable de entorno
-function verificar_contraseña() {
-    $password_real = getenv('EMAIL_PASS_RAW'); // Contraseña real desde variable de entorno
-    if (!$password_real) {
-        return false;
-    }
-    return hash('sha256', $password_real) === $GLOBALS['password_hash'];
-}
-
-// Solo continuar si la contraseña está configurada correctamente
-if (!verificar_contraseña()) {
-    die("Error de configuración de seguridad. Contacte al administrador.");
-}
-
 $mensaje_envio = "";
 $tipo_mensaje = "";
 
@@ -66,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'asirclean@gmail.com';
-        $mail->Password   = getenv('EMAIL_PASS_RAW'); // Contraseña real desde variable de entorno
+        $mail->Password   = 'jagx whvr ektj iffb';  // Contraseña directa
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
         $mail->CharSet    = 'UTF-8';
@@ -76,13 +59,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->addReplyTo($email_remitente, $nombre);
         $mail->addAddress('davidcigaran@gmail.com', 'David');
         
-        // Contenido del correo en HTML
+        // Contenido del correo en HTML (mismo diseño bonito)
         $mail->isHTML(true);
         $mail->Subject = "📩 Nuevo contacto de $nombre - $asunto";
         
-        // Cuerpo del mensaje con diseño visual (igual que antes)
-        $mail->Body = '
-        <!DOCTYPE html>
+        $mail->Body = '<!DOCTYPE html>
         <html>
         <head>
             <meta charset="UTF-8">
@@ -111,12 +92,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     margin: 0;
                     color: white;
                     font-size: 24px;
-                    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
                 }
                 .header p {
                     margin: 10px 0 0;
                     color: rgba(255,255,255,0.9);
-                    font-size: 14px;
                 }
                 .content {
                     padding: 30px;
@@ -140,7 +119,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     color: #fff;
                     font-size: 16px;
                     font-weight: 500;
-                    word-break: break-word;
                 }
                 .message-box {
                     background: rgba(0, 0, 0, 0.3);
@@ -154,13 +132,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     margin: 0 0 10px 0;
                     font-size: 14px;
                     text-transform: uppercase;
-                    letter-spacing: 2px;
                 }
                 .message-text {
                     color: #e0e0e0;
                     line-height: 1.6;
                     font-size: 14px;
-                    margin: 0;
                 }
                 .tech-details {
                     background: #0a0c22;
@@ -173,8 +149,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 .tech-details h4 {
                     color: #ff6b6b;
                     margin: 0 0 10px 0;
-                    font-size: 12px;
-                    text-transform: uppercase;
                 }
                 .tech-row {
                     display: flex;
@@ -252,10 +226,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="tech-label">📅 Fecha y hora:</span>
                             <span class="tech-value">' . date('d/m/Y H:i:s') . '</span>
                         </div>
-                        <div class="tech-row">
-                            <span class="tech-label">🆔 User Agent:</span>
-                            <span class="tech-value" style="font-size:10px;">' . substr($user_agent, 0, 60) . '...</span>
-                        </div>
                     </div>
                     
                     <div class="badge">🔒 Mensaje cifrado extremo a extremo</div>
@@ -267,13 +237,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </body>
         </html>';
         
-        // Versión texto plano
         $mail->AltBody = "Nuevo mensaje de contacto\n\n";
         $mail->AltBody .= "Nombre: $nombre\n";
         $mail->AltBody .= "Correo: $email_remitente\n";
         $mail->AltBody .= "Asunto: $asunto\n";
         $mail->AltBody .= "Mensaje:\n$mensaje_usuario\n\n";
-        $mail->AltBody .= "--- Información técnica ---\n";
         $mail->AltBody .= "IP: $ip_usuario\n";
         $mail->AltBody .= "Sistema Operativo: $os\n";
         $mail->AltBody .= "Navegador: $browser\n";
@@ -283,7 +251,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mensaje_envio = "✨ ¡Muchas gracias por tu mensaje! ✨<br>📬 Me pondré en contacto contigo muy pronto.";
         $tipo_mensaje = "exito";
     } catch (Exception $e) {
-        $mensaje_envio = "❌ Lo siento, hubo un error al enviar tu mensaje.<br>🔧 Por favor, inténtalo de nuevo más tarde.";
+        $mensaje_envio = "❌ Error: " . $mail->ErrorInfo;
         $tipo_mensaje = "error";
     }
 }
@@ -303,13 +271,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-family: 'Segoe UI', system-ui, sans-serif;
             text-align: center;
             animation: slideIn 0.5s ease-out;
-            backdrop-filter: blur(10px);
         }
         .mensaje-envio.exito {
             background: linear-gradient(135deg, rgba(0, 255, 0, 0.15), rgba(0, 200, 0, 0.05));
             border: 1px solid rgba(0, 255, 0, 0.3);
             color: #0f0;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
         }
         .mensaje-envio.error {
             background: linear-gradient(135deg, rgba(255, 0, 0, 0.15), rgba(200, 0, 0, 0.05));
@@ -332,10 +298,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 12px;
             color: #0a0;
             font-family: monospace;
-        }
-        .email-form-container h2 {
-            text-align: center;
-            margin-bottom: 25px;
         }
     </style>
 </head>
