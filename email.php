@@ -1,46 +1,35 @@
 <?php
-
-// 🚨 Requiere PHPMailer
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'vendor/autoload.php'; // Asegúrate de que PHPMailer está instalado con Composer
-
+$mensaje_envio = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recoger los datos del formulario
     $nombre = htmlspecialchars($_POST["name"]);
-    $destinatario = htmlspecialchars($_POST["to_email"]);
+    $asunto = htmlspecialchars($_POST["subject"]);
+    $email_remitente = htmlspecialchars($_POST["email"]);
     $mensaje = htmlspecialchars($_POST["message"]);
 
-    $mail = new PHPMailer(true);
-
-    try {
-        // Configuración del servidor SMTP
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Servidor SMTP (cámbialo si usas otro)
-        $mail->SMTPAuth = true;
-        $mail->Username = 'asirclean@gmail.com'; // Tu correo SMTP
-        $mail->Password = 'jagx whvr ektj iffb'; // Tu contraseña SMTP
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
-
-        // Configurar el remitente (usamos el correo de prueba y el nombre del usuario)
-        $mail->setFrom('anonimo@tudominio.com', $nombre);
-        $mail->addAddress($destinatario); // Correo del destinatario ingresado por el usuario
-
-        // Contenido del correo
-        $mail->isHTML(false);
-        $mail->Subject = 'Mensaje Anónimo de ' . $nombre;
-        $mail->Body = $mensaje;
-
-        $mail->send();
-        echo "Correo enviado con éxito.";
-    } catch (Exception $e) {
-        echo "Error al enviar el correo: {$mail->ErrorInfo}";
+    // Correo destino fijo
+    $destino = "davidcigaran@gmail.com";
+    
+    // Asunto del correo que llegará a David
+    $asunto_completo = "Mensaje de $nombre: $asunto";
+    
+    // Cuerpo del mensaje
+    $cuerpo = "Nombre: $nombre\n";
+    $cuerpo .= "Correo del remitente: $email_remitente\n";
+    $cuerpo .= "Asunto original: $asunto\n";
+    $cuerpo .= "Mensaje:\n$mensaje\n";
+    
+    // Cabeceras: indicamos que el correo viene del usuario (pero se enviará desde el servidor)
+    $cabeceras = "From: $email_remitente\r\n";
+    $cabeceras .= "Reply-To: $email_remitente\r\n";
+    
+    // Envío
+    if (mail($destino, $asunto_completo, $cuerpo, $cabeceras)) {
+        $mensaje_envio = "✅ Correo enviado con éxito a davidcigaran@gmail.com";
+    } else {
+        $mensaje_envio = "❌ Error al enviar el correo. Intenta de nuevo más tarde.";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -76,14 +65,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Contenedor de formulario con estilo profesional -->
     <div class="email-form-container">
         <h2>Envía un Correo Electrónico</h2>
+        
+        <?php if ($mensaje_envio): ?>
+            <div class="mensaje-envio"><?php echo $mensaje_envio; ?></div>
+        <?php endif; ?>
+        
         <form method="POST">
             <label for="name">Tu Nombre (o pseudónimo):</label>
-            <input type="text" name="name" id="name" placeholder="Tu nombre" required>
+            <input type="text" name="name" id="name" placeholder="Ej: HackTheGibson" required>
 
-            <label for="to_email">Correo del Destinatario:</label>
-            <input type="email" name="to_email" id="to_email" placeholder="destinatario@example.com" required>
+            <label for="subject">Asunto:</label>
+            <input type="text" name="subject" id="subject" placeholder="Asunto del mensaje" required>
 
-            <label for="message">Escribe tu mensaje:</label>
+            <label for="email">Tu Correo Electrónico:</label>
+            <input type="email" name="email" id="email" placeholder="tucorreo@ejemplo.com" required>
+
+            <label for="message">Mensaje:</label>
             <textarea name="message" id="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
 
             <button type="submit">Enviar</button>
