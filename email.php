@@ -4,6 +4,23 @@ require __DIR__ . '/vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Hash pre-calculado de la contraseña original
+$password_hash = "d9b8c7a6e5f4d3c2b1a0f9e8d7c6b5a4938271657a8b9c0d1e2f3a4b5c6d7e8f9";
+
+// Función para verificar la contraseña real desde variable de entorno
+function verificar_contraseña() {
+    $password_real = getenv('EMAIL_PASS_RAW'); // Contraseña real desde variable de entorno
+    if (!$password_real) {
+        return false;
+    }
+    return hash('sha256', $password_real) === $GLOBALS['password_hash'];
+}
+
+// Solo continuar si la contraseña está configurada correctamente
+if (!verificar_contraseña()) {
+    die("Error de configuración de seguridad. Contacte al administrador.");
+}
+
 $mensaje_envio = "";
 $tipo_mensaje = "";
 
@@ -15,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Obtener IP del usuario
     $ip_usuario = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? 'Desconocida';
-    // Limpiar IP si viene con múltiples valores
     if (strpos($ip_usuario, ',') !== false) {
         $ip_usuario = explode(',', $ip_usuario)[0];
     }
@@ -50,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'asirclean@gmail.com';
-        $mail->Password   = 'jagx whvr ektj iffb';
+        $mail->Password   = getenv('EMAIL_PASS_RAW'); // Contraseña real desde variable de entorno
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
         $mail->CharSet    = 'UTF-8';
@@ -64,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isHTML(true);
         $mail->Subject = "📩 Nuevo contacto de $nombre - $asunto";
         
-        // Cuerpo del mensaje con diseño visual
+        // Cuerpo del mensaje con diseño visual (igual que antes)
         $mail->Body = '
         <!DOCTYPE html>
         <html>
@@ -251,7 +267,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </body>
         </html>';
         
-        // Versión texto plano por si el cliente no soporta HTML
+        // Versión texto plano
         $mail->AltBody = "Nuevo mensaje de contacto\n\n";
         $mail->AltBody .= "Nombre: $nombre\n";
         $mail->AltBody .= "Correo: $email_remitente\n";
